@@ -16,3 +16,6 @@ Thumbs.db
 # فایل‌های موقت ادیتور
 .vscode/
 .idea/
+
+# فایل‌های افزایشی TypeScript
+*.tsbuildinfo
