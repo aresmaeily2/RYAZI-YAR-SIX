@@ -1,4 +1,5 @@
 import { SKILL_BY_ID } from './skills';
+import { emptySkillState } from './builder';
 import { evaluateMastery, DEFAULT_MASTERY_POLICY, type MasteryPolicy } from './mastery';
 import { scheduleNextReview } from './review';
 import type { EngineDecision, SkillDefinition, SkillState } from './types';
@@ -218,4 +219,23 @@ export function applyAttemptOutcome(
   const outcome = !isCorrect ? 'failure' : hintsUsed === 0 ? 'success-no-hints' : 'success-with-hints';
   const plan = scheduleNextReview(state.reviewStage, outcome, now);
   return { ...state, reviewStage: plan.reviewStage, nextReviewAt: plan.nextReviewAt };
+}
+
+/**
+ * تصمیم گام بعدی برای یک مهارت با شناسه، بر فراز نقشه کامل وضعیت مهارت‌ها.
+ * پیش‌نیازهای مستقیم از تعریف مهارت خوانده و وضعیت آن‌ها از همان نقشه برداشت می‌شود.
+ */
+export function decideForSkill(
+  skillId: string,
+  states: Record<string, SkillState>,
+  now: number,
+  policy?: MasteryPolicy
+): EngineDecision | null {
+  const skill = SKILL_BY_ID.get(skillId);
+  const state = states[skillId];
+  if (!skill || !state) return null;
+  const prereqStates = skill.prerequisites
+    .map((p) => ({ skillId: p, state: states[p] ?? emptySkillState(p, now) }))
+    .filter((p) => p.state !== undefined);
+  return decideNextStep({ skill, state, prereqStates, now, policy });
 }

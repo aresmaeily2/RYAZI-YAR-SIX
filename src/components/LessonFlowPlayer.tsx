@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import type { LessonFlow, FlowStage, MissingStep } from '../learning/flowTypes';
 import { stageLabel, sourceForStage } from '../learning/flowTypes';
 import { stageQuestions, advanceFlow, isStagePassed, type StageAttemptOutcome } from '../learning/flowLogic';
@@ -54,6 +54,8 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
   const [stageIndex, setStageIndex] = useState(0);
   const [remedialMode, setRemedialMode] = useState(false);
   const [outcomes, setOutcomes] = useState<StageAttemptOutcome[]>([]);
+  /** آینه فوری outcomes برای جلوگیری از تداخل submitهای هم‌زمان روی closure قدیمی */
+  const outcomesRef = useRef<StageAttemptOutcome[]>([]);
   const [finished, setFinished] = useState(false);
 
   // وضعیت مرحله مثال ناقص
@@ -72,6 +74,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
 
   const resetStageState = () => {
     setOutcomes([]);
+    outcomesRef.current = [];
     setStepInputs({});
     setStepTries({});
     setStepDone({});
@@ -88,6 +91,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
     if (result.needsRemedialRetest) {
       setRemedialMode(true);
       setOutcomes([]);
+      outcomesRef.current = [];
       return;
     }
     if (result.nextIndex !== stageIndex) {
@@ -104,7 +108,8 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
     if (!stage) throw new Error('مرحله فعال یافت نشد');
     const source = remedialMode ? 'prereq' : sourceForStage(stage.kind);
     const result = onRecordAnswer(q, answer, hintsUsed, source);
-    const next = [...outcomes, { questionId: q.id, isCorrect: result.isCorrect, hintsUsed }];
+    const next = [...outcomesRef.current, { questionId: q.id, isCorrect: result.isCorrect, hintsUsed }];
+    outcomesRef.current = next;
     setOutcomes(next);
     if (next.length >= activeQuestions.length) {
       // با setTimeout که رندر بازخورد اول دیده شود
@@ -122,7 +127,8 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
     if (ok) {
       setStepFeedback((prev) => ({ ...prev, [step.id]: 'ok' }));
       setStepDone((prev) => ({ ...prev, [step.id]: true }));
-      const next = [...outcomes, { questionId: step.id, isCorrect: true, hintsUsed: Math.max(0, tries - 1) }];
+      const next = [...outcomesRef.current, { questionId: step.id, isCorrect: true, hintsUsed: Math.max(0, tries - 1) }];
+      outcomesRef.current = next;
       setOutcomes(next);
       if (Object.keys({ ...stepDone, [step.id]: true }).length >= (stage?.completionExample?.missingSteps.length ?? 0)) {
         window.setTimeout(() => finishStage(next), 900);

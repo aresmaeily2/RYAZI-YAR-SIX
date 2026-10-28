@@ -6,6 +6,8 @@ import { buildExamQuestions, examBandLabel, scoreExam, wrongAnswerIds, type Exam
 import { useLearnerState } from './hooks/useLearnerState';
 import { QuestionCard } from './components/QuestionCard';
 import { LessonFlowPlayer } from './components/LessonFlowPlayer';
+import { DiagnosticDashboard, ParentSkillReport } from './components/DiagnosticDashboard';
+import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -219,6 +221,18 @@ const App: React.FC = () => {
                 </button>
               </div>
 
+              {/* داشبورد تشخیصی: گام بعدی، وضعیت مهارت‌ها، مرورهای سررسید و سنجه‌ها */}
+              <DiagnosticDashboard
+                skillStates={learner.skillStates}
+                attempts={state.attempts}
+                completedLessonCount={state.completedLessonIds.length}
+                totalLessons={CURRICULUM_CHAPTERS.reduce((a, c) => a + c.lessons.length, 0)}
+                onOpenSkill={(lessonId) => {
+                  const ch = CURRICULUM_CHAPTERS.find((c) => c.lessons.some((l) => l.id === lessonId));
+                  if (ch) openLesson(ch.id, lessonId);
+                }}
+              />
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {CURRICULUM_CHAPTERS.map((ch) => {
                   const mastery = learner.masteryList.find((m) => m.chapterId === ch.id);
@@ -329,6 +343,16 @@ const App: React.FC = () => {
                   {currentLesson.interactiveLab === 'fraction' && <FractionLab />}
                   {currentLesson.interactiveLab === 'cylinder' && <CylinderLab />}
                   {currentLesson.interactiveLab === 'percentage' && <PercentageLab />}
+
+                  {/* دستیار آموزشی قاعده‌مند — متناسب با وضعیت مهارت این درس */}
+                  <AssistantPanel
+                    lessonId={currentLesson.id}
+                    skillState={
+                      learner.skillIdForLesson(currentLesson.id)
+                        ? learner.skillStates[learner.skillIdForLesson(currentLesson.id)!]
+                        : undefined
+                    }
+                  />
 
                   <div className="space-y-3 pt-2">
                     <h3 className="font-bold text-sm text-slate-800">مثال حل‌شده گام‌به‌گام:</h3>
@@ -620,6 +644,15 @@ const App: React.FC = () => {
                       })}
                     </ul>
                   )}
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-bold text-sm text-slate-900">گزارش والد/مربی — وضعیت مهارت‌به‌مهارت:</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    تمرکز این گزارش بر تسلط واقعی، خطاهای پرتکرار و پیشنهاد حمایتی است، نه زمان حضور در برنامه.
+                    «اطمینان سامانه» نشان می‌دهد شواهد چقدر برای قضاوت کافی بوده‌اند.
+                  </p>
+                  <ParentSkillReport skillStates={learner.skillStates} />
                 </div>
 
                 <div className="space-y-2">
