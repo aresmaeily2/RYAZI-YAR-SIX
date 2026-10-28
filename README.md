@@ -16,7 +16,7 @@
 
 ## تکنولوژی‌ها
 
-React 18 + TypeScript 5 + Vite 5 + Tailwind CSS 3 + Vitest 2 + Testing Library
+React 18 + TypeScript 5 + Vite 7 + Tailwind CSS 3 + Vitest 5 + Testing Library
 فونت وزیرمتن به‌صورت محلی (بدون درخواست خارجی) میزبانی می‌شود.
 
 ## نصب و راه‌اندازی
