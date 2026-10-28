@@ -5,6 +5,10 @@ import { toPersianDigits } from './utils/mathEngine';
 import { buildExamQuestions, examBandLabel, scoreExam, wrongAnswerIds, type ExamAnswers } from './utils/examEngine';
 import { useLearnerState } from './hooks/useLearnerState';
 import { QuestionCard } from './components/QuestionCard';
+import { LessonFlowPlayer } from './components/LessonFlowPlayer';
+import { DiagnosticDashboard, ParentSkillReport } from './components/DiagnosticDashboard';
+import { AssistantPanel } from './components/AssistantPanel';
+import { flowForLesson } from './data/flows';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import {
@@ -48,6 +52,8 @@ const App: React.FC = () => {
   const [examAnswers, setExamAnswers] = useState<ExamAnswers>({});
   const [examQuestions, setExamQuestions] = useState<Question[]>([]);
   const [importStatus, setImportStatus] = useState<string>('');
+  /** حالت مسیر یادگیری چندمرحله‌ای درس فعال */
+  const [flowMode, setFlowMode] = useState<boolean>(false);
 
   const currentChapter = useMemo(
     () => CURRICULUM_CHAPTERS.find((c) => c.id === selectedChapterId) ?? CURRICULUM_CHAPTERS[0],
@@ -58,10 +64,22 @@ const App: React.FC = () => {
     [currentChapter, selectedLessonId]
   );
 
+  /** نقشه همه پرسش‌ها (کتاب + پرسش‌های جریان‌ها) برای استفاده در مسیر یادگیری */
+  const allQuestionsById = useMemo(() => {
+    const map = new Map<string, Question>();
+    for (const ch of CURRICULUM_CHAPTERS) {
+      for (const les of ch.lessons) {
+        for (const q of les.questions) map.set(q.id, q);
+      }
+    }
+    return map;
+  }, []);
+
   const openLesson = (chapterId: string, lessonId: string) => {
     setSelectedChapterId(chapterId);
     setSelectedLessonId(lessonId);
     learner.updateLastVisited(chapterId, lessonId);
+    setFlowMode(false);
     setActiveTab('learn');
   };
 
@@ -203,6 +221,18 @@ const App: React.FC = () => {
                 </button>
               </div>
 
+              {/* داشبورد تشخیصی: گام بعدی، وضعیت مهارت‌ها، مرورهای سررسید و سنجه‌ها */}
+              <DiagnosticDashboard
+                skillStates={learner.skillStates}
+                attempts={state.attempts}
+                completedLessonCount={state.completedLessonIds.length}
+                totalLessons={CURRICULUM_CHAPTERS.reduce((a, c) => a + c.lessons.length, 0)}
+                onOpenSkill={(lessonId) => {
+                  const ch = CURRICULUM_CHAPTERS.find((c) => c.lessons.some((l) => l.id === lessonId));
+                  if (ch) openLesson(ch.id, lessonId);
+                }}
+              />
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {CURRICULUM_CHAPTERS.map((ch) => {
                   const mastery = learner.masteryList.find((m) => m.chapterId === ch.id);
@@ -314,6 +344,16 @@ const App: React.FC = () => {
                   {currentLesson.interactiveLab === 'cylinder' && <CylinderLab />}
                   {currentLesson.interactiveLab === 'percentage' && <PercentageLab />}
 
+                  {/* دستیار آموزشی قاعده‌مند — متناسب با وضعیت مهارت این درس */}
+                  <AssistantPanel
+                    lessonId={currentLesson.id}
+                    skillState={
+                      learner.skillIdForLesson(currentLesson.id)
+                        ? learner.skillStates[learner.skillIdForLesson(currentLesson.id)!]
+                        : undefined
+                    }
+                  />
+
                   <div className="space-y-3 pt-2">
                     <h3 className="font-bold text-sm text-slate-800">مثال حل‌شده گام‌به‌گام:</h3>
                     {currentLesson.workedExamples.map((ex) => (
@@ -334,21 +374,52 @@ const App: React.FC = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-extrabold text-base text-slate-900">تمرین‌های تعاملی سطح‌بندی‌شده</h3>
-                  {currentLesson.questions.length === 0 ? (
-                    <p className="text-sm text-slate-500 bg-white border border-slate-200 rounded-2xl p-6 text-center">
-                      برای این درس هنوز تمرینی ثبت نشده است.
-                    </p>
-                  ) : (
-                    currentLesson.questions.map((q, idx) => (
-                      <QuestionCard
-                        key={q.id}
-                        question={q}
-                        index={idx}
-                        onSubmit={(answer, hintsUsed) => learner.recordAttempt(q, answer, hintsUsed, 'practice')}
-                      />
-                    ))
-                  )}
+                  {(() => {
+                    const flow = flowForLesson(currentLesson.id);
+                    if (flow && flowMode) {
+                      return (
+                        <div className="space-y-4">
+                          <h3 className="font-extrabold text-base text-slate-900">{flow.title}</h3>
+                          <LessonFlowPlayer
+                            flow={flow}
+                            questionsById={allQuestionsById}
+                            onRecordAnswer={(q, answer, hints, source) => learner.recordAttempt(q, answer, hints, source)}
+                            onExit={() => setFlowMode(false)}
+                          />
+                        </div>
+                      );
+                    }
+                    return (
+                      <>
+                        <h3 className="font-extrabold text-base text-slate-900">تمرین‌های تعاملی سطح‌بندی‌شده</h3>
+                        {flow && (
+                          <button
+                            type="button"
+                            onClick={() => setFlowMode(true)}
+                            className="w-full py-4 rounded-2xl bg-gradient-to-l from-indigo-600 to-violet-600 text-white text-sm font-extrabold hover:opacity-95 transition shadow-sm flex items-center justify-center gap-2"
+                            data-testid="start-flow-btn"
+                          >
+                            <ListChecks className="w-5 h-5" />
+                            شروع مسیر یادگیری کامل این درس (سنجش پیش‌نیاز تا سنجش انتقال)
+                          </button>
+                        )}
+                        {currentLesson.questions.length === 0 ? (
+                          <p className="text-sm text-slate-500 bg-white border border-slate-200 rounded-2xl p-6 text-center">
+                            برای این درس هنوز تمرینی ثبت نشده است.
+                          </p>
+                        ) : (
+                          currentLesson.questions.map((q, idx) => (
+                            <QuestionCard
+                              key={q.id}
+                              question={q}
+                              index={idx}
+                              onSubmit={(answer, hintsUsed) => learner.recordAttempt(q, answer, hintsUsed, 'practice')}
+                            />
+                          ))
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
               </section>
             </div>
@@ -573,6 +644,15 @@ const App: React.FC = () => {
                       })}
                     </ul>
                   )}
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-bold text-sm text-slate-900">گزارش والد/مربی — وضعیت مهارت‌به‌مهارت:</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">
+                    تمرکز این گزارش بر تسلط واقعی، خطاهای پرتکرار و پیشنهاد حمایتی است، نه زمان حضور در برنامه.
+                    «اطمینان سامانه» نشان می‌دهد شواهد چقدر برای قضاوت کافی بوده‌اند.
+                  </p>
+                  <ParentSkillReport skillStates={learner.skillStates} />
                 </div>
 
                 <div className="space-y-2">
