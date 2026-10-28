@@ -85,8 +85,8 @@ export interface AttemptRecord {
   hintsUsed: number;
   timestamp: number;
   diagnosedMisconception?: string;
-  /** منبع تلاش: تمرین درس یا آزمون */
-  source: 'practice' | 'exam';
+  /** منبع تلاش: تمرین درس، آزمون، سنجش پیش‌نیاز، سنجش انتقال یا مرور فاصله‌دار */
+  source: 'practice' | 'exam' | 'prereq' | 'transfer' | 'review';
 }
 
 export type MasteryStatus = 'notstarted' | 'needspractice' | 'good' | 'mastered';

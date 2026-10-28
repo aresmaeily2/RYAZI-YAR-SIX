@@ -32,7 +32,11 @@ function isValidAttempt(a: unknown): a is AttemptRecord {
     typeof rec.isCorrect === 'boolean' &&
     typeof rec.hintsUsed === 'number' &&
     typeof rec.timestamp === 'number' &&
-    (rec.source === 'practice' || rec.source === 'exam')
+    (rec.source === 'practice' ||
+      rec.source === 'exam' ||
+      rec.source === 'prereq' ||
+      rec.source === 'transfer' ||
+      rec.source === 'review')
   );
 }
 
