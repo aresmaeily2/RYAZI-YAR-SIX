@@ -43,6 +43,16 @@ function isValidAttempt(a: unknown): a is AttemptRecord {
 function isValidState(value: unknown): value is LearnerState {
   if (typeof value !== 'object' || value === null) return false;
   const s = value as Record<string, unknown>;
+  // اعتبارسنجی برنامه مرور اختیاری (سازگار با داده نسخه‌های قبلی)
+  if (s.reviewPlan !== undefined) {
+    if (typeof s.reviewPlan !== 'object' || s.reviewPlan === null) return false;
+    const plan = s.reviewPlan as Record<string, unknown>;
+    for (const entry of Object.values(plan)) {
+      if (typeof entry !== 'object' || entry === null) return false;
+      const e = entry as Record<string, unknown>;
+      if (typeof e.nextReviewAt !== 'number' || typeof e.reviewStage !== 'number' || typeof e.lastPracticedAt !== 'number') return false;
+    }
+  }
   return (
     typeof s.studentName === 'string' &&
     typeof s.xp === 'number' &&

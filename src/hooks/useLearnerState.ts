@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { AttemptRecord, ChapterMastery, LearnerState, Question } from '../types/curriculum';
+import type { AttemptRecord, ChapterMastery, LearnerState, Question, ReviewPlanEntry } from '../types/curriculum';
 import { CURRICULUM_CHAPTERS } from '../data/curriculumData';
+import { buildFlowQuestionIndex } from '../data/flows';
+import { buildQuestionIndex, rebuildSkillStates, applyReviewPlan } from '../learning/builder';
+import { SKILL_BY_ID } from '../learning/skills';
+import { scheduleNextReview } from '../learning/review';
 import { calculateXpForAttempt, computeChapterMastery, computeCompletedLessonIds, updateStreak } from '../utils/mathEngine';
 import { findMisconception, isAnswerCorrect } from '../utils/answerChecking';
 import { clearLearnerState, createInitialState, exportStateJson, importStateJson, loadLearnerState, saveLearnerState } from '../utils/storage';
@@ -15,6 +19,20 @@ export interface SubmitResult {
 /** مدیریت کامل وضعیت یادگیرنده: ذخیره‌سازی، امتیاز، زنجیره و تسلط */
 export function useLearnerState() {
   const [state, setState] = useState<LearnerState>(() => loadLearnerState());
+
+  // نقشه پرسش ← مهارت: از داده کتاب + پرسش‌های جریان‌های آموزشی
+  const questionSkillIndex = useMemo(() => {
+    const merged = new Map(buildQuestionIndex(CURRICULUM_CHAPTERS));
+    for (const [id, mapping] of buildFlowQuestionIndex()) merged.set(id, mapping);
+    return merged;
+  }, []);
+
+  // وضعیت مهارت‌ها همیشه از شواهد مشتق می‌شود (سازگار با داده نسخه‌های قبلی)
+  const skillStates = useMemo(() => {
+    const now = Date.now();
+    const derived = rebuildSkillStates(state.attempts, questionSkillIndex, now);
+    return applyReviewPlan(derived, state.reviewPlan);
+  }, [state.attempts, state.reviewPlan, questionSkillIndex]);
 
   // به‌روزرسانی زنجیره روزانه و ذخیره‌سازی پایدار
   useEffect(() => {
@@ -32,9 +50,9 @@ export function useLearnerState() {
     saveLearnerState(state);
   }, [state]);
 
-  /** ثبت یک تلاش و به‌روزرسانی امتیاز */
+  /** ثبت یک تلاش و به‌روزرسانی امتیاز و برنامه مرور */
   const recordAttempt = useCallback(
-    (q: Question, selected: string, hintsUsed: number, source: 'practice' | 'exam'): SubmitResult => {
+    (q: Question, selected: string, hintsUsed: number, source: 'practice' | 'exam' | 'prereq' | 'transfer' | 'review'): SubmitResult => {
       const isCorrect = isAnswerCorrect(q, selected);
       const priorAttempts = state.attempts.filter((a) => a.questionId === q.id);
       const earnedXp = calculateXpForAttempt(isCorrect, q.difficulty, hintsUsed, priorAttempts.length === 0);
@@ -54,6 +72,22 @@ export function useLearnerState() {
         source,
       };
 
+      // به‌روزرسانی برنامه مرور فاصله‌دار مهارت مربوط (لایتنر)
+      const skillId = questionSkillIndex.get(q.id)?.skillId;
+      const now = Date.now();
+      let nextReviewPlan = state.reviewPlan;
+      if (skillId && SKILL_BY_ID.has(skillId)) {
+        const currentStage = state.reviewPlan?.[skillId]?.reviewStage ?? 0;
+        const outcome = !isCorrect ? 'failure' : hintsUsed === 0 ? 'success-no-hints' : 'success-with-hints';
+        const plan = scheduleNextReview(currentStage, outcome, now);
+        const entry: ReviewPlanEntry = {
+          nextReviewAt: plan.nextReviewAt,
+          reviewStage: plan.reviewStage,
+          lastPracticedAt: now,
+        };
+        nextReviewPlan = { ...(state.reviewPlan ?? {}), [skillId]: entry };
+      }
+
       setState((prev) => {
         const todayISO = new Date().toISOString().slice(0, 10);
         const streak = updateStreak(prev.lastActiveDate, prev.streakDays, todayISO);
@@ -61,10 +95,11 @@ export function useLearnerState() {
           ...prev,
           ...streak,
           xp: prev.xp + earnedXp,
-          lastVisitedChapterId: q.chapterId,
-          lastVisitedLessonId: q.lessonId,
+          lastVisitedChapterId: q.chapterId === 'flow' ? prev.lastVisitedChapterId : q.chapterId,
+          lastVisitedLessonId: q.chapterId === 'flow' ? prev.lastVisitedLessonId : q.lessonId,
           attempts: [...prev.attempts, newAttempt],
           completedLessonIds: computeCompletedLessonIds(CURRICULUM_CHAPTERS, [...prev.attempts, newAttempt]),
+          reviewPlan: nextReviewPlan,
         };
       });
 
@@ -77,7 +112,7 @@ export function useLearnerState() {
         earnedXp,
       };
     },
-    [state.attempts]
+    [state.attempts, state.reviewPlan, questionSkillIndex]
   );
 
   /** به‌روزرسانی آخرین محل مطالعه */
@@ -128,12 +163,25 @@ export function useLearnerState() {
     return Array.from(wrong);
   }, [state.attempts]);
 
+  /** شناسه مهارت یک درس (از نخستین پرسش درس) */
+  const skillIdForLesson = useCallback(
+    (lessonId: string): string | undefined => {
+      const lesson = CURRICULUM_CHAPTERS.flatMap((c) => c.lessons).find((l) => l.id === lessonId);
+      const firstQuestionId = lesson?.questions[0]?.id;
+      return firstQuestionId ? questionSkillIndex.get(firstQuestionId)?.skillId : undefined;
+    },
+    [questionSkillIndex]
+  );
+
   return {
     state,
     masteryList,
     overallMastery,
     recentMisconceptions,
     wrongQuestionIds,
+    skillStates,
+    questionSkillIndex,
+    skillIdForLesson,
     recordAttempt,
     updateLastVisited,
     changeStudentName,

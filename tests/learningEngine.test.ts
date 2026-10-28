@@ -127,15 +127,17 @@ describe('بازسازی وضعیت مهارت از شواهد', () => {
     expect(second.firstAttemptOnQuestion).toBe(false);
   });
 
-  it('برچسب‌های انتقال، مرور و پیش‌نیاز از منابع ثبت می‌شوند', () => {
+  it('برچسب‌های انتقال و مرور از منابع ثبت و پیش‌نیاز از شواهد پیش‌نیاز مشتق می‌شود', () => {
     const attempts = [
-      mkAttempt({ questionId: 'q221', source: 'prereq', isCorrect: true }),
+      mkAttempt({ questionId: 'q211', lessonId: 'ch2l1', source: 'prereq', isCorrect: true }), // شواهد مهارت پیش‌نیاز
       mkAttempt({ questionId: 'q222', source: 'transfer', isCorrect: true }),
       mkAttempt({ questionId: 'q224', source: 'review', isCorrect: true }),
     ];
     const states = rebuildSkillStates(attempts, buildQuestionIndex(CURRICULUM_CHAPTERS), NOW);
     const s = states['sk-ch2l2'];
+    // پیش‌نیاز (sk-ch2l1) شواهد دارد → پیش‌نیاز درس بررسی‌شده تلقی می‌شود
     expect(s.prereqChecked).toBe(true);
+    expect(states['sk-ch2l1'].evidence.length).toBe(1);
     expect(s.transferPassed).toBe(true);
     expect(s.delayedReviewPassed).toBe(true);
   });

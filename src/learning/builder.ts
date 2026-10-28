@@ -101,7 +101,6 @@ export function rebuildSkillStates(
     // سنجش انتقال و مرور تأخیری از شواهد برچسب‌دار
     state.transferPassed = state.evidence.some((e) => e.source === 'transfer' && e.isCorrect);
     state.delayedReviewPassed = state.evidence.some((e) => e.source === 'review' && e.isCorrect && e.hintsUsed === 0);
-    state.prereqChecked = state.evidence.some((e) => e.source === 'prereq');
 
     state.dominantError = dominantError(state.errorCounts);
 
@@ -114,6 +113,16 @@ export function rebuildSkillStates(
       const acc = state.independentTotal > 0 ? state.independentCorrect / state.independentTotal : recentAccuracyOf(state);
       state.status = acc >= 0.7 ? 'learning' : 'needspractice';
     }
+  }
+
+  // بررسی‌شدن پیش‌نیازها: همه پیش‌نیازهای مستقیم باید حداقل یک شواهد داشته باشند
+  for (const skill of SKILLS) {
+    const state = states[skill.id];
+    if (skill.prerequisites.length === 0) {
+      state.prereqChecked = true; // بدون پیش‌نیاز، سنجش لازم نیست
+      continue;
+    }
+    state.prereqChecked = skill.prerequisites.every((p) => (states[p]?.evidence.length ?? 0) > 0);
   }
 
   return states;
@@ -147,20 +156,24 @@ export function emptySkillState(skillId: string, _now: number): SkillState {
   };
 }
 
-/** ادغام وضعیت‌های مشتق با برنامه مرور ذخیره‌شده (تا زمان‌بندی مرور بین نشست‌ها حفظ شود) */
-export function mergeWithPersistedReviewPlan(
+/**
+ * اعمال برنامه مرور ذخیره‌شده بر وضعیت‌های مشتق.
+ * stage مرور فقط از برنامه پایدار می‌آید (رفتار لایتنر یکنواخت می‌ماند)؛
+ * اگر برای مهارتی شواهد جدیدتری از آخرین مدخل برنامه آمده باشد،
+ * زمان‌بندی آن مهارت منقضی تلقی و صرفاً توسط تلاش بعدی بازمحاسبه می‌شود.
+ */
+export function applyReviewPlan(
   derived: Record<string, SkillState>,
-  persisted: Record<string, SkillState> | undefined
+  plan: Record<string, { nextReviewAt: number; reviewStage: number; lastPracticedAt: number }> | undefined
 ): Record<string, SkillState> {
-  if (!persisted) return derived;
-  for (const [id, prev] of Object.entries(persisted)) {
+  if (!plan) return derived;
+  for (const [id, entry] of Object.entries(plan)) {
     const cur = derived[id];
     if (!cur) continue;
-    // برنامه مرور فقط تا زمانی معتبر است که شواهد جدیدتری برای آن مهارت نیامده باشد
-    const hasNewerEvidence = cur.lastPracticedAt !== null && (prev.lastPracticedAt ?? 0) < cur.lastPracticedAt;
+    const hasNewerEvidence = cur.lastPracticedAt !== null && entry.lastPracticedAt < cur.lastPracticedAt;
     if (!hasNewerEvidence) {
-      cur.nextReviewAt = prev.nextReviewAt;
-      cur.reviewStage = prev.reviewStage;
+      cur.nextReviewAt = entry.nextReviewAt;
+      cur.reviewStage = entry.reviewStage;
     }
   }
   return derived;

@@ -111,6 +111,15 @@ export interface LearnerState {
   lastVisitedLessonId: string;
   completedLessonIds: string[];
   attempts: AttemptRecord[];
+  /** برنامه مرور فاصله‌دار هر مهارت (فیلد اختیاری؛ داده نسخه‌های قبلی بدون آن نیز معتبر است) */
+  reviewPlan?: Record<string, ReviewPlanEntry>;
+}
+
+/** یک مدخل برنامه مرور فاصله‌دار */
+export interface ReviewPlanEntry {
+  nextReviewAt: number;
+  reviewStage: number;
+  lastPracticedAt: number;
 }
 
 /** نتیجه تصحیح یک آزمون */

@@ -5,6 +5,8 @@ import { toPersianDigits } from './utils/mathEngine';
 import { buildExamQuestions, examBandLabel, scoreExam, wrongAnswerIds, type ExamAnswers } from './utils/examEngine';
 import { useLearnerState } from './hooks/useLearnerState';
 import { QuestionCard } from './components/QuestionCard';
+import { LessonFlowPlayer } from './components/LessonFlowPlayer';
+import { flowForLesson } from './data/flows';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import {
@@ -48,6 +50,8 @@ const App: React.FC = () => {
   const [examAnswers, setExamAnswers] = useState<ExamAnswers>({});
   const [examQuestions, setExamQuestions] = useState<Question[]>([]);
   const [importStatus, setImportStatus] = useState<string>('');
+  /** حالت مسیر یادگیری چندمرحله‌ای درس فعال */
+  const [flowMode, setFlowMode] = useState<boolean>(false);
 
   const currentChapter = useMemo(
     () => CURRICULUM_CHAPTERS.find((c) => c.id === selectedChapterId) ?? CURRICULUM_CHAPTERS[0],
@@ -58,10 +62,22 @@ const App: React.FC = () => {
     [currentChapter, selectedLessonId]
   );
 
+  /** نقشه همه پرسش‌ها (کتاب + پرسش‌های جریان‌ها) برای استفاده در مسیر یادگیری */
+  const allQuestionsById = useMemo(() => {
+    const map = new Map<string, Question>();
+    for (const ch of CURRICULUM_CHAPTERS) {
+      for (const les of ch.lessons) {
+        for (const q of les.questions) map.set(q.id, q);
+      }
+    }
+    return map;
+  }, []);
+
   const openLesson = (chapterId: string, lessonId: string) => {
     setSelectedChapterId(chapterId);
     setSelectedLessonId(lessonId);
     learner.updateLastVisited(chapterId, lessonId);
+    setFlowMode(false);
     setActiveTab('learn');
   };
 
@@ -334,21 +350,52 @@ const App: React.FC = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-extrabold text-base text-slate-900">تمرین‌های تعاملی سطح‌بندی‌شده</h3>
-                  {currentLesson.questions.length === 0 ? (
-                    <p className="text-sm text-slate-500 bg-white border border-slate-200 rounded-2xl p-6 text-center">
-                      برای این درس هنوز تمرینی ثبت نشده است.
-                    </p>
-                  ) : (
-                    currentLesson.questions.map((q, idx) => (
-                      <QuestionCard
-                        key={q.id}
-                        question={q}
-                        index={idx}
-                        onSubmit={(answer, hintsUsed) => learner.recordAttempt(q, answer, hintsUsed, 'practice')}
-                      />
-                    ))
-                  )}
+                  {(() => {
+                    const flow = flowForLesson(currentLesson.id);
+                    if (flow && flowMode) {
+                      return (
+                        <div className="space-y-4">
+                          <h3 className="font-extrabold text-base text-slate-900">{flow.title}</h3>
+                          <LessonFlowPlayer
+                            flow={flow}
+                            questionsById={allQuestionsById}
+                            onRecordAnswer={(q, answer, hints, source) => learner.recordAttempt(q, answer, hints, source)}
+                            onExit={() => setFlowMode(false)}
+                          />
+                        </div>
+                      );
+                    }
+                    return (
+                      <>
+                        <h3 className="font-extrabold text-base text-slate-900">تمرین‌های تعاملی سطح‌بندی‌شده</h3>
+                        {flow && (
+                          <button
+                            type="button"
+                            onClick={() => setFlowMode(true)}
+                            className="w-full py-4 rounded-2xl bg-gradient-to-l from-indigo-600 to-violet-600 text-white text-sm font-extrabold hover:opacity-95 transition shadow-sm flex items-center justify-center gap-2"
+                            data-testid="start-flow-btn"
+                          >
+                            <ListChecks className="w-5 h-5" />
+                            شروع مسیر یادگیری کامل این درس (سنجش پیش‌نیاز تا سنجش انتقال)
+                          </button>
+                        )}
+                        {currentLesson.questions.length === 0 ? (
+                          <p className="text-sm text-slate-500 bg-white border border-slate-200 rounded-2xl p-6 text-center">
+                            برای این درس هنوز تمرینی ثبت نشده است.
+                          </p>
+                        ) : (
+                          currentLesson.questions.map((q, idx) => (
+                            <QuestionCard
+                              key={q.id}
+                              question={q}
+                              index={idx}
+                              onSubmit={(answer, hintsUsed) => learner.recordAttempt(q, answer, hintsUsed, 'practice')}
+                            />
+                          ))
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
               </section>
             </div>
