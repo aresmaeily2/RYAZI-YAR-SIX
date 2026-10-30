@@ -192,6 +192,7 @@ describe('پوشش سرفصل‌های کتاب ریاضی ششم', () => {
       'نمودار',
       'قطع کردن و گرد کردن',
       'کاربرد تقریب',
+      'عملیات ترکیبی',
     ];
     const allLessonTitles = CURRICULUM_CHAPTERS.flatMap((c) => c.lessons.map((l) => l.title)).join(' | ');
     for (const keyword of expectedLessons) {

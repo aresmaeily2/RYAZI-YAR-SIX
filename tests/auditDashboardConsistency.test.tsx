@@ -67,14 +67,14 @@ describe('ممیزی فاز ۵ — سازگاری اعداد داشبورد با
     expect(overall).toBe(4);
   });
 
-  it('گروه‌های وضعیت داشبورد دقیقاً با وضعیت مشتق‌شدهٔ مهارت‌ها یکی است (۱ موقت، ۱ نیازمند تمرین، ۲۱ شروع‌نشده)', () => {
+  it('گروه‌های وضعیت داشبورد دقیقاً با وضعیت مشتق‌شدهٔ مهارت‌ها یکی است (۱ موقت، ۱ نیازمند تمرین، ۲۲ شروع‌نشده)', () => {
     const states = rebuildSkillStates(ATTEMPTS, QINDEX, NOW);
     render(
       <DiagnosticDashboard
         skillStates={states}
         attempts={ATTEMPTS}
         completedLessonCount={0}
-        totalLessons={23}
+        totalLessons={24}
         onOpenSkill={() => {}}
       />
     );
@@ -101,7 +101,7 @@ describe('ممیزی فاز ۵ — سازگاری اعداد داشبورد با
 
     const states = rebuildSkillStates(ATTEMPTS, QINDEX, NOW);
     render(
-      <DiagnosticDashboard skillStates={states} attempts={ATTEMPTS} completedLessonCount={0} totalLessons={23} onOpenSkill={() => {}} />
+      <DiagnosticDashboard skillStates={states} attempts={ATTEMPTS} completedLessonCount={0} totalLessons={24} onOpenSkill={() => {}} />
     );
     expect(screen.getByText(/نمونه هنوز کوچک است/)).toBeInTheDocument();
     // الگوی خطا: فقط یک خطای تشخیص‌دار (جمع مخرج‌ها → محاسباتی)
@@ -109,12 +109,12 @@ describe('ممیزی فاز ۵ — سازگاری اعداد داشبورد با
     expect(screen.getByText(/۱ بار/)).toBeInTheDocument();
   });
 
-  it('گزارش والد: ۲۳ ردیف، اطمینان sk-ch2l1 = ٪۷۱ (۵ از ۷ وزن) و شمار وضعیت‌ها درست', () => {
+  it('گزارش والد: ۲۴ ردیف، اطمینان sk-ch2l1 = ٪۷۱ (۵ از ۷ وزن) و شمار وضعیت‌ها درست', () => {
     const states = rebuildSkillStates(ATTEMPTS, QINDEX, NOW);
     render(<ParentSkillReport skillStates={states} />);
     const report = screen.getByTestId('parent-skill-report');
     const rows = within(report).getAllByRole('row');
-    expect(rows.length).toBe(24); // سرستون + ۲۳ مهارت
+    expect(rows.length).toBe(25); // سرستون + ۲۴ مهارت
     expect(within(report).getAllByText('تسلط موقت').length).toBe(1);
     expect(within(report).getAllByText('نیازمند تمرین').length).toBe(1);
     // اطمینان sk-ch2l1: دقت(۳) + تنوع(۲) = ۵/۷ = ٪۷۱
@@ -124,7 +124,7 @@ describe('ممیزی فاز ۵ — سازگاری اعداد داشبورد با
   it('پیشنهاد گام بعدی داشبورد از موتور واقعی با دلیل قابل نمایش می‌آید', () => {
     const states = rebuildSkillStates(ATTEMPTS, QINDEX, NOW);
     render(
-      <DiagnosticDashboard skillStates={states} attempts={ATTEMPTS} completedLessonCount={0} totalLessons={23} onOpenSkill={() => {}} />
+      <DiagnosticDashboard skillStates={states} attempts={ATTEMPTS} completedLessonCount={0} totalLessons={24} onOpenSkill={() => {}} />
     );
     const card = screen.getByTestId('next-step-card');
     // اولویت‌سنجی: مرور سررسید ندارد؛ یادگیری فعال ندارد؛ نخستین شروع‌نشده sk-ch1l1 است

@@ -51,8 +51,8 @@ function mkSkillState(skillId: string, evidence: AnswerEvidence[], overrides: Pa
 
 // ============================================================ گراف مهارت‌ها
 describe('گراف مهارت‌ها و نگاشت درس‌ها', () => {
-  it('یک مهارت به ازای هر درس کتاب (۲۳ مهارت) با شناسه یکتا', () => {
-    expect(SKILLS.length).toBe(23);
+  it('یک مهارت به ازای هر درس کتاب (۲۴ مهارت) با شناسه یکتا', () => {
+    expect(SKILLS.length).toBe(24);
     const ids = new Set(SKILLS.map((s) => s.id));
     expect(ids.size).toBe(SKILLS.length);
   });

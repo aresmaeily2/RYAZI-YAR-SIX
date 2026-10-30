@@ -77,11 +77,11 @@ function decide(skillId: string, attempts: AttemptRecord[], now = NOW, plan?: Re
 
 // ============ بخش ۱: ساختار گراف مهارت ============
 
-describe('ممیزی فاز ۳ — ساختار گراف ۲۳ مهارت', () => {
-  it('شمار مهارت‌ها ۲۳ و یکتاست و هر مهارت درس و پرسش واقعی دارد', () => {
-    expect(SKILLS.length).toBe(23);
+describe('ممیزی فاز ۳ — ساختار گراف ۲۴ مهارت', () => {
+  it('شمار مهارت‌ها ۲۴ و یکتاست و هر مهارت درس و پرسش واقعی دارد', () => {
+    expect(SKILLS.length).toBe(24);
     const ids = new Set(SKILLS.map((s) => s.id));
-    expect(ids.size).toBe(23);
+    expect(ids.size).toBe(24);
     for (const s of SKILLS) {
       const ch = CURRICULUM_CHAPTERS.find((c) => c.id === s.chapterId);
       const les = ch?.lessons.find((l) => l.id === s.lessonId);
@@ -92,7 +92,7 @@ describe('ممیزی فاز ۳ — ساختار گراف ۲۳ مهارت', () =>
 
   it('هر درس کتاب دقیقاً یک مهارت دارد (نبود مهارت بی‌کاربرد)', () => {
     const lessonCount = CURRICULUM_CHAPTERS.flatMap((c) => c.lessons).length;
-    expect(lessonCount).toBe(23);
+    expect(lessonCount).toBe(24);
     for (const les of CURRICULUM_CHAPTERS.flatMap((c) => c.lessons)) {
       expect(SKILLS.find((s) => s.lessonId === les.id), `درس ${les.id} مهارت ندارد`).toBeDefined();
     }
