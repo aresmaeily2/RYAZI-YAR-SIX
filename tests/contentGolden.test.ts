@@ -213,4 +213,35 @@ describe('آزمون طلایی اعتبارسنجی کلید پاسخ‌ها (�
     }
     expect(broken).toEqual([]);
   });
+
+  it('عمیق‌ترین راهنما پاسخ نهایی را لو نمی‌دهد (قرارداد types/curriculum؛ ممیزی فاز ۲)', () => {
+    // قرارداد در types: «سه راهنمایی پله‌پله؛ بدون لو دادن پاسخ نهایی».
+    // قانون: توکن پاسخ (ارقام + / . − پس از حذف واحدها؛ حداقل ۲ رقم برای پاسخ‌های عددی)
+    // نباید به‌صورت پاره‌توکنِ مستقل در عمیق‌ترین راهنما (hints[2]) باشد؛
+    // علامت‌های + × ÷ = جداکننده پاره‌توکن‌ها هستند (۴+۵+۶+۳ ≠ ۴۵۶۳)؛
+    // پاسخ‌های متنی نیز به‌صورت عبارت کامل چک می‌شوند.
+    const leaks: string[] = [];
+    const segments = (s: string): string[] =>
+      normalizeDigitsToEnglish(s)
+        .replace(/−/g, '-')
+        .replace(/[^\d/.+-]/g, '|')
+        .split('|')
+        .filter(Boolean);
+    for (const q of allQuestions) {
+      const deepest = q.hints[2] ?? '';
+      const answers = q.type === 'mcq' ? [q.correctAnswer] : (q.acceptedAnswers ?? []);
+      for (const a of answers) {
+        const tok = normalizeDigitsToEnglish(a).replace(/−/g, '-').replace(/[^\d/.-]/g, '');
+        const digitCount = (tok.match(/\d/g) ?? []).length;
+        if (digitCount === 0) {
+          const text = normalizeDigitsToEnglish(a).replace(/\s+/g, '');
+          const hint = normalizeDigitsToEnglish(deepest).replace(/\s+/g, '');
+          if (text.length >= 2 && hint.includes(text)) leaks.push(`${q.id} — «${a}»`);
+        } else if (digitCount >= 2) {
+          if (segments(deepest).some((seg) => seg === tok)) leaks.push(`${q.id} — «${a}»`);
+        }
+      }
+    }
+    expect(leaks).toEqual([]);
+  });
 });
