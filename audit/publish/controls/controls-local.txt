@@ -1,0 +1,50 @@
+# CONTROLS — 2026-10-30T07:40:49Z — HEAD d39c15e0f98ed88f47d65f7f3df3a03b89e7c1f6
+# branch: main | clean tree: 1 untracked/modified
+=== TESTS ===
+ ✓ tests/auditEngineScenarios.test.ts (43 tests) 17ms
+ ✓ tests/learningEngine.test.ts (45 tests) 19ms
+ ✓ tests/mathEngine.test.ts (20 tests) 11ms
+ ✓ tests/lessonFlow.test.ts (19 tests) 10ms
+ ✓ tests/auditStorageSecurity.test.ts (9 tests) 9ms
+ ✓ tests/examEngine.test.ts (8 tests) 8ms
+ ✓ tests/answerChecking.test.ts (14 tests) 7ms
+ ✓ tests/contentGolden.test.ts (8 tests) 8ms
+
+ Test Files  14 passed (14)
+      Tests  220 passed (220)
+   Start at  07:40:50
+   Duration  10.76s (environment 43%, tests 37%, setup 11%, import 7%, transform 1%, worker 1%)
+
+Environment  jsdom was created 14 times · 4.06s total, 43% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+TEST_EXIT=0
+=== TYPECHECK ===
+
+> ryazi-yar-six@1.0.0 typecheck
+> tsc -b
+
+TYPECHECK_EXIT=0
+=== LINT ===
+
+> ryazi-yar-six@1.0.0 lint
+> eslint .
+
+LINT_EXIT=0
+=== BUILD ===
+> ryazi-yar-six@1.0.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 1598 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.28 kB │ gzip:   0.66 kB
+dist/assets/index-D1Dh3Ubw.css   25.61 kB │ gzip:   5.04 kB
+dist/assets/index-8Q5aoPxI.js   385.46 kB │ gzip: 106.01 kB
+✓ built in 2.31s
+BUILD_EXIT=0
+SUMMARY: TEST=0 TYPECHECK=0 LINT=0 BUILD=0
+111b9c62ca2dc0087423a51f190b657f9de3683871bad9d2534611b26726db5b  dist/assets/index-8Q5aoPxI.js

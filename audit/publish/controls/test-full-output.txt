@@ -1,0 +1,36 @@
+
+> ryazi-yar-six@1.0.0 test
+> vitest run --run
+
+
+ RUN  v5.0.5 /home/z/my-project/ryazi-yar-six
+
+ ✓ tests/app.test.tsx (14 tests) 2203ms
+   ✓ جریان کامل آزمون (3)
+     ✓ آزمون موضوعی فصل: پاسخ درست به همه، نمره ۱۰۰٪ و مرور پاسخ‌ها 720ms
+     ✓ آزمون با پاسخ‌های غلط: نمره صفر، مرور با پاسخ درست و تمرین مجدد غلط‌ها 337ms
+ ✓ tests/auditFlowPaths.test.tsx (2 tests) 536ms
+   ✓ ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ خطا با نردبان راهنما (1)
+     ✓ شکست در A → یادآوری → شکست در بازآزمون → تکرار حلقهٔ اصلاحی → عبور؛ سپس شکست مرحله C و تکرار آن؛ ثبت شواهد با راهنما 391ms
+ ✓ tests/flowIntegration.test.tsx (2 tests) 340ms
+ ✓ tests/diagnostic.test.tsx (14 tests) 133ms
+ ✓ tests/auditDashboardConsistency.test.tsx (6 tests) 112ms
+ ✓ tests/curriculumData.test.ts (16 tests) 33ms
+ ✓ tests/auditEngineScenarios.test.ts (43 tests) 17ms
+ ✓ tests/learningEngine.test.ts (45 tests) 19ms
+ ✓ tests/mathEngine.test.ts (20 tests) 11ms
+ ✓ tests/lessonFlow.test.ts (19 tests) 10ms
+ ✓ tests/auditStorageSecurity.test.ts (9 tests) 9ms
+ ✓ tests/examEngine.test.ts (8 tests) 8ms
+ ✓ tests/answerChecking.test.ts (14 tests) 7ms
+ ✓ tests/contentGolden.test.ts (8 tests) 8ms
+
+ Test Files  14 passed (14)
+      Tests  220 passed (220)
+   Start at  07:40:50
+   Duration  10.76s (environment 43%, tests 37%, setup 11%, import 7%, transform 1%, worker 1%)
+
+Environment  jsdom was created 14 times · 4.06s total, 43% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

@@ -1,0 +1,5 @@
+test-and-build	Setup Node.js	2026-10-30T07:42:12.4708364Z (node:2094) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+test-and-build	Unit & UI tests	2026-10-30T07:42:27.6162966Z ^[[2m Test Files ^[[22m ^[[1m^[[32m14 passed^[[39m^[[22m^[[90m (14)^[[39m
+test-and-build	Unit & UI tests	2026-10-30T07:42:27.6164492Z ^[[2m      Tests ^[[22m ^[[1m^[[32m220 passed^[[39m^[[22m^[[90m (220)^[[39m
+test-and-build	Production build	2026-10-30T07:42:33.3540739Z ^[[32m✓ built in 2.11s^[[39m
+test-and-build	Upload build artifact	2026-10-30T07:42:33.9165091Z (node:2443) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.

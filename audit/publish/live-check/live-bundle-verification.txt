@@ -1,0 +1,6 @@
+# LIVE VERIFICATION — 2026-10-30T07:55:31Z
+URL: https://aresmaeily2.github.io/RYAZI-YAR-SIX/ ; HTTP=200
+live asset: assets/index-8Q5aoPxI.js
+live sha256:  111b9c62ca2dc0087423a51f190b657f9de3683871bad9d2534611b26726db5b
+local sha256: 111b9c62ca2dc0087423a51f190b657f9de3683871bad9d2534611b26726db5b
+cmp: BYTE-IDENTICAL
