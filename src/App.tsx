@@ -384,6 +384,7 @@ const App: React.FC = () => {
                             flow={flow}
                             questionsById={allQuestionsById}
                             onRecordAnswer={(q, answer, hints, source) => learner.recordAttempt(q, answer, hints, source)}
+                            skillStates={learner.skillStates}
                             onExit={() => setFlowMode(false)}
                           />
                         </div>

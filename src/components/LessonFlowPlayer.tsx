@@ -2,6 +2,8 @@ import React, { useMemo, useRef, useState } from 'react';
 import type { LessonFlow, FlowStage, MissingStep } from '../learning/flowTypes';
 import { stageLabel, sourceForStage, missingStepAsQuestion } from '../learning/flowTypes';
 import { stageQuestions, advanceFlow, isStagePassed, type StageAttemptOutcome } from '../learning/flowLogic';
+import { emptySkillState } from '../learning/builder';
+import type { SkillState } from '../learning/types';
 import type { Question } from '../types/curriculum';
 import { QuestionCard } from './QuestionCard';
 import type { SubmitResult } from '../hooks/useLearnerState';
@@ -12,6 +14,8 @@ import { CheckCircle2, ChevronLeft, ChevronRight, XCircle, Info } from 'lucide-r
  * پخش‌کننده الگوی آموزشی چندمرحله‌ای (A تا G؛ مرحله H مرور تأخیری در موتور یادگیری است).
  * تصمیم پیشرفت با منطق خالص flowLogic گرفته می‌شود و هر پاسخ با منبع درست
  * (پیش‌نیاز/تمرین/انتقال) در موتور یادگیری ثبت می‌گردد.
+ * F08 — اگر وضعیت مهارت‌ها داده شود، تأیید پیش‌نیاز (مرحله A) آگاه از سابقهٔ
+ * یادگیرنده و نوع سؤال انجام می‌شود؛ بدون آن، رفتار مبتنی بر دادهٔ مرحله حفظ می‌شود.
  */
 
 export interface LessonFlowPlayerProps {
@@ -19,6 +23,8 @@ export interface LessonFlowPlayerProps {
   questionsById: ReadonlyMap<string, Question>;
   /** ثبت پاسخ با منبع مرحله؛ نتیجه تصحیح را برمی‌گرداند */
   onRecordAnswer: (q: Question, answer: string, hintsUsed: number, source: 'practice' | 'prereq' | 'transfer') => SubmitResult;
+  /** F08 — وضعیت مهارت‌ها برای تأیید آگاه از سابقهٔ پیش‌نیاز (اختیاری) */
+  skillStates?: Record<string, SkillState>;
   onExit: () => void;
 }
 
@@ -32,7 +38,7 @@ const KIND_COLORS: Record<FlowStage['kind'], string> = {
   'transfer-assessment': 'bg-rose-600',
 };
 
-export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questionsById, onRecordAnswer, onExit }) => {
+export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questionsById, onRecordAnswer, skillStates, onExit }) => {
   const [stageIndex, setStageIndex] = useState(0);
   const [remedialMode, setRemedialMode] = useState(false);
   const [outcomes, setOutcomes] = useState<StageAttemptOutcome[]>([]);
@@ -47,6 +53,14 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
   const [stepFeedback, setStepFeedback] = useState<Record<string, 'ok' | 'retry' | 'fallback'>>({});
 
   const stage: FlowStage | undefined = flow.stages[stageIndex];
+  // F08 — وضعیت مهارت پیش‌نیاز مرحلهٔ جاری؛ با فرستادن skillStates (نقشهٔ کامل وضعیت‌ها)
+  // مدخل غایب یعنی «بی‌سابقه» و سیاست آگاه از سابقه اعمال می‌شود؛ بدون skillStates،
+  // رفتار داده‌محورِ مرحله (قاعدهٔ minCorrect) حفظ می‌شود.
+  const prereqState: SkillState | undefined = useMemo(() => {
+    if (!stage?.prereqSkillId) return undefined;
+    if (skillStates === undefined) return undefined;
+    return skillStates[stage.prereqSkillId] ?? emptySkillState(stage.prereqSkillId, Date.now());
+  }, [stage, skillStates]);
   const stageQs = useMemo(() => (stage ? stageQuestions(stage, questionsById) : []), [stage, questionsById]);
   const activeQuestions = useMemo(() => {
     if (!stage) return [];
@@ -65,7 +79,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
 
   const finishStage = (finalOutcomes: StageAttemptOutcome[]) => {
     if (!stage) return;
-    const result = advanceFlow(flow, stageIndex, finalOutcomes);
+    const result = advanceFlow(flow, stageIndex, finalOutcomes, prereqState);
     if (result.done) {
       setFinished(true);
       return;
@@ -90,7 +104,8 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
     if (!stage) throw new Error('مرحله فعال یافت نشد');
     const source = remedialMode ? 'prereq' : sourceForStage(stage.kind);
     const result = onRecordAnswer(q, answer, hintsUsed, source);
-    const next = [...outcomesRef.current, { questionId: q.id, isCorrect: result.isCorrect, hintsUsed }];
+    // F08 — نوع پاسخ برای سیاست تأیید پیش‌نیاز: پاسخ‌ساخت (عددی/کسر) در برابر چهارگزینه‌ایِ قابل‌حدس
+    const next = [...outcomesRef.current, { questionId: q.id, isCorrect: result.isCorrect, hintsUsed, constructedResponse: q.type !== 'mcq' }];
     outcomesRef.current = next;
     setOutcomes(next);
     if (next.length >= activeQuestions.length) {
@@ -112,7 +127,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
     const source = sourceForStage(stage?.kind ?? 'completion-example');
     const result = onRecordAnswer(pseudoQuestion, input, priorTries, source);
     setStepTries((prev) => ({ ...prev, [step.id]: priorTries + 1 }));
-    const next = [...outcomesRef.current, { questionId: step.id, isCorrect: result.isCorrect, hintsUsed: priorTries }];
+    const next = [...outcomesRef.current, { questionId: step.id, isCorrect: result.isCorrect, hintsUsed: priorTries, constructedResponse: true }];
     outcomesRef.current = next;
     setOutcomes(next);
     if (result.isCorrect) {
@@ -151,7 +166,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
 
   if (!stage) return null;
 
-  const progress = isStagePassed(stage, outcomes);
+  const progress = isStagePassed(stage, outcomes, prereqState);
 
   return (
     <div className="space-y-4" data-testid="lesson-flow-player">
