@@ -7,8 +7,8 @@ import {
   applyReviewPlan,
 } from '../src/learning/builder';
 import { decideForSkill } from '../src/learning/engine';
-import { evaluateMastery, DEFAULT_MASTERY_POLICY, countDistinctSuccessProfiles } from '../src/learning/mastery';
-import { scheduleNextReview, REVIEW_INTERVALS_DAYS, dueSkillIds } from '../src/learning/review';
+import { evaluateMastery, countDistinctSuccessProfiles } from '../src/learning/mastery';
+import { scheduleNextReview, dueSkillIds } from '../src/learning/review';
 import { classifyWrongAnswer, mapDiagnosisTextToCode, dominantError } from '../src/learning/errorTaxonomy';
 import { SKILLS, SKILL_BY_ID, prerequisiteChain } from '../src/learning/skills';
 import { computeEffectivenessMetrics } from '../src/learning/metrics';

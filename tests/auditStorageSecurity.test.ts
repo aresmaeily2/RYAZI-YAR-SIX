@@ -100,7 +100,7 @@ describe('ممیزی فاز ۶ — اعتبارسنجی ورودی و مقاوم
     const base = oldVersionState();
     expect(importStateJson(JSON.stringify({ ...base, xp: -5 }))).toBeNull();
     expect(importStateJson(JSON.stringify({ ...base, xp: Number.POSITIVE_INFINITY }))).toBeNull();
-    const badAttempt = { ...(base.attempts as unknown[])[0] } as Record<string, unknown>;
+    const badAttempt = { ...((base.attempts as unknown[])[0] as Record<string, unknown>) };
     delete badAttempt.source;
     expect(importStateJson(JSON.stringify({ ...base, attempts: [badAttempt] }))).toBeNull();
     expect(importStateJson(JSON.stringify({ ...base, reviewPlan: { 'sk-x': { nextReviewAt: 'bad' } } }))).toBeNull();

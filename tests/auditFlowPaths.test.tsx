@@ -47,7 +47,7 @@ function findQuestion(qid: string): Question | undefined {
 }
 
 /** پاسخ دادن به همهٔ کارت‌های فعال؛ با کنترل تعداد راهنمای مصرفی */
-function answerAll(recorder: ReturnType<typeof makeRecorder>, mode: 'correct' | 'wrong' | 'with-hints', hintClicks = 0) {
+function answerAll(mode: 'correct' | 'wrong' | 'with-hints', hintClicks = 0) {
   const cards = screen.getAllByTestId(/^question-/);
   for (const card of cards) {
     const qid = card.getAttribute('data-testid')!.replace('question-', '');
@@ -80,23 +80,23 @@ describe('ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ
     render(<LessonFlowPlayer flow={flow} questionsById={qById} onRecordAnswer={makeRecorder(recorded)} onExit={() => {}} />);
 
     // A: پاسخ غلط → یادآوری
-    answerAll(makeRecorder(recorded), 'wrong');
+    answerAll('wrong');
     act(() => { vi.advanceTimersByTime(1000); });
     expect(screen.getByTestId('flow-remedial')).toBeInTheDocument();
 
     // بازآزمون: دوباره غلط → حلقهٔ اصلاحی تکرار می‌شود (روش آموزش عوض نمی‌شود — یافتهٔ ممیزی)
-    answerAll(makeRecorder(recorded), 'wrong');
+    answerAll('wrong');
     act(() => { vi.advanceTimersByTime(1000); });
     expect(screen.getByTestId('flow-remedial')).toBeInTheDocument();
     expect(screen.getByTestId('question-flow-ch2l2-a-r1')).toBeInTheDocument();
 
     // بازآزمون سوم: این‌بار با مصرف ۲ راهنما درست → عبور
-    answerAll(makeRecorder(recorded), 'with-hints', 2);
+    answerAll('with-hints', 2);
     act(() => { vi.advanceTimersByTime(1000); });
     expect(screen.getByText(/لیوان‌های آب پرتقال/)).toBeInTheDocument();
 
     // B: درست
-    answerAll(makeRecorder(recorded), 'correct');
+    answerAll('correct');
     act(() => { vi.advanceTimersByTime(1000); });
 
     // C: فقط ۱ درست از ۳ (شرط عبور ۲) → تکرار مرحله با همان محتوا
@@ -119,7 +119,7 @@ describe('ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ
     expect(screen.getByText(/سه نمایش متفاوت/)).toBeInTheDocument();
 
     // دوباره C با پاسخ کامل درست → عبور
-    answerAll(makeRecorder(recorded), 'correct');
+    answerAll('correct');
     act(() => { vi.advanceTimersByTime(1000); });
 
     // D → ادامه
@@ -145,11 +145,11 @@ describe('ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ
     act(() => { vi.advanceTimersByTime(1000); });
 
     // F: درست
-    answerAll(makeRecorder(recorded), 'correct');
+    answerAll('correct');
     act(() => { vi.advanceTimersByTime(1000); });
 
     // G: درست با راهنما → پایان
-    answerAll(makeRecorder(recorded), 'with-hints', 1);
+    answerAll('with-hints', 1);
     act(() => { vi.advanceTimersByTime(1000); });
     expect(screen.getByTestId('flow-finished')).toBeInTheDocument();
 
@@ -172,11 +172,11 @@ describe('ممیزی فاز ۴ — مسیر ۴: شکست در تمرین مست�
     render(<LessonFlowPlayer flow={flow} questionsById={qById} onRecordAnswer={makeRecorder(recorded)} onExit={() => {}} />);
 
     // A تا E درست و سریع
-    answerAll(makeRecorder(recorded), 'correct');
+    answerAll('correct');
     act(() => { vi.advanceTimersByTime(1000); });
-    answerAll(makeRecorder(recorded), 'correct');
+    answerAll('correct');
     act(() => { vi.advanceTimersByTime(1000); });
-    answerAll(makeRecorder(recorded), 'correct');
+    answerAll('correct');
     act(() => { vi.advanceTimersByTime(1000); });
     fireEvent.click(screen.getByRole('button', { name: /متوجه شدم؛ مرحله بعد/ }));
     const steps = ['10', '4/10', '1/2'];
@@ -188,13 +188,13 @@ describe('ممیزی فاز ۴ — مسیر ۴: شکست در تمرین مست�
     act(() => { vi.advanceTimersByTime(1000); });
 
     // F: همه غلط → با وجود شکست، به G می‌رود (شواهد منفی ثبت شده)
-    answerAll(makeRecorder(recorded), 'wrong');
+    answerAll('wrong');
     act(() => { vi.advanceTimersByTime(1000); });
     expect(screen.getByText(/ظاهری تازه/)).toBeInTheDocument();
     expect(recorded.filter((r) => r.source === 'practice' && !r.correct).length).toBeGreaterThanOrEqual(5);
 
     // G: غلط → پایان مسیر با شواهد منفی
-    answerAll(makeRecorder(recorded), 'wrong');
+    answerAll('wrong');
     act(() => { vi.advanceTimersByTime(1000); });
     expect(screen.getByTestId('flow-finished')).toBeInTheDocument();
     expect(recorded.filter((r) => r.source === 'transfer' && !r.correct).length).toBe(2);
