@@ -2,7 +2,7 @@ import type { AttemptRecord, Chapter } from '../types/curriculum';
 import { SKILLS, SKILL_BY_ID } from './skills';
 import { classifyWrongAnswer, dominantError } from './errorTaxonomy';
 import { countDistinctSuccessProfiles, evaluateMastery } from './mastery';
-import type { AnswerEvidence, MisconceptionCode, SkillState } from './types';
+import type { AnswerEvidence, MisconceptionCode, SkillDefinition, SkillState } from './types';
 
 /**
  * ساخت وضعیت مهارت‌ها از شواهد خام (تلاش‌های ثبت‌شده).
@@ -56,6 +56,60 @@ export function attemptToEvidence(
  * پنجره دقت مستقل: تلاش‌های مستقل (بدون راهنما) اخیر هر مهارت (حداکثر ۱۲ تای آخر)
  * تا اثر تلاش‌های قدیمی کهنه شود و پیشرفت واقعی منعکس گردد.
  */
+/**
+ * F06 — حفظ تسلط پس از شکست‌های متوالی:
+ *
+ * تحلیل ممیزی: با پنجرهٔ دقت مستقل ۱۲تایی، پس از دو شکست متوالیِ انتهایی دقتِ
+ * پنجره حداکثر ۱۰/۱۲ (۸۳٪) می‌شود و معیار تسلط خودبه‌خود می‌افتد؛ در نتیجه
+ * مهارتِ پیش‌تر مسلط به جای «نیازمند مرور» به وضعیت تازه‌کارمانند
+ * (learning/needspractice) سقوط می‌کرد و حافظهٔ آموزشی «این دانش‌آموز این
+ * مفهوم را یاد گرفته بود» از دست می‌رفت.
+ *
+ * قواعد اصلاح‌شده (مستند و آزمون‌شده):
+ * - مهارتی که پیش‌تر (روی پیشوند شواهد، با همان معیارهای چندشرطی) مسلط تشخیص
+ *   داده شده و اکنون جفت‌شکست «بازسازی‌نشده» دارد → وضعیت needsreview.
+ * - یک اشتباه تصادفی منفرد هرگز وضعیت را تغییر نمی‌دهد (شکست تنها در جفت سنجیده می‌شود).
+ * - موفقیت با راهنما زنجیرهٔ شکست را می‌شکند اما شاهد بازگشت نیست.
+ * - بازگشت به مسیر عادی با نخستین موفقیت مستقل پس از جفت‌شکست؛ بازگشت به خودِ
+ *   تسلط فقط با بازسازی معیارهای چندشرطی (پنجرهٔ شواهد) رخ می‌دهد.
+ * - مهارتی که هرگز مسلط نبوده، با شکست متوالی تازه‌کار می‌ماند (needspractice/learning).
+ */
+export const CONSECUTIVE_FAILURE_PAIR = 2;
+
+/** شناسهٔ آغاز «آخرین» جفت‌شکست بازسازی‌نشده (بدون موفقیت مستقل پس از آن) یا -۱ */
+export function lastUnrecoveredFailurePairIndex(evidence: AnswerEvidence[]): number {
+  // از انتهای شواهد به عقب می‌رویم تا آخرین جفت‌شکست پیدا شود
+  for (let i = evidence.length - CONSECUTIVE_FAILURE_PAIR; i >= 0; i--) {
+    const pair = evidence.slice(i, i + CONSECUTIVE_FAILURE_PAIR);
+    if (pair.length === CONSECUTIVE_FAILURE_PAIR && pair.every((e) => !e.isCorrect)) {
+      const after = evidence.slice(i + CONSECUTIVE_FAILURE_PAIR);
+      // بازسازی فقط با موفقیت مستقل (بدون راهنما) پس از جفت‌شکست
+      if (!after.some((e) => e.isCorrect && e.hintsUsed === 0)) return i;
+    }
+  }
+  return -1;
+}
+
+export function hasUnrecoveredConsecutiveFailures(evidence: AnswerEvidence[]): boolean {
+  return lastUnrecoveredFailurePairIndex(evidence) >= 0;
+}
+
+/** ارزیابی وضعیت تسلط روی زیرمجموعه‌ای از شواهد — برای سنجش «آیا پیش‌تر مسلط بود؟» */
+function masteryStatusForEvidence(evidence: AnswerEvidence[], skill: SkillDefinition): SkillState['status'] {
+  if (evidence.length === 0) return 'notstarted';
+  const independent = evidence.filter((e) => e.hintsUsed === 0);
+  const window = independent.slice(-INDEPENDENT_WINDOW);
+  const pseudo: SkillState = {
+    ...emptySkillState(skill.id, 0),
+    evidence,
+    independentCorrect: window.filter((e) => e.isCorrect).length,
+    independentTotal: window.length,
+    transferPassed: evidence.some((e) => e.source === 'transfer' && e.isCorrect),
+    delayedReviewPassed: evidence.some((e) => e.source === 'review' && e.isCorrect && e.hintsUsed === 0),
+  };
+  return evaluateMastery(pseudo, skill).status;
+}
+
 export const INDEPENDENT_WINDOW = 12;
 
 export function rebuildSkillStates(
@@ -108,6 +162,19 @@ export function rebuildSkillStates(
     const mastery = evaluateMastery(state, skill);
     state.status = mastery.status;
     state.confidence = mastery.confidence;
+    // F06 — حفظ تسلط پس از شکست‌های متوالی: مهارتِ پیش‌تر مسلط با جفت‌شکست
+    // بازسازی‌نشده به «نیازمند مرور» می‌رود؛ نه تازه‌کارمانند سقوط می‌کند و
+    // نه تسلط بی‌قیدوشرط حفظ می‌شود. اطمینان نمایشی همان وزن معیارها می‌ماند
+    // (در این حالت به‌طور طبیعی ≤ ۴/۷ است چون شرط دقت پنجره از دست رفته است).
+    const pairStart = lastUnrecoveredFailurePairIndex(state.evidence);
+    if (pairStart >= 0) {
+      const prefixMastery = masteryStatusForEvidence(state.evidence.slice(0, pairStart), skill);
+      const wasMastery = prefixMastery === 'confirmed-mastery' || prefixMastery === 'temporary-mastery';
+      const currentIsMastery = state.status === 'confirmed-mastery' || state.status === 'temporary-mastery';
+      if (wasMastery || currentIsMastery) {
+        state.status = 'needsreview';
+      }
+    }
     if (state.status === 'needspractice') {
       // تمایز «در حال یادگیری» از «نیازمند تمرین» بر اساس دقت مستقل اخیر
       const acc = state.independentTotal > 0 ? state.independentCorrect / state.independentTotal : recentAccuracyOf(state);
