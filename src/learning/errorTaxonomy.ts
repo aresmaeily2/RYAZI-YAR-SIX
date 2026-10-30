@@ -85,11 +85,14 @@ const DIAGNOSIS_KEYWORDS: Array<{ code: MisconceptionCode; patterns: RegExp[] }>
   { code: 'operation-order', patterns: [/اولویت عملیات/i, /قبل از ضرب/i, /ترتیب/i] },
   { code: 'place-value', patterns: [/ارزش مکانی/i, /جایگاه/i, /ممیز/i, /صفر/i, /جابه\u200cجایی مرتبه/i] },
   { code: 'unit-conversion', patterns: [/واحد/i, /تبدیل/i, /هکتار/i, /سی\u200cسی/i, /لیتر/i] },
+  // تفسیر نمودار/زاویه پیش از کلیدواژه‌های عمومی «درصد/مقایسه» ارزیابی می‌شود
+  // (ممیزی فاز ۳: پیش از این، تشخیص‌های نموداری مثل «استفاده از زاویه به‌عنوان درصد»
+  // به conceptual می‌رفتند و مقوله diagram-interpretation عملاً غیرقابل‌دسترس بود)
+  { code: 'diagram-interpretation', patterns: [/نمودار/i, /شکل/i, /محور/i, /زاویه/i] },
   { code: 'wrong-method-context', patterns: [/معکوس/i, /متقابل/i, /به\u200cجای/i, /استفاده از روش/i, /گرد کردن به\u200cجای قطع/i, /قطع کردن به\u200cجای گرد/i] },
   { code: 'conceptual', patterns: [/مفهوم/i, /مخرج مشترک/i, /بدون مخرج/i, /کسر/i, /نسبت/i, /درصد/i, /قرینه/i, /تقارن/i, /مقایسه/i] },
   { code: 'problem-reading', patterns: [/صورت سؤال/i, /خواندن/i, /نادیده گرفتن شرط/i, /توجه/i, /کلمات کلیدی/i] },
   { code: 'data-selection', patterns: [/داده/i, /انتخاب مضرب/i, /شمارش/i] },
-  { code: 'diagram-interpretation', patterns: [/نمودار/i, /شکل/i, /محور/i, /زاویه/i] },
   { code: 'calculation', patterns: [/محاسبه/i, /جمع کردن/i, /کم کردن/i, /ضرب/i, /تقسیم/i, /تفریق/i] },
 ];
 
