@@ -43,8 +43,8 @@ describe('جریان درس پایلوت ch2l2 — الگوی A تا G', () => {
         for (const q of [...(s.inlineQuestions ?? []), ...(s.retestQuestions ?? [])]) {
           expect(ids.has(q.id)).toBe(false);
           ids.add(q.id);
-          // پرسش‌های inline باید به درس/فصل جریان تعلق داشته باشند
-          expect(q.chapterId).toBe('ch2');
+          // پرسش‌های inline باید به درس/فصل جریان تعلق داشته باشند (فصل از lessonId جریان مشتق می‌شود)
+          expect(q.chapterId).toBe(f.lessonId.slice(0, 3));
         }
         for (const m of s.completionExample?.missingSteps ?? []) {
           expect(ids.has(m.id)).toBe(false);
@@ -158,6 +158,16 @@ describe('صحت ریاضی پرسش‌های جریان پایلوت', () => {
       'flow-ch2l2-f-e1': ['مخرج مشترک نگرفته و صورت‌ها و مخرج‌ها را جداگانه جمع کرده'],
       'flow-ch2l2-g-t1': ['5/8'],
       'flow-ch2l2-g-t2': ['مینا ۱/۲ ساعت ریاضی و ۱/۴ ساعت علوم خوانده است؛ مجموع زمان مطالعه او چند ساعت است؟'],
+      // ── جریان درس عملیات ترکیبی (ch7l3) — کلیدها با محاسبهٔ مستقل تأیید شده‌اند ──
+      'flow-ch7l3-a-r1': ['900'],
+      'flow-ch7l3-a-r2': ['۲۵۰'],
+      'flow-ch7l3-b-q1': ['4'],
+      'flow-ch7l3-c-q1': ['۳×۴+۲'],
+      'flow-ch7l3-c-q2': ['23'],
+      'flow-ch7l3-c-q3': ['۱۲÷۴؛ چون ضرب و تقسیم از چپ به راست انجام می‌شوند'],
+      'flow-ch7l3-f-e1': ['تفریق را قبل از ضرب انجام داده؛ باید اول ۲×۳ را حساب کند'],
+      'flow-ch7l3-g-t1': ['34'],
+      'flow-ch7l3-g-t2': ['سینا ۸ برگ برچسب دارد و به هر یک از ۳ دوستش ۲ برچسب می‌دهد؛ چند برچسب برایش می‌ماند؟'],
     };
     for (const f of LESSON_FLOWS) {
       for (const s of f.stages) {

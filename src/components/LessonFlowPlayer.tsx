@@ -1,11 +1,13 @@
 import React, { useMemo, useRef, useState } from 'react';
 import type { LessonFlow, FlowStage, MissingStep } from '../learning/flowTypes';
-import { stageLabel, sourceForStage, missingStepAsQuestion } from '../learning/flowTypes';
+import { stageLabel, sourceForStage, missingStepAsQuestion, sequencingStepAsQuestion } from '../learning/flowTypes';
 import { stageQuestions, advanceFlow, isStagePassed, type StageAttemptOutcome } from '../learning/flowLogic';
 import { emptySkillState } from '../learning/builder';
 import type { SkillState } from '../learning/types';
 import type { Question } from '../types/curriculum';
 import { QuestionCard } from './QuestionCard';
+import { StepSolverAnimation } from './StepSolverAnimation';
+import { GroupsVisual } from './GroupsVisual';
 import type { SubmitResult } from '../hooks/useLearnerState';
 import { toPersianDigits } from '../utils/mathEngine';
 import { CheckCircle2, ChevronLeft, ChevronRight, XCircle, Info } from 'lucide-react';
@@ -34,6 +36,7 @@ const KIND_COLORS: Record<FlowStage['kind'], string> = {
   representations: 'bg-violet-600',
   'worked-example': 'bg-indigo-600',
   'completion-example': 'bg-emerald-600',
+  'step-sequencing': 'bg-fuchsia-600',
   'independent-practice': 'bg-teal-600',
   'transfer-assessment': 'bg-rose-600',
 };
@@ -51,6 +54,11 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
   const [stepTries, setStepTries] = useState<Record<string, number>>({});
   const [stepDone, setStepDone] = useState<Record<string, boolean>>({});
   const [stepFeedback, setStepFeedback] = useState<Record<string, 'ok' | 'retry' | 'fallback'>>({});
+
+  // وضعیت مرحلهٔ مرتب‌سازی مراحل (X): شناسهٔ کارت‌های چیده‌شده به‌ترتیب + شمار راهنما + بازخورد آخرین چیدمان
+  const [seqPlaced, setSeqPlaced] = useState<string[]>([]);
+  const [seqHintsUsed, setSeqHintsUsed] = useState(0);
+  const [seqMessage, setSeqMessage] = useState<{ ok: boolean; text: string } | null>(null);
 
   const stage: FlowStage | undefined = flow.stages[stageIndex];
   // F08 — وضعیت مهارت پیش‌نیاز مرحلهٔ جاری؛ با فرستادن skillStates (نقشهٔ کامل وضعیت‌ها)
@@ -75,6 +83,9 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
     setStepTries({});
     setStepDone({});
     setStepFeedback({});
+    setSeqPlaced([]);
+    setSeqHintsUsed(0);
+    setSeqMessage(null);
   };
 
   const finishStage = (finalOutcomes: StageAttemptOutcome[]) => {
@@ -140,6 +151,38 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
       setStepFeedback((prev) => ({ ...prev, [step.id]: 'retry' }));
     } else {
       setStepFeedback((prev) => ({ ...prev, [step.id]: 'fallback' }));
+    }
+  };
+
+  /**
+   * چیدمان یک کارت گام در جایگاه جاری مرحلهٔ X.
+   * هر تلاش (درست یا نادرست) با پرسش معادل همان جایگاه به موتور یادگیری ثبت
+   * می‌شود (شمار راهنما = راهنماهای مصرف‌شدهٔ این مرحله تا این لحظه)؛ کارت
+   * نادرست قفل نمی‌شود تا دانش‌آموز جایگاه را با کارت دیگر کامل کند.
+   */
+  const handleSequencingPlace = (placedId: string) => {
+    if (!stage?.sequencing) return;
+    const steps = stage.sequencing.steps;
+    if (seqPlaced.includes(placedId)) return;
+    const placedIdx = seqPlaced.length;
+    if (placedIdx >= steps.length) return;
+    const expected = steps[placedIdx];
+    const placed = steps.find((s) => s.id === placedId)!;
+    const pseudo = sequencingStepAsQuestion(expected, steps.map((s) => s.label));
+    const source = sourceForStage(stage.kind);
+    const result = onRecordAnswer(pseudo, placed.label, seqHintsUsed, source);
+    const next = [...outcomesRef.current, { questionId: expected.id, isCorrect: result.isCorrect, hintsUsed: seqHintsUsed, constructedResponse: true }];
+    outcomesRef.current = next;
+    setOutcomes(next);
+    if (result.isCorrect) {
+      const nextPlaced = [...seqPlaced, placedId];
+      setSeqPlaced(nextPlaced);
+      setSeqMessage({ ok: true, text: 'جای این گام درست بود؛ ادامه بده.' });
+      if (nextPlaced.length >= steps.length) {
+        window.setTimeout(() => finishStage(next), 900);
+      }
+    } else {
+      setSeqMessage({ ok: false, text: 'این گام اینجا نیست؛ نگاه کن کدام عمل باید الان انجام شود.' });
     }
   };
 
@@ -229,6 +272,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
                 {rep.label}
               </span>
               <p className="text-xs text-slate-600 leading-relaxed">{rep.content}</p>
+              {rep.visual && <GroupsVisual visual={rep.visual} />}
             </div>
           ))}
         </div>
@@ -238,6 +282,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
       {stage.workedExample && !remedialMode && (
         <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3">
           <p className="font-bold text-sm text-slate-900 bg-indigo-50 border border-indigo-200 rounded-xl p-3">{stage.workedExample.problem}</p>
+          {stage.solverAnimation && <StepSolverAnimation spec={stage.solverAnimation} />}
           {stage.workedExample.steps.map((st, i) => (
             <div key={i} className="border border-slate-200 rounded-xl p-3.5 space-y-1.5 text-xs">
               <div className="font-bold text-slate-800">{st.text}</div>
@@ -318,7 +363,90 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
         </div>
       )}
 
-      {/* پرسش‌های مرحله (A، B، C، F، G و بازآزمون) */}
+      {/* مرحله X — چالش مرتب‌سازی مراحل حل */}
+      {stage.sequencing && !remedialMode && (() => {
+        const seqSteps = stage.sequencing.steps;
+        const rotate = Math.ceil(seqSteps.length / 2) || 1;
+        const shuffled = seqSteps.map((_, i) => seqSteps[(i + rotate) % seqSteps.length]);
+        return (
+          <div className="bg-white rounded-2xl border border-fuchsia-200 p-5 space-y-3" data-testid="sequencing-panel">
+            <div className="bg-white/80 rounded-xl border border-slate-200 py-3 text-center text-xl font-extrabold text-slate-900" dir="ltr">
+              {stage.sequencing.expression}
+            </div>
+            {/* جایگاه‌های ترتیب */}
+            <div className="space-y-1.5">
+              {seqSteps.map((st, i) => {
+                const placed = i < seqPlaced.length;
+                const placedStep = placed ? seqSteps.find((s) => s.id === seqPlaced[i])! : null;
+                return (
+                  <div
+                    key={st.id}
+                    className={`rounded-xl border px-3 py-2 text-xs font-bold flex items-center gap-2 transition ${
+                      placed ? 'bg-emerald-50 border-emerald-300 text-emerald-800' : 'bg-slate-50 border-dashed border-slate-300 text-slate-400'
+                    }`}
+                    data-testid={`seq-slot-${i + 1}`}
+                    aria-label={`جایگاه ${toPersianDigits(i + 1)}`}
+                  >
+                    <span className={`text-[10px] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 ${placed ? 'bg-emerald-600' : 'bg-slate-300'}`}>
+                      {toPersianDigits(i + 1)}
+                    </span>
+                    {placedStep ? placedStep.label : 'اینجا جای گام بعدی است…'}
+                  </div>
+                );
+              })}
+            </div>
+            {seqMessage && (
+              <div
+                className={`text-xs font-bold rounded-lg px-3 py-2 leading-relaxed ${
+                  seqMessage.ok ? 'text-emerald-800 bg-emerald-50 border border-emerald-200' : 'text-amber-800 bg-amber-50 border border-amber-200'
+                }`}
+                aria-live="polite"
+                data-testid="seq-message"
+              >
+                {seqMessage.text}
+              </div>
+            )}
+            {/* کارت‌های به‌هم‌ریخته (کلیک/صفحه‌کلید) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {shuffled.map((s) => {
+                const used = seqPlaced.includes(s.id);
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => handleSequencingPlace(s.id)}
+                    disabled={used}
+                    className={`text-xs font-bold rounded-xl border px-3 py-2.5 text-right transition ${
+                      used
+                        ? 'bg-slate-100 border-slate-200 text-slate-300 cursor-not-allowed line-through'
+                        : 'bg-white border-fuchsia-300 text-slate-800 hover:bg-fuchsia-50 hover:border-fuchsia-400 focus:ring-2 focus:ring-fuchsia-300'
+                    }`}
+                    data-testid={`seq-card-${s.id}`}
+                  >
+                    {s.label}
+                  </button>
+                );
+              })}
+            </div>
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => setSeqHintsUsed((h) => Math.min(h + 1, 3)) }
+                className="text-[11px] font-bold text-fuchsia-700 bg-fuchsia-50 border border-fuchsia-200 rounded-lg px-3 py-1.5 hover:bg-fuchsia-100 transition"
+                aria-label="راهنمای گام بعد"
+                data-testid="seq-hint"
+              >
+                راهنمای گام بعد {seqHintsUsed > 0 ? `(${toPersianDigits(seqHintsUsed)}/۳)` : ''}
+              </button>
+              {seqHintsUsed > 0 && stage.sequencing.steps[seqPlaced.length] && (
+                <div className="text-[11px] text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 leading-relaxed" aria-live="polite" data-testid="seq-hint-text">
+                  {stage.sequencing.steps[seqPlaced.length].hint}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })()}
       {activeQuestions.length > 0 && (
         <div className="space-y-4">
           {activeQuestions.map((q, i) => (

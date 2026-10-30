@@ -43,3 +43,26 @@ body {
   unicode-bidi: isolate;
   display: inline-block;
 }
+
+/* انیمیشن آموزشی حل‌کننده (StepSolverAnimation) — ظریف و هدفمند؛
+   با تنظیم کاهش حرکت سیستم، انیمیشن ورود غیرفعال می‌شود. */
+.solver-pop {
+  animation: solver-pop 0.45s ease-out;
+}
+
+@keyframes solver-pop {
+  from {
+    opacity: 0.3;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solver-pop {
+    animation: none;
+  }
+}

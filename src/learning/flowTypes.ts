@@ -1,4 +1,4 @@
-import type { Question, Difficulty, NumericQuestion } from '../types/curriculum';
+import type { Question, Difficulty, NumericQuestion, McqQuestion } from '../types/curriculum';
 import type { RepresentationKind } from './types';
 
 /**
@@ -15,6 +15,7 @@ export type FlowStageKind =
   | 'representations'       // C — نمایش چندگانه
   | 'worked-example'        // D — مثال حل‌شده با بلنداندیشی
   | 'completion-example'    // E — مثال ناقص و مشارکت دانش‌آموز
+  | 'step-sequencing'       // X — مرتب‌سازی مراحل حل (چالش چیدمان)
   | 'independent-practice'  // F — تمرین مستقل و تدریجی
   | 'transfer-assessment';  // G — سنجش انتقال یادگیری
 
@@ -24,6 +25,21 @@ export interface RepresentationCard {
   label: string;
   /** توضیح نمایش به زبان کودک */
   content: string;
+  /** نمایش بصری SVG اختصاصی (اختیاری — فعلاً گروه‌های مساوی + اضافه) */
+  visual?: RepresentationVisual;
+}
+
+/** نمایش بصری SVG کارت — کشیدن گروه‌های مساوی و اعضای اضافه (تطبیق تصویر با عبارت) */
+export interface RepresentationVisual {
+  kind: 'groups';
+  /** شمار دسته‌های کامل */
+  groupCount: number;
+  /** شمار عضو هر دسته */
+  perGroup: number;
+  /** شمار عضوهای اضافه خارج از دسته‌ها */
+  extra: number;
+  /** برچسب کوتاه زیر شکل */
+  caption: string;
 }
 
 /** گام مثال حل‌شده با بلنداندیشی آموزشی (مرحله D) */
@@ -47,6 +63,47 @@ export interface MissingStep {
   /** پرسش جایگزین با راهنمای بیشتر (نردبان راهنمایی) */
   fallbackPrompt: string;
   fallbackAnswer: string;
+}
+
+/** یک کارت گام برای مرحلهٔ مرتب‌سازی مراحل حل (مرحلهٔ X) */
+export interface SequencingStep {
+  id: string;
+  /** متن گام (روی کارت نمایش داده می‌شود) */
+  label: string;
+  /** راهنمای غیرلوده‌دهندهٔ مربوط به جای این گام در ترتیب */
+  hint: string;
+}
+
+/** چیدمان مرحلهٔ X — ترتیب آرایهٔ steps یعنی ترتیب درست حل */
+export interface SequencingSpec {
+  /** عبارت ریاضی مورد حل (نمایش چپ‌به‌راست) */
+  expression: string;
+  steps: SequencingStep[];
+}
+
+/** یک گام انیمیشن حل‌کننده (نمایش مرحله‌به‌مرحلهٔ محاسبه) */
+export interface SolverAnimationStep {
+  /** کپشن آموزشی گام (چرا این عمل؟) */
+  caption: string;
+  /** زیررشتهٔ عملیاتی که در عبارتِ این گام باید برجسته شود */
+  highlight: string;
+  /** عبارت پس از انجام این گام */
+  expressionAfter: string;
+}
+
+/** مشخصهٔ انیمیشن آموزشی حل عبارت (برای مراحل C/D) */
+export interface SolverAnimationSpec {
+  /** عبارت آغازین */
+  expression: string;
+  steps: SolverAnimationStep[];
+  /** نمایش اشتباه رایج: راه نادرست و چرا غلط است */
+  mistake?: {
+    caption: string;
+    /** عبارت/راه نادرست برای نمایش */
+    expression: string;
+    /** زیررشتهٔ نقطهٔ اشتباه برای برجسته‌سازی */
+    highlight: string;
+  };
 }
 
 /** شرط عبور از یک مرحله */
@@ -82,6 +139,10 @@ export interface FlowStage {
     givenSteps: string[];
     missingSteps: MissingStep[];
   };
+  /** چالش مرتب‌سازی مراحل حل (مرحلهٔ X) */
+  sequencing?: SequencingSpec;
+  /** انیمیشن آموزشی حل مرحله‌به‌مرحله (معمولاً در مرحلهٔ D) */
+  solverAnimation?: SolverAnimationSpec;
   /** ارجاع به پرسش‌های موجود کتاب (با منبع ثبت شواهد کنترل می‌شود) */
   questionRefs?: string[];
   /** پرسش‌های اختصاصی این مرحله */
@@ -130,6 +191,8 @@ export function stageLabel(kind: FlowStageKind): string {
       return 'مثال حل‌شده';
     case 'completion-example':
       return 'تکمیل راه‌حل';
+    case 'step-sequencing':
+      return 'مرتب‌سازی مراحل';
     case 'independent-practice':
       return 'تمرین مستقل';
     case 'transfer-assessment':
@@ -158,5 +221,32 @@ export function missingStepAsQuestion(step: MissingStep): NumericQuestion {
     explanation: '',
     answerKind: step.answerKind,
     acceptedAnswers: step.acceptedAnswers,
+  };
+}
+
+/**
+ * ساخت پرسش معادل یک جایگاه در مرحلهٔ مرتب‌سازی مراحل (X).
+ * «درست بودن» یک جایگاه یعنی کارت گام درست روی آن جایگاه گذاشته شده باشد؛
+ * تصحیح با همان موتور تصحیح MCQ انجام می‌شود (مقایسهٔ نرمال‌شدهٔ متن کارت با
+ * کارت درستِ آن جایگاه) تا تلاش، خطا و راهنمای دریافت‌شده به‌شکل سازگار ثبت گردد.
+ * شناسهٔ پرسش، شناسهٔ گام درستِ آن جایگاه است و در buildFlowQuestionIndex به
+ * مهارت جریان نگاشت می‌شود؛ گزینه‌ها متن همهٔ کارت‌هاست (برای ثبت پاسخ انتخابی).
+ */
+export function sequencingStepAsQuestion(
+  expectedStep: SequencingStep,
+  allStepLabels: string[]
+): McqQuestion {
+  return {
+    id: expectedStep.id,
+    chapterId: 'flow',
+    lessonId: 'flow',
+    type: 'mcq',
+    difficulty: 'easy',
+    prompt: expectedStep.label,
+    options: [...allStepLabels],
+    correctAnswer: expectedStep.label,
+    hints: [expectedStep.hint, expectedStep.hint, expectedStep.hint],
+    explanation: '',
+    misconceptions: [],
   };
 }

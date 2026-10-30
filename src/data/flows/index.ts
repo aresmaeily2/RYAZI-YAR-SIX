@@ -1,12 +1,13 @@
 import type { LessonFlow, FlowStage } from '../../learning/flowTypes';
 import type { Question } from '../../types/curriculum';
 import { ch2l2Flow } from './ch2l2.flow';
+import { ch7l3Flow } from './ch7l3.flow';
 
 /**
  * مخزن جریان‌های آموزشی. هر درس حداکثر یک جریان دارد؛ درس‌های بدون جریان
  * با تمرین‌های استاندارد درس و موتور یادگیری کار می‌کنند (کاهش باکیفیت ندارد).
  */
-export const LESSON_FLOWS: LessonFlow[] = [ch2l2Flow];
+export const LESSON_FLOWS: LessonFlow[] = [ch2l2Flow, ch7l3Flow];
 
 export function flowForLesson(lessonId: string): LessonFlow | undefined {
   return LESSON_FLOWS.find((f) => f.lessonId === lessonId);
@@ -23,6 +24,10 @@ export function buildFlowQuestionIndex(): ReadonlyMap<string, { skillId: string;
       }
       // F10 — گام‌های حذف‌شدهٔ مرحله E نیز شواهد مهارت خود جریان‌اند
       for (const step of stage.completionExample?.missingSteps ?? []) {
+        index.set(step.id, { skillId: flow.skillId, lessonId: flow.lessonId });
+      }
+      // مرحلهٔ X — جایگاه‌های چیدمان گام‌ها نیز شواهد مهارت خود جریان‌اند
+      for (const step of stage.sequencing?.steps ?? []) {
         index.set(step.id, { skillId: flow.skillId, lessonId: flow.lessonId });
       }
       // پرسش‌های بازآزمون پیش‌نیاز به مهارت پیش‌نیاز تعلق دارند
