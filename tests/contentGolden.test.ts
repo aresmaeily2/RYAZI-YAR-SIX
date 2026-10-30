@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { CURRICULUM_CHAPTERS } from '../src/data/curriculumData';
+import { normalizeDigitsToEnglish } from '../src/utils/mathEngine';
 
 /**
  * آزمون اعتبارسنجی طلایی محتوا (Golden Master) — لایه دفاع مستقل از داده‌ها.
@@ -118,6 +119,34 @@ function currentKeyOf(question: { id: string; type: string; correctAnswer?: stri
   return (question.acceptedAnswers ?? []).join(' | ');
 }
 
+/**
+ * مقادیر عددی ممکنِ یک گزینهٔ فارسی (ممیزی فاز ۲ — آزمون بازگشت هم‌ارزی).
+ * قرارداد کتاب: «a/۰۵» با صفرِ ابتدای بخش دوم یعنی اعشار (۶/۰۵ = ۶٫۰۵)؛
+ * در غیر این صورت «a/b» هم کسر است و هم می‌تواند اعشار فارسی باشد، پس هر دو مقدار
+ * کاندید می‌شوند. علامت منفی فارسی (−) بعد از رقم می‌آید.
+ */
+function candidateValues(raw: string): number[] {
+  const s = normalizeDigitsToEnglish(raw);
+  const vals: number[] = [];
+  const neg = s.includes('−');
+  const unit = s.replace(/[^\d/و.]/g, '');
+  const mixed = unit.match(/^(\d+)[وو](\d+)\/(\d+)$/);
+  if (mixed) vals.push(Number(mixed[1]) + Number(mixed[2]) / Number(mixed[3]));
+  const frac = unit.match(/^(\d+)\/(\d+)$/);
+  if (frac) {
+    const [a, b] = [frac[1], frac[2]];
+    const looksDecimal = /^0\d/.test(b) || /^0\d/.test(a);
+    if (looksDecimal) vals.push(Number(a + '.' + b));
+    else {
+      if (Number(b) !== 0) vals.push(Number(a) / Number(b));
+      vals.push(Number(a + '.' + b));
+    }
+  }
+  const dec = unit.match(/^(\d+)(\.(\d+))?$/);
+  if (dec) vals.push(Number(dec[0]));
+  return neg ? vals.map((v) => -v) : vals;
+}
+
 const allQuestions = CURRICULUM_CHAPTERS.flatMap((c) => c.lessons.flatMap((l) => l.questions));
 
 describe('آزمون طلایی اعتبارسنجی کلید پاسخ‌ها (ممیزی دستی فاز صفر)', () => {
@@ -156,5 +185,32 @@ describe('آزمون طلایی اعتبارسنجی کلید پاسخ‌ها (�
       if (distractors.length !== q.options.length - 1) collisions.push(q.id);
     }
     expect(collisions).toEqual([]);
+  });
+
+  it('هیچ گزینه انحرافی هم‌ارز عددیِ گزینه درست نیست (ممیزی مستقل فاز ۲)', () => {
+    const collisions: string[] = [];
+    for (const q of allQuestions) {
+      if (q.type !== 'mcq') continue;
+      const correctVals = candidateValues(q.correctAnswer);
+      for (const o of q.options) {
+        if (o === q.correctAnswer) continue;
+        for (const cv of correctVals)
+          for (const ov of candidateValues(o))
+            if (Math.abs(cv - ov) < 1e-9) collisions.push(`${q.id} — «${o}» ≡ «${q.correctAnswer}» (${ov})`);
+      }
+    }
+    expect(collisions).toEqual([]);
+  });
+
+  it('هر تشخیص سوءبرداشت به یک گزینه انحرافیِ واقعی وصل است (ممیزی مستقل فاز ۲)', () => {
+    const broken: string[] = [];
+    for (const q of allQuestions) {
+      if (q.type !== 'mcq') continue;
+      for (const m of q.misconceptions) {
+        if (!q.options.includes(m.wrongOptionValue) || m.wrongOptionValue === q.correctAnswer)
+          broken.push(`${q.id} — ${m.wrongOptionValue}`);
+      }
+    }
+    expect(broken).toEqual([]);
   });
 });
