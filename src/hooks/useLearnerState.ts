@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { AttemptRecord, ChapterMastery, LearnerState, Question, ReviewPlanEntry } from '../types/curriculum';
 import { CURRICULUM_CHAPTERS } from '../data/curriculumData';
 import { buildFlowQuestionIndex } from '../data/flows';
-import { buildQuestionIndex, rebuildSkillStates, applyReviewPlan } from '../learning/builder';
+import { buildQuestionIndex, rebuildSkillStates, applyReviewPlan, rebuildReviewPlan } from '../learning/builder';
 import { SKILL_BY_ID } from '../learning/skills';
 import { scheduleNextReview } from '../learning/review';
 import { calculateXpForAttempt, computeChapterMastery, computeCompletedLessonIds, updateStreak } from '../utils/mathEngine';
@@ -27,12 +27,20 @@ export function useLearnerState() {
     return merged;
   }, []);
 
+  // F07 — برنامهٔ مرور مؤثر: اگر برنامهٔ ذخیره‌شده گم یا ناقص شده باشد،
+  // از تلاش‌ها بازسازی می‌شود؛ مدخل‌های ذخیره‌شدهٔ معتبر بر بازسازی اولویت دارند.
+  // ترمیم در حافظه اعمال و با نخستین تلاش بعدی به ذخیره‌سازی پایدار منتقل می‌شود.
+  const effectiveReviewPlan = useMemo(
+    () => ({ ...rebuildReviewPlan(state.attempts, questionSkillIndex), ...(state.reviewPlan ?? {}) }),
+    [state.attempts, state.reviewPlan, questionSkillIndex]
+  );
+
   // وضعیت مهارت‌ها همیشه از شواهد مشتق می‌شود (سازگار با داده نسخه‌های قبلی)
   const skillStates = useMemo(() => {
     const now = Date.now();
     const derived = rebuildSkillStates(state.attempts, questionSkillIndex, now);
-    return applyReviewPlan(derived, state.reviewPlan);
-  }, [state.attempts, state.reviewPlan, questionSkillIndex]);
+    return applyReviewPlan(derived, effectiveReviewPlan);
+  }, [state.attempts, effectiveReviewPlan, questionSkillIndex]);
 
   // به‌روزرسانی زنجیره روزانه و ذخیره‌سازی پایدار
   useEffect(() => {
@@ -73,11 +81,13 @@ export function useLearnerState() {
       };
 
       // به‌روزرسانی برنامه مرور فاصله‌دار مهارت مربوط (لایتنر)
+      // F07: مبنای برنامه، برنامهٔ مؤثر (ذخیره‌شده + بازسازی‌شده) است تا ترمیم
+      // برنامهٔ گم‌شده/ناقص با همین تلاش به ذخیره‌سازی پایدار منتقل شود.
       const skillId = questionSkillIndex.get(q.id)?.skillId;
       const now = Date.now();
-      let nextReviewPlan = state.reviewPlan;
+      let nextReviewPlan: LearnerState['reviewPlan'] = effectiveReviewPlan;
       if (skillId && SKILL_BY_ID.has(skillId)) {
-        const currentStage = state.reviewPlan?.[skillId]?.reviewStage ?? 0;
+        const currentStage = effectiveReviewPlan[skillId]?.reviewStage ?? 0;
         const outcome = !isCorrect ? 'failure' : hintsUsed === 0 ? 'success-no-hints' : 'success-with-hints';
         const plan = scheduleNextReview(currentStage, outcome, now);
         const entry: ReviewPlanEntry = {
@@ -85,7 +95,7 @@ export function useLearnerState() {
           reviewStage: plan.reviewStage,
           lastPracticedAt: now,
         };
-        nextReviewPlan = { ...(state.reviewPlan ?? {}), [skillId]: entry };
+        nextReviewPlan = { ...effectiveReviewPlan, [skillId]: entry };
       }
 
       setState((prev) => {
@@ -112,7 +122,7 @@ export function useLearnerState() {
         earnedXp,
       };
     },
-    [state.attempts, state.reviewPlan, questionSkillIndex]
+    [state.attempts, effectiveReviewPlan, questionSkillIndex]
   );
 
   /** به‌روزرسانی آخرین محل مطالعه */

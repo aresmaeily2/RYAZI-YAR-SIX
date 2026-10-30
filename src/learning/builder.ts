@@ -2,6 +2,7 @@ import type { AttemptRecord, Chapter } from '../types/curriculum';
 import { SKILLS, SKILL_BY_ID } from './skills';
 import { classifyWrongAnswer, dominantError } from './errorTaxonomy';
 import { countDistinctSuccessProfiles, evaluateMastery } from './mastery';
+import { scheduleNextReview } from './review';
 import type { AnswerEvidence, MisconceptionCode, SkillDefinition, SkillState } from './types';
 
 /**
@@ -244,6 +245,46 @@ export function applyReviewPlan(
     }
   }
   return derived;
+}
+
+/**
+ * F07 — بازسازی برنامهٔ مرور از تلاش‌ها:
+ * برنامهٔ مرور فاصله‌دار (reviewPlan) فیلد ذخیره‌سازی‌شدنی است و ممکن است گم،
+ * ناقص یا قدیمی شود (دادهٔ نسخه‌های قبلی بدون آن، خروجی ناقص از پشتیبان‌گیری،
+ * یا مدخل‌های جاافتاده برای مهارت‌های دارای شواهد). این تابع با پخش مجدد
+ * ترتیبیِ تلاش‌های هر مهارت از زمان‌بند لایتنر، همان برنامه‌ای را که ثبت
+ * تدریجی می‌ساخت — به‌صورت قطعی و بدون اثر جانبی — بازتولید می‌کند.
+ *
+ * تضمین قطعیت: اگر برنامهٔ ذخیره‌شده کامل و به‌روز باشد، خروجی این تابع برای
+ * هر مهارت با مدخل ذخیره‌شده یکسان است؛ بنابراین ادغام (ذخیره‌شده بر بازسازی
+ * اولویت دارد) برای دادهٔ سالم بی‌اثر است و فقط شکاف‌ها را پر می‌کند.
+ * جلوگیری از مرور تکراری: مدخل بازسازی‌شده همان nextReviewAt آینده‌نگرِ
+ * ناشی از آخرین تلاش را دارد؛ پس مهارتی که مرورش سررسید نشده، سررسید تلقی نمی‌شود
+ * و گارد hasNewerEvidence در applyReviewPlan نیز مدخل کهنه را رد می‌کند.
+ */
+export function rebuildReviewPlan(
+  attempts: AttemptRecord[],
+  questionIndex: ReadonlyMap<string, { skillId: string; lessonId: string }>
+): Record<string, { nextReviewAt: number; reviewStage: number; lastPracticedAt: number }> {
+  const sorted = [...attempts].sort((a, b) => a.timestamp - b.timestamp);
+  const plan: Record<string, { nextReviewAt: number; reviewStage: number; lastPracticedAt: number }> = {};
+  for (const attempt of sorted) {
+    const mapped = questionIndex.get(attempt.questionId);
+    if (!mapped) continue;
+    const outcome = !attempt.isCorrect
+      ? 'failure'
+      : attempt.hintsUsed === 0
+        ? 'success-no-hints'
+        : 'success-with-hints';
+    const prev = plan[mapped.skillId];
+    const next = scheduleNextReview(prev?.reviewStage ?? 0, outcome, attempt.timestamp);
+    plan[mapped.skillId] = {
+      nextReviewAt: next.nextReviewAt,
+      reviewStage: next.reviewStage,
+      lastPracticedAt: attempt.timestamp,
+    };
+  }
+  return plan;
 }
 
 /** برچسب وضعیت فارسی مهارت */
