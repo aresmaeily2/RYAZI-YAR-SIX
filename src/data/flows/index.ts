@@ -21,6 +21,10 @@ export function buildFlowQuestionIndex(): ReadonlyMap<string, { skillId: string;
       for (const q of stage.inlineQuestions ?? []) {
         index.set(q.id, { skillId: flow.skillId, lessonId: flow.lessonId });
       }
+      // F10 — گام‌های حذف‌شدهٔ مرحله E نیز شواهد مهارت خود جریان‌اند
+      for (const step of stage.completionExample?.missingSteps ?? []) {
+        index.set(step.id, { skillId: flow.skillId, lessonId: flow.lessonId });
+      }
       // پرسش‌های بازآزمون پیش‌نیاز به مهارت پیش‌نیاز تعلق دارند
       if (stage.prereqSkillId) {
         for (const q of stage.retestQuestions ?? []) {

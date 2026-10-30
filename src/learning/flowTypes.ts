@@ -1,4 +1,4 @@
-import type { Question, Difficulty } from '../types/curriculum';
+import type { Question, Difficulty, NumericQuestion } from '../types/curriculum';
 import type { RepresentationKind } from './types';
 
 /**
@@ -139,3 +139,24 @@ export function stageLabel(kind: FlowStageKind): string {
 
 /** نوع دشواری ساده‌شده برای برچسب */
 export type FlowDifficulty = Difficulty;
+
+/**
+ * F10 — ساخت پرسش عددی معادل یک گام حذف‌شدهٔ مرحله E.
+ * تصحیح و ثبت شواهد گام‌های مثال ناقص با «همان موتور تصحیح عددی» برنامه انجام
+ * می‌شود تا تلاش، خطا و راهنمای دریافت‌شده به‌شکل سازگار با سایر پرسش‌ها ثبت گردد.
+ * شناسهٔ پرسش همان شناسهٔ گام است و در buildFlowQuestionIndex به مهارت جریان نگاشت می‌شود.
+ */
+export function missingStepAsQuestion(step: MissingStep): NumericQuestion {
+  return {
+    id: step.id,
+    chapterId: 'flow',
+    lessonId: 'flow',
+    type: 'numeric',
+    difficulty: 'easy',
+    prompt: step.prompt,
+    hints: [step.hint, step.hint, step.hint],
+    explanation: '',
+    answerKind: step.answerKind,
+    acceptedAnswers: step.acceptedAnswers,
+  };
+}

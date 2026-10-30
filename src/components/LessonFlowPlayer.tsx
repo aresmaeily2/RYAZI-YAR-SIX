@@ -1,11 +1,10 @@
 import React, { useMemo, useRef, useState } from 'react';
 import type { LessonFlow, FlowStage, MissingStep } from '../learning/flowTypes';
-import { stageLabel, sourceForStage } from '../learning/flowTypes';
+import { stageLabel, sourceForStage, missingStepAsQuestion } from '../learning/flowTypes';
 import { stageQuestions, advanceFlow, isStagePassed, type StageAttemptOutcome } from '../learning/flowLogic';
-import type { Question, NumericQuestion } from '../types/curriculum';
+import type { Question } from '../types/curriculum';
 import { QuestionCard } from './QuestionCard';
 import type { SubmitResult } from '../hooks/useLearnerState';
-import { isNumericAnswerCorrect } from '../utils/answerChecking';
 import { toPersianDigits } from '../utils/mathEngine';
 import { CheckCircle2, ChevronLeft, ChevronRight, XCircle, Info } from 'lucide-react';
 
@@ -32,23 +31,6 @@ const KIND_COLORS: Record<FlowStage['kind'], string> = {
   'independent-practice': 'bg-teal-600',
   'transfer-assessment': 'bg-rose-600',
 };
-
-/** بررسی پاسخ یک گام حذف‌شده با همان موتور تصحیح عددی برنامه */
-function checkMissingStep(step: MissingStep, input: string): boolean {
-  const pseudo: NumericQuestion = {
-    id: step.id,
-    chapterId: 'flow',
-    lessonId: 'flow',
-    type: 'numeric',
-    difficulty: 'easy',
-    prompt: step.prompt,
-    hints: [step.hint, step.hint, step.hint],
-    explanation: '',
-    answerKind: step.answerKind,
-    acceptedAnswers: step.acceptedAnswers,
-  };
-  return isNumericAnswerCorrect(pseudo, input);
-}
 
 export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questionsById, onRecordAnswer, onExit }) => {
   const [stageIndex, setStageIndex] = useState(0);
@@ -121,19 +103,25 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
   const handleMissingStepSubmit = (step: MissingStep) => {
     const input = (stepInputs[step.id] ?? '').trim();
     if (input.length === 0) return;
-    const tries = (stepTries[step.id] ?? 0) + 1;
-    setStepTries((prev) => ({ ...prev, [step.id]: tries }));
-    const ok = checkMissingStep(step, input);
-    if (ok) {
+    // F10 — ثبت سازگار شواهد مرحله E: هر تلاش (درست یا غلط) با همان موتور تصحیح
+    // برنامه به موتور یادگیری ثبت می‌شود؛ شمار راهنمای دریافت‌شده = تلاش‌های نادرست
+    // پیشین روی همین گام (نخستین تلاش مستقل است؛ راهنما پس از هر تلاش نادرست نمایش
+    // داده می‌شود و سؤال ساده‌تر پس از تلاش نادرست دوم).
+    const priorTries = stepTries[step.id] ?? 0;
+    const pseudoQuestion = missingStepAsQuestion(step);
+    const source = sourceForStage(stage?.kind ?? 'completion-example');
+    const result = onRecordAnswer(pseudoQuestion, input, priorTries, source);
+    setStepTries((prev) => ({ ...prev, [step.id]: priorTries + 1 }));
+    const next = [...outcomesRef.current, { questionId: step.id, isCorrect: result.isCorrect, hintsUsed: priorTries }];
+    outcomesRef.current = next;
+    setOutcomes(next);
+    if (result.isCorrect) {
       setStepFeedback((prev) => ({ ...prev, [step.id]: 'ok' }));
       setStepDone((prev) => ({ ...prev, [step.id]: true }));
-      const next = [...outcomesRef.current, { questionId: step.id, isCorrect: true, hintsUsed: Math.max(0, tries - 1) }];
-      outcomesRef.current = next;
-      setOutcomes(next);
       if (Object.keys({ ...stepDone, [step.id]: true }).length >= (stage?.completionExample?.missingSteps.length ?? 0)) {
         window.setTimeout(() => finishStage(next), 900);
       }
-    } else if (tries === 1) {
+    } else if (priorTries === 0) {
       setStepFeedback((prev) => ({ ...prev, [step.id]: 'retry' }));
     } else {
       setStepFeedback((prev) => ({ ...prev, [step.id]: 'fallback' }));
