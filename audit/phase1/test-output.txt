@@ -1,0 +1,35 @@
+=== REAL TEST OUTPUT — commit 1a90e4fa383aefb684e852480448aa35acbd7a01 — 2026-10-30T05:56:48Z ===
+
+> ryazi-yar-six@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /home/z/my-project/ryazi-yar-six
+
+ ✓ tests/app.test.tsx (14 tests) 2394ms
+   ✓ جریان کامل آزمون (3)
+     ✓ آزمون موضوعی فصل: پاسخ درست به همه، نمره ۱۰۰٪ و مرور پاسخ‌ها 736ms
+     ✓ آزمون با پاسخ‌های غلط: نمره صفر، مرور با پاسخ درست و تمرین مجدد غلط‌ها 387ms
+ ✓ tests/flowIntegration.test.tsx (2 tests) 389ms
+   ✓ یکپارچگی کامل مسیر درس پایلوت (UI) (2)
+     ✓ مسیر موفق: از سنجش پیش‌نیاز تا سنجش انتقال با پاسخ‌های درست طی می‌شود 336ms
+ ✓ tests/diagnostic.test.tsx (14 tests) 141ms
+ ✓ tests/curriculumData.test.ts (16 tests) 35ms
+ ✓ tests/learningEngine.test.ts (45 tests) 20ms
+ ✓ tests/mathEngine.test.ts (20 tests) 12ms
+ ✓ tests/lessonFlow.test.ts (19 tests) 12ms
+ ✓ tests/examEngine.test.ts (8 tests) 8ms
+ ✓ tests/answerChecking.test.ts (14 tests) 9ms
+ ✓ tests/contentGolden.test.ts (5 tests) 5ms
+
+ Test Files  10 passed (10)
+      Tests  157 passed (157)
+   Start at  05:56:48
+   Duration  8.75s (environment 41%, tests 40%, setup 11%, import 6%, transform 2%, worker 1%)
+
+Environment  jsdom was created 10 times · 3.14s total, 41% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+
+EXIT_CODE=0
