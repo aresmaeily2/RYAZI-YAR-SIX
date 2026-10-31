@@ -1,0 +1,16 @@
+
+ RUN  v5.0.5 /home/z/my-project/ryazi-yar-six
+
+ ✓ tests/auditFixF10.test.tsx (5 tests) 328ms
+ ✓ tests/auditFixF08.test.tsx (12 tests) 235ms
+ ✓ tests/auditFixF07.test.ts (10 tests) 23ms
+ ✓ tests/auditFixF06.test.ts (14 tests) 9ms
+
+ Test Files  4 passed (4)
+      Tests  41 passed (41)
+   Start at  05:27:12
+   Duration  3.03s (environment 51%, tests 23%, setup 13%, import 10%, transform 3%, worker 1%)
+
+    Isolate  4 workers spawned · ~428ms startup each (spawn + environment, per file)
+             at least ~1.28s faster with isolate: false — reuses workers across files instead of one per file
+

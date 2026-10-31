@@ -1,0 +1,42 @@
+
+ RUN  v5.0.5 /home/z/my-project/ryazi-yar-six
+
+ ✓ tests/app.test.tsx (14 tests) 2446ms
+   ✓ جریان کامل آزمون (3)
+     ✓ آزمون موضوعی فصل: پاسخ درست به همه، نمره ۱۰۰٪ و مرور پاسخ‌ها 656ms
+     ✓ آزمون با پاسخ‌های غلط: نمره صفر، مرور با پاسخ درست و تمرین مجدد غلط‌ها 625ms
+ ✓ tests/auditFlowPaths.test.tsx (2 tests) 555ms
+   ✓ ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ خطا با نردبان راهنما (1)
+     ✓ شکست در A → یادآوری → شکست در بازآزمون → تکرار حلقهٔ اصلاحی → عبور؛ سپس شکست مرحله C و تکرار آن؛ ثبت شواهد با راهنما 403ms
+ ✓ tests/flowOperationOrder.test.tsx (25 tests) 474ms
+   ✓ مسیر کامل موفق جریان عملیات ترکیبی در UI (A تا G) (2)
+     ✓ ۲۰ تلاش درست با منبع درست ثبت و جریان کامل می‌شود 317ms
+ ✓ tests/flowIntegration.test.tsx (2 tests) 366ms
+   ✓ یکپارچگی کامل مسیر درس پایلوت (UI) (2)
+     ✓ مسیر موفق: از سنجش پیش‌نیاز تا سنجش انتقال با پاسخ‌های درست طی می‌شود 318ms
+ ✓ tests/auditFixF10.test.tsx (5 tests) 335ms
+ ✓ tests/auditFixF08.test.tsx (12 tests) 235ms
+ ✓ tests/diagnostic.test.tsx (14 tests) 149ms
+ ✓ tests/auditDashboardConsistency.test.tsx (6 tests) 114ms
+ ✓ tests/curriculumData.test.ts (16 tests) 22ms
+ ✓ tests/auditFixF07.test.ts (10 tests) 22ms
+ ✓ tests/auditEngineScenarios.test.ts (43 tests) 19ms
+ ✓ tests/learningEngine.test.ts (45 tests) 17ms
+ ✓ tests/mathEngine.test.ts (20 tests) 11ms
+ ✓ tests/lessonFlow.test.ts (19 tests) 13ms
+ ✓ tests/auditStorageSecurity.test.ts (9 tests) 10ms
+ ✓ tests/auditFixF06.test.ts (14 tests) 11ms
+ ✓ tests/ch7l3Fractions.test.ts (12 tests) 9ms
+ ✓ tests/contentGolden.test.ts (8 tests) 8ms
+ ✓ tests/answerChecking.test.ts (14 tests) 8ms
+ ✓ tests/examEngine.test.ts (8 tests) 9ms
+
+ Test Files  20 passed (20)
+      Tests  298 passed (298)
+   Start at  05:26:01
+   Duration  15.82s (environment 43%, tests 35%, setup 11%, import 8%, transform 2%, worker 1%)
+
+Environment  jsdom was created 20 times · 5.94s total, 43% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

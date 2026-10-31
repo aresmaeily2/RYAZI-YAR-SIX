@@ -183,10 +183,10 @@ describe('جریان کامل آزمون', () => {
       expect(correctLine).toHaveTextContent(q711.correctAnswer);
     }
 
-    // تمرین مجدد فقط غلط‌ها → بازگشت به حالت اجرا با ۸ پرسش
+    // تمرین مجدد فقط غلط‌ها → بازگشت به حالت اجرا با ۱۴ پرسش
     await user.click(screen.getByRole('button', { name: /تمرین مجدد فقط سؤال‌های غلط/ }));
     const header = screen.getByText(/پرسش پاسخ داده شده/).closest('p');
-    expect(header).toHaveTextContent('۰ از ۱۲ پرسش پاسخ داده شده');
+    expect(header).toHaveTextContent('۰ از ۱۴ پرسش پاسخ داده شده');
   });
 
   it('هشدار بی‌پاسخ‌ها در نتیجه آزمون نمایش داده می‌شود', async () => {
@@ -196,7 +196,7 @@ describe('جریان کامل آزمون', () => {
     await user.click(screen.getByRole('button', { name: /فصل ۷: تقریب و تخمین/ }));
     // بدون پاسخ دادن، مستقیم پایان آزمون
     await user.click(screen.getByRole('button', { name: /پایان آزمون و محاسبه نمره/ }));
-    expect(screen.getByText('۱۲')).toBeInTheDocument(); // ستون بی‌پاسخ
+    expect(screen.getByText('۱۴')).toBeInTheDocument(); // ستون بی‌پاسخ (۱۴ پرسش فصل ۷)
   });
 });
 

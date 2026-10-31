@@ -114,10 +114,13 @@ describe('ساختار جریان درس عملیات ترکیبی', () => {
     }
   });
 
-  it('مرحلهٔ تمرین مستقل ۵ تمرین دارد و سنجش انتقال ۲ سؤال با زمینهٔ جدید', () => {
+  it('مرحلهٔ تمرین مستقل ۷ تمرین دارد (شامل دو تمرین کسری) و سنجش انتقال ۲ سؤال با زمینهٔ جدید', () => {
     const stageF = flow!.stages.find((s) => s.kind === 'independent-practice')!;
-    expect(stageF.questionRefs).toEqual(['q731', 'q732', 'q733', 'q734']);
+    expect(stageF.questionRefs).toEqual(['q731', 'q732', 'q733', 'q735', 'q736', 'q734']);
     expect(stageF.inlineQuestions).toHaveLength(1);
+    // کسرها طبق تمرین‌های ۳ و ۵ کتاب (ص ۱۴۱) در مرحلهٔ تمرین مستقل حضور دارند
+    expect(stageF.questionRefs).toContain('q735');
+    expect(stageF.questionRefs).toContain('q736');
     const stageG = flow!.stages.find((s) => s.kind === 'transfer-assessment')!;
     const texts = (stageG.inlineQuestions ?? []).map((q) => q.prompt + ' ' + (q.type === 'mcq' ? q.options.join(' ') : '')).join(' ');
     expect(texts).toContain('برچسب');
@@ -138,6 +141,21 @@ describe('بازمحاسبهٔ مستقل ریاضی درس عملیات ترک�
   });
   it('کلید q734: ۸÷۲+۳×۷+۴×۱۳−۵−۲ = ۷۰', () => {
     expect(8 / 2 + 3 * 7 + 4 * 13 - 5 - 2).toBe(70);
+  });
+  it('کلید q735 (کسر، تمرین ۵ کتاب ص ۱۴۱): (۱/۲+۱/۴)×۸ = ۳/۴×۸ = ۶', () => {
+    // با محاسبهٔ گویا: 1/2+1/4 = 3/4؛ 3/4×8 = 24/4 = 6
+    expect((1 / 2 + 1 / 4) * 8).toBe(6);
+    expect((1 / 4) * 8).toBe(2); // بدون پرانتز: اول ضرب
+    expect(1 / 2 + (1 / 4) * 8).toBe(2.5); // جواب متفاوت بدون پرانتز
+  });
+  it('کلید q736 (کسر، تمرین ۳ کتاب ص ۱۴۱): ۲+۱/۲×۴ = ۲+۲ = ۴', () => {
+    expect(2 + (1 / 2) * 4).toBe(4);
+    expect((2 + 1 / 2) * 4).toBe(10); // پرانتز ضمنی غلط = گزینهٔ انحرافی ۱۰
+    expect(2 + 1 / (2 * 4)).toBe(17 / 8); // گسترش نادرست خط کسر = گزینهٔ انحرافی ۱۷/۸
+  });
+  it('مثال کسری ex74: ۲×۳/۴+۱/۲ = ۳/۲+۱/۲ = ۲ (با اعشار هم ۲)', () => {
+    expect(2 * (3 / 4) + 1 / 2).toBe(2);
+    expect(0.75 * 2 + 0.5).toBe(2);
   });
   it('مثال حل‌شده: ۱۰+۴×(۶−۲)÷۸ = ۱۲', () => {
     expect(10 + (4 * (6 - 2)) / 8).toBe(12);
@@ -412,10 +430,12 @@ describe('مسیر کامل موفق جریان عملیات ترکیبی در U
     next();
     expect(screen.getByText('نوبت توست — از فهم تا حل مسئله')).toBeInTheDocument();
 
-    // ── مرحله F: ۵ تمرین مستقل ──
+    // ── مرحله F: ۷ تمرین مستقل (۶ ارجاعی شامل دو کسری + ۱ خطایابی) ──
     submitAnswer('q731', '2');
     submitAnswer('q732', { option: '۱۸' });
     submitAnswer('q733', { option: '۴/۲' });
+    submitAnswer('q735', '6');
+    submitAnswer('q736', { option: '۴' });
     submitAnswer('q734', '70');
     submitAnswer('flow-ch7l3-f-e1', { option: 'تفریق را قبل از ضرب انجام داده؛ باید اول ۲×۳ را حساب کند' });
     next();
@@ -427,8 +447,8 @@ describe('مسیر کامل موفق جریان عملیات ترکیبی در U
     next();
     expect(screen.getByTestId('flow-finished')).toBeInTheDocument();
 
-    // ── شواهد: ۲۰ تلاش، همه درست، منبع‌ها درست ──
-    expect(recorded).toHaveLength(20);
+    // ── شواهد: ۲۲ تلاش، همه درست، منبع‌ها درست ──
+    expect(recorded).toHaveLength(22);
     expect(recorded.every((c) => c.correct)).toBe(true);
     const stageSourceOf = (qid: string): string => {
       const st = ch7l3Flow.stages.find(
@@ -445,8 +465,8 @@ describe('مسیر کامل موفق جریان عملیات ترکیبی در U
     }
     expect(recorded.filter((c) => c.source === 'prereq')).toHaveLength(2);
     expect(recorded.filter((c) => c.source === 'transfer')).toHaveLength(2);
-    expect(recorded.filter((c) => c.source === 'practice')).toHaveLength(16);
-    for (const id of ['q731', 'q732', 'q733', 'q734']) {
+    expect(recorded.filter((c) => c.source === 'practice')).toHaveLength(18);
+    for (const id of ['q731', 'q732', 'q733', 'q734', 'q735', 'q736']) {
       expect(recorded.some((c) => c.qid === id)).toBe(true);
     }
   });
