@@ -1,6 +1,6 @@
 /* ریاضی‌یار ششم — Service Worker ساده برای استفاده آفلاین
    راهبرد: Cache-First برای درخواست‌های GET هم‌مبدأ؛ درخواست‌های خارجی (نداریم) و متدهای دیگر رد می‌شوند. */
-const CACHE_NAME = 'ryaziyarsix-v3';
+const CACHE_NAME = 'ryaziyarsix-v4-design';
 
 self.addEventListener('install', () => {
   self.skipWaiting();

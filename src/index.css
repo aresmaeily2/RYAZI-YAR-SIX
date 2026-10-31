@@ -2,11 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* فونت وزیرمتن — میزبانی محلی برای حریم خصوصی کامل و کارکرد آفلاین */
+/* ===== فونت وزیرمتن — میزبانی محلی، ۶ وزن (Design System §۳) ===== */
 @font-face {
   font-family: 'Vazirmatn';
   src: url('/fonts/Vazirmatn-Regular.woff2') format('woff2');
   font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/Vazirmatn-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/Vazirmatn-SemiBold.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
@@ -24,13 +38,25 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/Vazirmatn-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
+/* ===== پایه ===== */
 body {
   font-family: 'Vazirmatn', Tahoma, 'Segoe UI', sans-serif;
   direction: rtl;
+  background-color: #f7f9ff;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* حلقه تمرکز واضح برای دسترس‌پذیری با صفحه‌کلید */
+/* حلقه تمرکز یکسان برای دسترس‌پذیری صفحه‌کلید (Design System §۶ حالت Focus) */
 :focus-visible {
   outline: 3px solid #4f46e5;
   outline-offset: 2px;
@@ -44,12 +70,91 @@ body {
   display: inline-block;
 }
 
-/* انیمیشن آموزشی حل‌کننده (StepSolverAnimation) — ظریف و هدفمند؛
-   با تنظیم کاهش حرکت سیستم، انیمیشن ورود غیرفعال می‌شود. */
+/* عبارت ریاضی برجسته — خوانایی اعداد/کسر/توان (§۳ ریاضی) */
+.math-expr {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.05em;
+}
+
+/* ===== پس‌زمینهٔ «کاغذ شطرنجی» — چهار صحنه، یک زبان (§۵) ===== */
+.paper-grid {
+  background-color: #f7f9ff;
+  background-image:
+    radial-gradient(60rem 32rem at 85% -8%, rgba(79, 70, 229, 0.055), transparent 60%),
+    radial-gradient(48rem 28rem at 8% 108%, rgba(245, 158, 11, 0.05), transparent 60%),
+    linear-gradient(rgba(99, 102, 241, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.045) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+}
+.paper-grid-quiet {
+  background-color: #f7f9ff;
+  background-image:
+    radial-gradient(56rem 30rem at 90% -10%, rgba(79, 70, 229, 0.04), transparent 62%),
+    linear-gradient(rgba(99, 102, 241, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px, 28px 28px;
+}
+.paper-grid-sky {
+  background-color: #f7f9ff;
+  background-image:
+    radial-gradient(60rem 32rem at 12% -8%, rgba(14, 165, 233, 0.055), transparent 60%),
+    linear-gradient(rgba(14, 165, 233, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px, 28px 28px;
+}
+.paper-grid-sun {
+  background-color: #f7f9ff;
+  background-image:
+    radial-gradient(52rem 30rem at 85% -10%, rgba(79, 70, 229, 0.05), transparent 60%),
+    radial-gradient(48rem 30rem at 12% 108%, rgba(245, 158, 11, 0.06), transparent 62%),
+    linear-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+}
+
+/* ===== اجزای مشترک (§۶) ===== */
+@layer components {
+  /* کارت پایه */
+  .card {
+    @apply bg-white rounded-2xl shadow-soft border border-slate-100;
+  }
+  .card-hover {
+    @apply transition-all duration-base ease-glide hover:shadow-lift hover:-translate-y-0.5;
+  }
+
+  /* دکمهٔ برند */
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-bold text-white transition-all duration-base ease-spring shadow-glow bg-gradient-to-l from-brand-600 to-violet-600 hover:from-brand-500 hover:to-violet-500 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none;
+  }
+  /* دکمهٔ نرم */
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold bg-brand-50 text-brand-700 transition-all duration-fast hover:bg-brand-100 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  /* دکمهٔ خنثی */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold bg-slate-100 text-slate-600 transition-all duration-fast hover:bg-slate-200 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* نشان/چیپ */
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold;
+  }
+
+  /* اسکلتون بارگذاری (حالت Loading — §۶) */
+  .skeleton {
+    @apply rounded-2xl bg-slate-100 relative overflow-hidden;
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+}
+
+/* ===== انیمیشن‌های حل‌کننده (سازگاری با گذشته) ===== */
 .solver-pop {
   animation: solver-pop 0.45s ease-out;
 }
-
 @keyframes solver-pop {
   from {
     opacity: 0.3;
@@ -61,8 +166,20 @@ body {
   }
 }
 
+/* ===== Reduced Motion — همهٔ حرکت‌ها خاموش (§۷) ===== */
 @media (prefers-reduced-motion: reduce) {
-  .solver-pop {
-    animation: none;
+  .solver-pop,
+  .animate-pop,
+  .animate-rise,
+  .animate-shake,
+  .animate-tick,
+  .animate-float,
+  .animate-pulse-soft,
+  .skeleton {
+    animation: none !important;
+  }
+  .transition-all,
+  .transition-transform {
+    transition-duration: 1ms !important;
   }
 }
