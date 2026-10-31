@@ -73,11 +73,12 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
 
   return (
     <div
-      className="rounded-2xl border border-indigo-200 bg-gradient-to-l from-indigo-50/80 via-white to-white p-4 space-y-3 shadow-sm"
+      className="rounded-2xl border-2 border-brand-200 bg-gradient-to-l from-brand-50/80 via-white to-violet-50/40 p-4 space-y-3 shadow-soft"
       data-testid="solver-animation"
     >
       <div className="flex items-center justify-between flex-wrap gap-2">
-        <span className="text-[11px] font-bold text-indigo-700 bg-indigo-100 rounded-full px-2.5 py-1">
+        <span className="text-[11px] font-bold text-brand-700 bg-brand-100 rounded-full px-3 py-1.5 shadow-sm flex items-center gap-1">
+          <Play className="w-3 h-3" aria-hidden="true" />
           انیمیشن حل مرحله‌به‌مرحله
         </span>
         <div className="flex items-center gap-1.5" role="group" aria-label="کنترل انیمیشن">
@@ -85,7 +86,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
             type="button"
             onClick={() => setPlaying((p) => !p)}
             disabled={finished || reducedMotion}
-            className="p-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed transition"
+            className="p-2.5 rounded-xl bg-gradient-to-br from-brand-600 to-violet-600 text-white hover:from-brand-500 hover:to-violet-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-fast shadow-soft"
             aria-label={playing ? 'توقف انیمیشن' : 'پخش انیمیشن'}
             data-testid="anim-play"
           >
@@ -98,7 +99,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
               setStepIdx((i) => Math.min(i + 1, totalSteps));
             }}
             disabled={finished}
-            className="p-2 rounded-lg bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 disabled:opacity-40 transition"
+            className="p-2.5 rounded-xl bg-white border-2 border-brand-200 text-brand-700 hover:bg-brand-50 hover:border-brand-400 disabled:opacity-40 transition-all duration-fast"
             aria-label="گام بعد"
             data-testid="anim-next"
           >
@@ -107,7 +108,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
           <button
             type="button"
             onClick={replay}
-            className="p-2 rounded-lg bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-50 transition"
+            className="p-2.5 rounded-xl bg-white border-2 border-brand-200 text-brand-700 hover:bg-brand-50 hover:border-brand-400 transition-all duration-fast"
             aria-label="بازپخش از ابتدا"
             data-testid="anim-replay"
           >
@@ -116,7 +117,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
           <select
             value={speed}
             onChange={(e) => setSpeed(Number(e.target.value))}
-            className="text-[11px] font-bold rounded-lg border border-indigo-200 bg-white px-1.5 py-1.5 text-indigo-700"
+            className="text-[11px] font-bold rounded-xl border-2 border-brand-200 bg-white px-2 py-2 text-brand-700"
             aria-label="سرعت انیمیشن"
             data-testid="anim-speed"
           >
@@ -132,7 +133,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
       {/* نمایش عبارت فعلی با برجسته‌سازی عمل فعال */}
       <div
         key={stepIdx}
-        className={`solver-pop bg-white/80 backdrop-blur rounded-xl border border-slate-200 py-5 text-center text-2xl font-extrabold text-slate-900 tracking-wide`}
+        className={`solver-pop bg-white/90 backdrop-blur rounded-xl border-2 border-brand-100 py-5 text-center text-2xl font-black text-slate-900 tracking-wide shadow-soft`}
         dir="ltr"
         aria-live="polite"
         data-testid="anim-expression"
@@ -145,7 +146,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
         {spec.steps.map((_, i) => (
           <div
             key={i}
-            className={`h-1.5 flex-1 rounded-full transition ${i < stepIdx ? 'bg-emerald-500' : 'bg-slate-200'}`}
+            className={`h-2 flex-1 rounded-full transition-all duration-slow ease-glide ${i < stepIdx ? 'bg-gradient-to-l from-emerald-500 to-emerald-400' : 'bg-slate-200'}`}
           />
         ))}
       </div>
@@ -155,9 +156,9 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
         {spec.steps.slice(0, stepIdx).map((st, i) => (
           <li
             key={i}
-            className="solver-pop text-xs font-bold text-slate-700 bg-emerald-50/70 border border-emerald-100 rounded-lg px-3 py-1.5 flex items-center gap-2"
+            className="solver-pop text-xs font-bold text-slate-700 bg-emerald-50/70 border border-emerald-100 rounded-lg px-3 py-2 flex items-center gap-2"
           >
-            <span className="text-[10px] text-white bg-emerald-600 rounded-full w-5 h-5 flex items-center justify-center shrink-0">
+            <span className="text-[10px] text-white bg-emerald-600 rounded-full w-5 h-5 flex items-center justify-center shrink-0" aria-hidden="true">
               {toPersianDigits(i + 1)}
             </span>
             <span>{st.caption}</span>
@@ -166,7 +167,8 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
       </ol>
 
       {finished && (
-        <div className="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2">
+        <div className="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl px-3.5 py-2.5 flex items-center gap-1.5 animate-pop">
+          <span aria-hidden="true">✓</span>
           عبارت کامل حل شد: {spec.steps[totalSteps - 1].expressionAfter} — حالا خودت قبل از هر محاسبه عمل اول را پیدا کن.
         </div>
       )}

@@ -206,17 +206,24 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
   // ==================== نمایش پایان جریان ====================
   if (finished) {
     return (
-      <div className="bg-white rounded-2xl border border-emerald-200 p-6 text-center space-y-3" data-testid="flow-finished">
-        <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-        <h3 className="font-extrabold text-lg text-slate-900">مسیر این درس کامل شد!</h3>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          شواهد یادگیری تو ثبت شد. موتور یادگیری حالا وضعیت این مهارت را می‌داند و برنامه مرور فاصله‌دار آن را در داشبورد نشان می‌دهد.
+      <div className="relative overflow-hidden card p-8 text-center space-y-4 border-emerald-200 animate-pop" data-testid="flow-finished">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <span className="absolute top-3 right-6 text-3xl font-black text-emerald-500/10 animate-float select-none">✓</span>
+          <span className="absolute bottom-3 left-8 text-4xl font-black text-brand-500/10 animate-float select-none" style={{ animationDelay: '1s' }}>★</span>
+          <span className="absolute -top-10 left-1/3 w-32 h-32 rounded-full bg-emerald-300/20 blur-2xl" />
+        </div>
+        <span className="relative inline-flex w-20 h-20 rounded-full bg-emerald-50 border-4 border-emerald-100 items-center justify-center mx-auto shadow-soft">
+          <CheckCircle2 className="w-11 h-11 text-emerald-600 animate-tick" aria-hidden="true" />
+        </span>
+        <h3 className="relative font-black text-xl text-slate-900">مسیر این درس کامل شد!</h3>
+        <p className="relative text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
+          شواهد یادگیری تو ثبت شد. موتور یادگیری حالا وضعیت این مهارت را می‌داند و برنامهٔ مرور فاصله‌دار آن را در داشبورد نشان می‌دهد.
           برای تثبیت ماندگاری، مرور بعدی را جدی بگیر.
         </p>
         <button
           type="button"
           onClick={onExit}
-          className="px-5 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-bold hover:bg-emerald-700 transition"
+          className="relative btn-brand"
         >
           بازگشت به درس
         </button>
@@ -231,20 +238,20 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
   return (
     <div className="space-y-4" data-testid="lesson-flow-player">
       {/* نوار پیشرفت مراحل */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-4">
+      <div className="card p-4 shadow-lift">
         <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
           <div className="flex items-center gap-2">
-            <span className={`text-[11px] font-bold text-white px-2.5 py-1 rounded-full ${KIND_COLORS[stage.kind]}`}>
+            <span className={`text-[11px] font-bold text-white px-3 py-1.5 rounded-full shadow-soft ${KIND_COLORS[stage.kind]}`}>
               {stageLabel(stage.kind)}
             </span>
-            <span className="text-xs text-slate-500 font-bold">
+            <span className="text-xs text-slate-500 font-black">
               {toPersianDigits(stageIndex + 1)} از {toPersianDigits(flow.stages.length)}
             </span>
           </div>
           <button
             type="button"
             onClick={onExit}
-            className="text-xs font-bold text-slate-400 hover:text-slate-600"
+            className="text-xs font-bold text-slate-400 hover:text-rose-600 transition-colors duration-fast px-2 py-1 rounded-lg hover:bg-rose-50"
             aria-label="خروج از مسیر یادگیری"
           >
             خروج از مسیر
@@ -254,18 +261,20 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
           {flow.stages.map((s, i) => (
             <div
               key={s.id}
-              className={`h-1.5 flex-1 rounded-full transition ${i < stageIndex ? 'bg-emerald-500' : i === stageIndex ? 'bg-indigo-500' : 'bg-slate-200'}`}
+              className={`h-2 flex-1 rounded-full transition-all duration-slow ease-glide ${
+                i < stageIndex ? 'bg-emerald-500' : i === stageIndex ? 'bg-gradient-to-l from-brand-500 to-violet-500 animate-pulse-soft' : 'bg-slate-200'
+              }`}
             />
           ))}
         </div>
       </div>
 
-      {/* عنوان و روایت مرحله */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3">
-        <h3 className="font-extrabold text-slate-900">{stage.title}</h3>
+      {/* عنوان و روایت مرحله — با گذار انیمیشنی بین مراحل */}
+      <div key={stage.id} className="card p-5 space-y-3 animate-rise border-r-4 border-r-brand-400">
+        <h3 className="font-black text-lg text-slate-900">{stage.title}</h3>
         <p className="text-sm text-slate-600 leading-relaxed">{stage.narrative}</p>
         {remedialMode && stage.remedial && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-xs text-amber-900 leading-relaxed" data-testid="flow-remedial">
+          <div className="bg-sun-50 border border-sun-200 rounded-xl p-3.5 text-xs text-sun-700 leading-relaxed shadow-soft animate-pop" data-testid="flow-remedial">
             <div className="flex items-center gap-1.5 font-bold mb-1">
               <Info className="w-4 h-4" />
               یادآوری کوتاه
@@ -284,8 +293,8 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
       {stage.representations && !remedialMode && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {stage.representations.map((rep) => (
-            <div key={rep.kind} className="bg-white rounded-2xl border border-slate-200 p-4 space-y-2">
-              <span className="text-[11px] font-bold text-violet-700 bg-violet-50 border border-violet-200 rounded-full px-2 py-0.5">
+            <div key={rep.kind} className="card p-4 space-y-2 card-hover">
+              <span className="text-[11px] font-bold text-violet-700 bg-violet-50 border border-violet-200 rounded-full px-2.5 py-1">
                 {rep.label}
               </span>
               <p className="text-xs text-slate-600 leading-relaxed">{rep.content}</p>
@@ -297,27 +306,31 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
 
       {/* مرحله D — مثال حل‌شده با بلنداندیشی */}
       {stage.workedExample && !remedialMode && (
-        <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3">
-          <p className="font-bold text-sm text-slate-900 bg-indigo-50 border border-indigo-200 rounded-xl p-3">{stage.workedExample.problem}</p>
+        <div className="card p-5 space-y-3">
+          <p className="font-bold text-sm text-slate-900 bg-brand-50 border border-brand-200 rounded-xl p-3.5">{stage.workedExample.problem}</p>
           {stage.solverAnimation && <StepSolverAnimation spec={stage.solverAnimation} />}
           {stage.workedExample.steps.map((st, i) => (
-            <div key={i} className="border border-slate-200 rounded-xl p-3.5 space-y-1.5 text-xs">
-              <div className="font-bold text-slate-800">{st.text}</div>
-              <div className="text-slate-600 leading-relaxed">چرا؟ {st.why}</div>
-              {st.check && <div className="text-emerald-700 leading-relaxed">بررسی صحت: {st.check}</div>}
-              {st.commonMistake && <div className="text-rose-700 leading-relaxed">اشتباه رایج: {st.commonMistake}</div>}
+            <div key={i} className="border border-slate-200 rounded-xl p-3.5 space-y-1.5 text-xs bg-slate-50/50">
+              <div className="font-bold text-slate-800 flex items-start gap-2">
+                <span className="w-5 h-5 rounded-md bg-brand-100 text-brand-700 text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">{toPersianDigits(i + 1)}</span>
+                {st.text}
+              </div>
+              <div className="text-slate-600 leading-relaxed pr-7">چرا؟ {st.why}</div>
+              {st.check && <div className="text-emerald-700 leading-relaxed pr-7">✓ بررسی صحت: {st.check}</div>}
+              {st.commonMistake && <div className="text-rose-700 leading-relaxed pr-7">✗ اشتباه رایج: {st.commonMistake}</div>}
             </div>
           ))}
-          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs font-bold text-emerald-900">
-            پاسخ نهایی: {stage.workedExample.finalAnswer}
+          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 text-xs font-bold text-emerald-900 flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />
+            پاسخ نهایی: <span className="math-expr">{stage.workedExample.finalAnswer}</span>
           </div>
         </div>
       )}
 
       {/* مرحله E — مثال ناقص */}
       {stage.completionExample && !remedialMode && (
-        <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-4">
-          <p className="font-bold text-sm text-slate-900 bg-emerald-50 border border-emerald-200 rounded-xl p-3">
+        <div className="card p-5 space-y-4 border-r-4 border-r-emerald-400">
+          <p className="font-bold text-sm text-slate-900 bg-emerald-50 border border-emerald-200 rounded-xl p-3.5">
             {stage.completionExample.problem}
           </p>
           <ol className="text-xs text-slate-600 space-y-1 list-decimal list-inside">
@@ -330,13 +343,13 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
             const tries = stepTries[step.id] ?? 0;
             const useFallback = fb === 'fallback';
             return (
-              <div key={step.id} className="border border-slate-200 rounded-xl p-3.5 space-y-2" data-testid={`missing-step-${idx + 1}`}>
+              <div key={step.id} className="border border-slate-200 rounded-xl p-3.5 space-y-2 bg-slate-50/50" data-testid={`missing-step-${idx + 1}`}>
                 <div className="text-xs font-bold text-slate-700">
                   جای خالی {toPersianDigits(idx + 1)}: {useFallback ? step.fallbackPrompt : step.prompt}
                 </div>
                 {stepDone[step.id] ? (
-                  <div className="text-xs text-emerald-700 font-bold flex items-center gap-1">
-                    <CheckCircle2 className="w-4 h-4" /> درست بود!
+                  <div className="text-xs text-emerald-700 font-bold flex items-center gap-1 animate-pop">
+                    <CheckCircle2 className="w-4 h-4 animate-tick" /> درست بود!
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
@@ -348,26 +361,26 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
                       onKeyDown={(e) => {
                         if (e.key === 'Enter') handleMissingStepSubmit(step);
                       }}
-                      className="w-32 px-3 py-2 rounded-xl border border-slate-300 text-sm font-bold text-center focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200"
+                      className="w-32 px-3 py-2.5 rounded-xl border-2 border-slate-200 text-sm font-black text-center bg-slate-50/50 outline-none transition-all duration-fast focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
                       aria-label={`پاسخ جای خالی ${toPersianDigits(idx + 1)}`}
                       placeholder="پاسخ"
                     />
                     <button
                       type="button"
                       onClick={() => handleMissingStepSubmit(step)}
-                      className="px-3.5 py-2 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 transition"
+                      className="px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold hover:bg-emerald-700 hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-base ease-spring shadow-soft"
                     >
                       بررسی
                     </button>
                   </div>
                 )}
                 {fb === 'retry' && (
-                  <div className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-2.5 leading-relaxed">
+                  <div className="text-xs text-sun-700 bg-sun-50 border border-sun-200 rounded-lg p-2.5 leading-relaxed animate-pop">
                     هنوز درست نیست. راهنما: {step.hint}
                   </div>
                 )}
                 {fb === 'fallback' && (
-                  <div className="text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg p-2.5 leading-relaxed">
+                  <div className="text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg p-2.5 leading-relaxed animate-pop">
                     بیا با هم گام‌به‌گام برویم؛ سؤال ساده‌تر بالای کادر نوشته شد.
                   </div>
                 )}
@@ -386,8 +399,8 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
         const rotate = Math.ceil(seqSteps.length / 2) || 1;
         const shuffled = seqSteps.map((_, i) => seqSteps[(i + rotate) % seqSteps.length]);
         return (
-          <div className="bg-white rounded-2xl border border-fuchsia-200 p-5 space-y-3" data-testid="sequencing-panel">
-            <div className="bg-white/80 rounded-xl border border-slate-200 py-3 text-center text-xl font-extrabold text-slate-900" dir="ltr">
+          <div className="card p-5 space-y-3 border-fuchsia-200" data-testid="sequencing-panel">
+            <div className="rounded-xl border-2 border-dashed border-fuchsia-200 bg-white py-3.5 text-center text-xl font-black text-slate-900 shadow-soft ltr-nums" dir="ltr">
               {stage.sequencing.expression}
             </div>
             {/* جایگاه‌های ترتیب */}
@@ -398,13 +411,13 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
                 return (
                   <div
                     key={st.id}
-                    className={`rounded-xl border px-3 py-2 text-xs font-bold flex items-center gap-2 transition ${
-                      placed ? 'bg-emerald-50 border-emerald-300 text-emerald-800' : 'bg-slate-50 border-dashed border-slate-300 text-slate-400'
+                    className={`rounded-xl border-2 px-3 py-2.5 text-xs font-bold flex items-center gap-2 transition-all duration-base ease-spring ${
+                      placed ? 'bg-emerald-50 border-emerald-300 text-emerald-800 animate-pop' : 'bg-slate-50 border-dashed border-slate-300 text-slate-400'
                     }`}
                     data-testid={`seq-slot-${i + 1}`}
                     aria-label={`جایگاه ${toPersianDigits(i + 1)}`}
                   >
-                    <span className={`text-[10px] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 ${placed ? 'bg-emerald-600' : 'bg-slate-300'}`}>
+                    <span className={`text-[10px] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 ${placed ? 'bg-emerald-600' : 'bg-slate-300'}`} aria-hidden="true">
                       {toPersianDigits(i + 1)}
                     </span>
                     {placedStep ? placedStep.label : 'اینجا جای گام بعدی است…'}
@@ -433,10 +446,10 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
                     type="button"
                     onClick={() => handleSequencingPlace(s.id)}
                     disabled={used}
-                    className={`text-xs font-bold rounded-xl border px-3 py-2.5 text-right transition ${
+                    className={`text-xs font-bold rounded-xl border-2 px-3 py-3 text-right transition-all duration-base ease-spring hover:-translate-y-0.5 ${
                       used
                         ? 'bg-slate-100 border-slate-200 text-slate-300 cursor-not-allowed line-through'
-                        : 'bg-white border-fuchsia-300 text-slate-800 hover:bg-fuchsia-50 hover:border-fuchsia-400 focus:ring-2 focus:ring-fuchsia-300'
+                        : 'bg-white border-fuchsia-300 text-slate-800 hover:bg-fuchsia-50 hover:border-fuchsia-500 hover:shadow-soft focus:ring-2 focus:ring-fuchsia-300'
                     }`}
                     data-testid={`seq-card-${s.id}`}
                   >
@@ -477,7 +490,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
         <button
           type="button"
           onClick={() => finishStage([])}
-          className="w-full py-3 rounded-xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition flex items-center justify-center gap-2"
+          className="btn-brand w-full py-3.5"
         >
           <ChevronRight className="w-4 h-4" />
           متوجه شدم؛ مرحله بعد
@@ -487,8 +500,8 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
       {/* بازخورد وضعیت عبور مرحله */}
       {(stage.kind !== 'worked-example' || remedialMode) && outcomes.length >= activeQuestions.length && activeQuestions.length > 0 && (
         <div
-          className={`rounded-xl border p-3.5 text-xs font-bold flex items-center gap-2 ${
-            progress.passed ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'
+          className={`rounded-xl border-2 p-3.5 text-xs font-bold flex items-center gap-2 animate-pop shadow-soft ${
+            progress.passed ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-sun-50 border-sun-200 text-sun-700'
           }`}
           data-testid="stage-outcome"
           aria-live="polite"

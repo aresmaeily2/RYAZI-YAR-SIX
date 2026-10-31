@@ -37,13 +37,13 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({ lessonId, skillS
   const latestReply = latestKind && skill ? assistantRespond(latestKind, { skill, state: skillState ?? fallbackState(latestKind) }) : null;
 
   return (
-    <div className="bg-gradient-to-l from-slate-50 to-indigo-50/60 border border-indigo-200 rounded-2xl p-5 space-y-3" data-testid="assistant-panel">
-      <div className="flex items-center gap-2">
-        <span className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center">
-          <Bot className="w-4.5 h-4.5" aria-hidden="true" />
+    <div className="relative overflow-hidden bg-gradient-to-l from-brand-50 via-white to-violet-50/70 border border-brand-200 rounded-2xl p-5 space-y-3 shadow-soft" data-testid="assistant-panel">
+      <div className="flex items-center gap-2.5">
+        <span className="w-9 h-9 rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 text-white flex items-center justify-center shadow-glow">
+          <Bot className="w-5 h-5" aria-hidden="true" />
         </span>
         <div>
-          <h3 className="font-extrabold text-sm text-slate-900">دستیار آموزشی ریاضی‌یار</h3>
+          <h3 className="font-black text-sm text-slate-900">دستیار آموزشی ریاضی‌یار</h3>
           <p className="text-[11px] text-slate-500">{encouragingNote(skillState ?? emptyEncouragingState())}</p>
         </div>
       </div>
@@ -55,10 +55,10 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({ lessonId, skillS
             type="button"
             onClick={() => setReplies((prev) => [...prev.slice(-4), kind])}
             aria-pressed={replies.includes(kind)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold border transition ${
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-[11px] font-bold border transition-all duration-base ease-spring ${
               latestKind === kind
-                ? 'bg-indigo-600 text-white border-indigo-600'
-                : 'bg-white text-indigo-700 border-indigo-200 hover:border-indigo-400'
+                ? 'bg-gradient-to-l from-brand-600 to-violet-600 text-white border-brand-600 shadow-glow scale-[1.03]'
+                : 'bg-white/80 text-brand-700 border-brand-200 hover:border-brand-500 hover:bg-white hover:-translate-y-0.5'
             }`}
           >
             <Icon className="w-3.5 h-3.5" aria-hidden="true" />
@@ -68,19 +68,19 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({ lessonId, skillS
       </div>
 
       {latestReply && (
-        <div className="bg-white border border-indigo-100 rounded-xl p-3.5 text-xs leading-relaxed text-slate-700 space-y-1.5" data-testid="assistant-reply" aria-live="polite">
-          <div className="flex items-center gap-1.5 text-[11px] font-bold text-indigo-700">
+        <div className="bg-white border border-brand-100 rounded-xl p-3.5 text-xs leading-relaxed text-slate-700 space-y-1.5 shadow-soft animate-pop" data-testid="assistant-reply" aria-live="polite">
+          <div className="flex items-center gap-1.5 text-[11px] font-bold text-brand-700">
             <HelpCircle className="w-3.5 h-3.5" />
             پاسخ دستیار
           </div>
           {latestReply.text}
           {latestReply.uncertain && (
-            <div className="text-[10px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-2 py-1">
+            <div className="text-[10px] text-sun-700 bg-sun-50 border border-sun-200 rounded-lg px-2 py-1.5 font-bold">
               این پاسخ حدس قطعی نیست؛ بر اساس شواهد فعلی شما تنظیم شده است.
             </div>
           )}
           {latestReply.suggestedAction && (
-            <div className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-2 py-1">
+            <div className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-2 py-1.5 font-bold">
               پیشنهاد موتور یادگیری: {actionLabel(latestReply.suggestedAction as never)}
             </div>
           )}

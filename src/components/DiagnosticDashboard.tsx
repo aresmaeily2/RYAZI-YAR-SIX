@@ -138,14 +138,15 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
     <div className="space-y-5" data-testid="diagnostic-dashboard">
       {/* ===== کارت گام پیشنهادی بعدی ===== */}
       {prioritySkill && priorityDecision && priorityDecision.action !== 'maintain-mastery' && (
-        <div className="bg-gradient-to-l from-emerald-700 to-emerald-600 text-white rounded-2xl p-5 shadow-sm" data-testid="next-step-card">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="relative overflow-hidden bg-gradient-to-l from-emerald-700 to-emerald-600 text-white rounded-3xl p-5 shadow-lift" data-testid="next-step-card">
+          <span className="absolute -top-8 left-10 w-28 h-28 rounded-full bg-white/10 blur-xl" aria-hidden="true" />
+          <div className="relative flex flex-wrap items-center justify-between gap-3">
             <div className="flex-1 min-w-60">
               <div className="text-xs font-bold text-emerald-100 flex items-center gap-1.5">
                 <TrendingUp className="w-4 h-4" />
                 گام پیشنهادی بعدی برای تو
               </div>
-              <h3 className="font-extrabold text-lg mt-1.5">{prioritySkill.title}</h3>
+              <h3 className="font-black text-lg mt-1.5">{prioritySkill.title}</h3>
               <p className="text-xs text-emerald-50 mt-1.5 leading-relaxed">
                 {actionLabel(priorityDecision.action)} — {priorityDecision.reason}
               </p>
@@ -153,7 +154,7 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
             <button
               type="button"
               onClick={() => onOpenSkill(prioritySkill.lessonId)}
-              className="px-4 py-2.5 rounded-xl bg-white text-emerald-700 text-xs font-extrabold hover:bg-emerald-50 transition flex items-center gap-1.5"
+              className="px-5 py-2.5 rounded-xl bg-white text-emerald-700 text-xs font-black hover:bg-emerald-50 hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-base ease-spring shadow-lift flex items-center gap-1.5"
             >
               شروع
               <ArrowLeft className="w-4 h-4" />
@@ -164,24 +165,24 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* ===== وضعیت مهارت‌ها ===== */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3">
-          <h3 className="font-extrabold text-sm text-slate-900">چه یاد گرفته‌ای و کجا نیاز به تمرین داری؟</h3>
+        <div className="card p-5 space-y-3">
+          <h3 className="font-black text-sm text-slate-900">چه یاد گرفته‌ای و کجا نیاز به تمرین داری؟</h3>
           <div className="grid grid-cols-2 gap-2 text-xs" data-testid="status-groups">
-            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3">
-              <div className="font-extrabold text-emerald-800">{toPersianDigits(statusGroups['confirmed-mastery'].length)} تسلط تأییدشده</div>
+            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 shadow-soft">
+              <div className="font-black text-emerald-800">{toPersianDigits(statusGroups['confirmed-mastery'].length)} تسلط تأییدشده</div>
               <div className="text-emerald-700 mt-0.5">با مرور تأخیری موفق</div>
             </div>
-            <div className="bg-sky-50 border border-sky-200 rounded-xl p-3">
-              <div className="font-extrabold text-sky-800">{toPersianDigits(statusGroups['temporary-mastery'].length)} تسلط موقت</div>
+            <div className="bg-sky-50 border border-sky-200 rounded-xl p-3 shadow-soft">
+              <div className="font-black text-sky-800">{toPersianDigits(statusGroups['temporary-mastery'].length)} تسلط موقت</div>
               <div className="text-sky-700 mt-0.5">نیازمند انتقال و مرور</div>
             </div>
-            <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-3">
-              <div className="font-extrabold text-indigo-800">{toPersianDigits(statusGroups.learning.length)} در حال یادگیری</div>
-              <div className="text-indigo-700 mt-0.5">مسیر ادامه دارد</div>
+            <div className="bg-brand-50 border border-brand-200 rounded-xl p-3 shadow-soft">
+              <div className="font-black text-brand-800">{toPersianDigits(statusGroups.learning.length)} در حال یادگیری</div>
+              <div className="text-brand-700 mt-0.5">مسیر ادامه دارد</div>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
-              <div className="font-extrabold text-amber-800">{toPersianDigits(statusGroups.needspractice.length)} نیازمند تمرین</div>
-              <div className="text-amber-700 mt-0.5">پایه‌ها را محکم کنیم</div>
+            <div className="bg-sun-50 border border-sun-200 rounded-xl p-3 shadow-soft">
+              <div className="font-black text-sun-700">{toPersianDigits(statusGroups.needspractice.length)} نیازمند تمرین</div>
+              <div className="text-sun-600 mt-0.5">پایه‌ها را محکم کنیم</div>
             </div>
           </div>
           <div className="text-[11px] text-slate-500 border-t border-slate-100 pt-2.5">
@@ -190,9 +191,9 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
         </div>
 
         {/* ===== مرورهای سررسید ===== */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3">
-          <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-1.5">
-            <CalendarClock className="w-4 h-4 text-violet-600" />
+        <div className="card p-5 space-y-3">
+          <h3 className="font-black text-sm text-slate-900 flex items-center gap-1.5">
+            <span className="w-7 h-7 rounded-lg bg-violet-100 flex items-center justify-center" aria-hidden="true"><CalendarClock className="w-4 h-4 text-violet-600" /></span>
             مرورهای فاصله‌دار
           </h3>
           {due.length === 0 ? (
@@ -228,9 +229,9 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* ===== خطاهای پرتکرار ===== */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3">
-          <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-1.5">
-            <AlertTriangle className="w-4 h-4 text-amber-500" />
+        <div className="card p-5 space-y-3">
+          <h3 className="font-black text-sm text-slate-900 flex items-center gap-1.5">
+            <span className="w-7 h-7 rounded-lg bg-sun-100 flex items-center justify-center" aria-hidden="true"><AlertTriangle className="w-4 h-4 text-sun-600" /></span>
             الگوی خطاهای تو
           </h3>
           {topErrors.length === 0 ? (
@@ -256,9 +257,9 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
         </div>
 
         {/* ===== سنجه‌های اثربخشی ===== */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3">
-          <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-teal-600" />
+        <div className="card p-5 space-y-3">
+          <h3 className="font-black text-sm text-slate-900 flex items-center gap-1.5">
+            <span className="w-7 h-7 rounded-lg bg-teal-100 flex items-center justify-center" aria-hidden="true"><ShieldCheck className="w-4 h-4 text-teal-600" /></span>
             سنجه‌های اثربخشی یادگیری
           </h3>
           {metrics.totalAttempts === 0 ? (
@@ -291,9 +292,9 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
 };
 
 const MetricRow: React.FC<{ label: string; value: string; lowerIsBetter?: boolean }> = ({ label, value, lowerIsBetter }) => (
-  <div className="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-3 py-2">
-    <span className="text-slate-600">{label}</span>
-    <span className={`font-extrabold ${lowerIsBetter ? 'text-amber-700' : 'text-teal-700'}`}>{value}</span>
+  <div className="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 transition-colors duration-fast hover:bg-slate-100/70">
+    <span className="text-slate-600 font-medium">{label}</span>
+    <span className={`font-black ${lowerIsBetter ? 'text-sun-700' : 'text-teal-700'}`}>{value}</span>
   </div>
 );
 
@@ -304,16 +305,16 @@ export const ParentSkillReport: React.FC<{ skillStates: Record<string, SkillStat
     <div className="overflow-x-auto" data-testid="parent-skill-report">
       <table className="w-full text-xs border-collapse">
         <thead>
-          <tr className="text-slate-500 border-b border-slate-200">
-            <th className="text-right py-2 px-2 font-bold">مهارت</th>
-            <th className="text-right py-2 px-2 font-bold">وضعیت</th>
-            <th className="text-right py-2 px-2 font-bold">اطمینان سامانه</th>
-            <th className="text-right py-2 px-2 font-bold">مرور بعدی</th>
+          <tr className="text-slate-500 border-b-2 border-slate-200 bg-slate-50 rounded-lg">
+            <th className="text-right py-2.5 px-2.5 font-black">مهارت</th>
+            <th className="text-right py-2.5 px-2.5 font-black">وضعیت</th>
+            <th className="text-right py-2.5 px-2.5 font-black">اطمینان سامانه</th>
+            <th className="text-right py-2.5 px-2.5 font-black">مرور بعدی</th>
           </tr>
         </thead>
         <tbody>
           {rows.map(({ skill, state }) => (
-            <tr key={skill.id} className="border-b border-slate-100">
+            <tr key={skill.id} className="border-b border-slate-100 transition-colors duration-fast hover:bg-brand-50/40">
               <td className="py-2 px-2 font-bold text-slate-800">{skill.title}</td>
               <td className="py-2 px-2 text-slate-600">{state ? skillStatusLabel(state.status) : '—'}</td>
               <td className="py-2 px-2 text-slate-600">{state ? `٪${toPersianDigits(Math.round(state.confidence * 100))}` : '—'}</td>

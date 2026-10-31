@@ -11,18 +11,18 @@ export const CoordinateLab: React.FC = () => {
   const ry = rotated ? -y : y;
 
   return (
-    <div className="bg-rose-50/70 border border-rose-200 rounded-2xl p-5 my-4">
+    <div className="card p-5 my-4 border-r-4 border-r-rose-400 animate-rise">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div>
-          <h4 className="font-bold text-rose-900 text-base">آزمایشگاه تعاملی مختصات و تقارن مرکزی</h4>
-          <p className="text-xs text-rose-700 mt-1">مختصات نقطه A را تغییر دهید و قرینه مرکزی آن (چرخش ۱۸۰ درجه حول مبدأ) را ببینید.</p>
+          <h4 className="font-black text-rose-900 text-base">آزمایشگاه تعاملی مختصات و تقارن مرکزی</h4>
+          <p className="text-xs text-rose-700 mt-1">مختصات نقطهٔ A را تغییر دهید و قرینهٔ مرکزی آن (چرخش ۱۸۰ درجه حول مبدأ) را ببینید.</p>
         </div>
         <button
           type="button"
           onClick={() => setRotated(!rotated)}
-          className="px-3.5 py-2 rounded-xl bg-rose-600 text-white text-xs font-semibold hover:bg-rose-700 transition"
+          className="px-4 py-2.5 rounded-xl bg-rose-600 text-white text-xs font-bold hover:bg-rose-700 hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-base ease-spring shadow-soft"
         >
-          {rotated ? 'بازگشت به نقطه اصلی A' : 'اعمال دوران ۱۸۰ درجه (تقارن مرکزی)'}
+          {rotated ? 'بازگشت به نقطهٔ اصلی A' : 'اعمال دوران ۱۸۰ درجه (تقارن مرکزی)'}
         </button>
       </div>
 
@@ -87,8 +87,8 @@ export const FractionLab: React.FC = () => {
   const decimalVal = ((num / den) * 100).toFixed(1);
 
   return (
-    <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-5 my-4">
-      <h4 className="font-bold text-emerald-900 text-base mb-1">آزمایشگاه بصری کسر، ساده‌سازی و درصد</h4>
+    <div className="card p-5 my-4 border-r-4 border-r-emerald-400 animate-rise">
+      <h4 className="font-black text-emerald-900 text-base mb-1">آزمایشگاه بصری کسر، ساده‌سازی و درصد</h4>
       <p className="text-xs text-emerald-700 mb-4">صورت و مخرج را تغییر دهید تا شکل هندسی کسر و کسر ساده‌شده را ببینید.</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
         <div className="bg-white p-4 rounded-xl border border-emerald-100 space-y-3">
@@ -136,8 +136,8 @@ export const FractionLab: React.FC = () => {
             {Array.from({ length: den }).map((_, idx) => (
               <div
                 key={idx}
-                className={`h-10 rounded-lg border flex items-center justify-center text-xs font-bold transition ${
-                  idx < num ? 'bg-emerald-500 text-white border-emerald-600' : 'bg-slate-100 text-slate-400 border-slate-200'
+                className={`h-10 rounded-lg border-2 flex items-center justify-center text-xs font-bold transition-all duration-base ease-spring ${
+                  idx < num ? 'bg-gradient-to-br from-emerald-500 to-emerald-400 text-white border-emerald-600 shadow-sm' : 'bg-slate-50 text-slate-400 border-slate-200'
                 }`}
               >
                 {toPersianDigits(idx + 1)}
@@ -158,8 +158,8 @@ export const CylinderLab: React.FC = () => {
   const volume = Number((baseArea * height).toFixed(2));
 
   return (
-    <div className="bg-cyan-50/70 border border-cyan-200 rounded-2xl p-5 my-4">
-      <h4 className="font-bold text-cyan-900 text-base mb-1">آزمایشگاه محاسبه مساحت دایره و حجم استوانه</h4>
+    <div className="card p-5 my-4 border-r-4 border-r-cyan-400 animate-rise">
+      <h4 className="font-black text-cyan-900 text-base mb-1">آزمایشگاه محاسبهٔ مساحت دایره و حجم استوانه</h4>
       <p className="text-xs text-cyan-700 mb-4">شعاع قاعده و ارتفاع استوانه را تغییر دهید و مراحل محاسبه حجم را مشاهده کنید.</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded-xl border border-cyan-100 space-y-3">
@@ -193,8 +193,8 @@ export const PercentageLab: React.FC = () => {
   const finalPrice = price - discountAmount;
 
   return (
-    <div className="bg-violet-50/70 border border-violet-200 rounded-2xl p-5 my-4">
-      <h4 className="font-bold text-violet-900 text-base mb-1">شبیه‌ساز جدول تناسب و محاسبه تخفیف</h4>
+    <div className="card p-5 my-4 border-r-4 border-r-violet-400 animate-rise">
+      <h4 className="font-black text-violet-900 text-base mb-1">شبیه‌ساز جدول تناسب و محاسبهٔ تخفیف</h4>
       <p className="text-xs text-violet-700 mb-3">قیمت کالا و درصد تخفیف را تغییر دهید و مبلغ تخفیف و مبلغ پرداختی را ببینید.</p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
         <div className="bg-white p-4 rounded-xl border border-violet-100 space-y-3">

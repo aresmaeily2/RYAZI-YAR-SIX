@@ -27,17 +27,17 @@ export class ErrorBoundary extends Component<Props, State> {
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-50 p-6" dir="rtl">
-          <div className="bg-white border border-rose-200 rounded-2xl p-8 max-w-md text-center space-y-4">
-            <div className="w-14 h-14 mx-auto rounded-full bg-rose-100 flex items-center justify-center text-rose-600 text-2xl font-extrabold">!</div>
-            <h1 className="text-lg font-extrabold text-slate-900">مشکلی پیش آمد</h1>
+        <div className="min-h-screen flex items-center justify-center p-6 paper-grid" dir="rtl">
+          <div className="card border-rose-200 p-8 max-w-md text-center space-y-4 animate-pop shadow-lift">
+            <div className="w-16 h-16 mx-auto rounded-2xl bg-rose-100 flex items-center justify-center text-rose-600 text-3xl font-black shadow-soft">!</div>
+            <h1 className="text-lg font-black text-slate-900">مشکلی پیش آمد</h1>
             <p className="text-sm text-slate-600 leading-relaxed">
               متأسفانه در نمایش این بخش خطایی رخ داد. داده‌های پیشرفت شما ذخیره مانده است. صفحه را دوباره بارگذاری کنید.
             </p>
             <button
               type="button"
               onClick={() => window.location.reload()}
-              className="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-bold hover:bg-indigo-700 transition"
+              className="btn-brand"
             >
               بارگذاری مجدد صفحه
             </button>
