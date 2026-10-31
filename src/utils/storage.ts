@@ -53,6 +53,13 @@ function isValidState(value: unknown): value is LearnerState {
       if (typeof e.nextReviewAt !== 'number' || typeof e.reviewStage !== 'number' || typeof e.lastPracticedAt !== 'number') return false;
     }
   }
+  // اعتبارسنجی موقعیت ازسرگیری جریان‌ها (اختیاری؛ سازگار با دادهٔ قبلی)
+  if (s.flowProgress !== undefined) {
+    if (typeof s.flowProgress !== 'object' || s.flowProgress === null) return false;
+    for (const idx of Object.values(s.flowProgress as Record<string, unknown>)) {
+      if (typeof idx !== 'number' || !Number.isInteger(idx) || idx < 0 || idx > 64) return false;
+    }
+  }
   return (
     typeof s.studentName === 'string' &&
     typeof s.xp === 'number' &&

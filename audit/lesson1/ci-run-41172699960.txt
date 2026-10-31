@@ -1,0 +1,20 @@
+
+✓ main CI · 41172699960
+Triggered via push about 1 minute ago
+
+JOBS
+✓ test-and-build in 1m19s (ID 124453851830)
+
+ANNOTATIONS
+! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+test-and-build: .github#2
+
+- "The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748"
+test-and-build: .github#1
+
+
+ARTIFACTS
+dist
+
+For more information about the job, try: gh run view --job=124453851830
+View this run on GitHub: https://github.com/aresmaeily2/RYAZI-YAR-SIX/actions/runs/41172699960

@@ -134,6 +134,24 @@ export function useLearnerState() {
     );
   }, []);
 
+  /**
+   * پایدارسازی مرحلهٔ جریان آموزشی (الزام «حفظ وضعیت مرحله پس از خروج و ورود مجدد»).
+   * stageIndex عددی = ورود به آن مرحله ثبت می‌شود؛ null = جریان به پایان رسیده/باید از ابتدا شروع شود.
+   */
+  const setFlowStage = useCallback((flowId: string, stageIndex: number | null) => {
+    setState((prev) => {
+      const current = prev.flowProgress ?? {};
+      if (stageIndex === null) {
+        if (!(flowId in current)) return prev;
+        const next = { ...current };
+        delete next[flowId];
+        return { ...prev, flowProgress: next };
+      }
+      if (current[flowId] === stageIndex) return prev;
+      return { ...prev, flowProgress: { ...current, [flowId]: stageIndex } };
+    });
+  }, []);
+
   const changeStudentName = useCallback((name: string) => {
     setState((prev) => ({ ...prev, studentName: name.trim().slice(0, 30) || 'دانش‌آموز پایه ششم' }));
   }, []);
@@ -194,6 +212,7 @@ export function useLearnerState() {
     skillIdForLesson,
     recordAttempt,
     updateLastVisited,
+    setFlowStage,
     changeStudentName,
     resetProgress,
     exportBackup,

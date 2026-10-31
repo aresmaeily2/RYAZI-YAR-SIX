@@ -11,7 +11,7 @@
 | `McqQuestion` | چهارگزینه‌ای | `options[]`، `correctAnswer`، `misconceptions[]` |
 | `NumericQuestion` | ورودی عددی | `answerKind` (integer/decimal/fraction)، `acceptedAnswers[]`، `toleratedError?` |
 | `AttemptRecord` | یک تلاش ثبت‌شده | `isCorrect`، `hintsUsed`، `source` (practice/exam)، `diagnosedMisconception?` |
-| `LearnerState` | وضعیت یادگیرنده | `xp`، `streakDays`، `lastVisited*`، `completedLessonIds`، `attempts[]` |
+| `LearnerState` | وضعیت یادگیرنده | `xp`، `streakDays`، `lastVisited*`، `completedLessonIds`، `attempts[]`، `reviewPlan?`، `flowProgress?` (موقعیت ازسرگیری جریان‌های آموزشی — حفظ مرحله پس از خروج/ورود مجدد) |
 | `ChapterMastery` | تسلط فصل | `masteryPercent`، `status`، `weakLessonIds` |
 
 ## قاعده نام‌گذاری شناسه‌ها

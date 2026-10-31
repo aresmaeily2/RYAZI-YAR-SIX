@@ -27,6 +27,13 @@ export interface LessonFlowPlayerProps {
   onRecordAnswer: (q: Question, answer: string, hintsUsed: number, source: 'practice' | 'prereq' | 'transfer') => SubmitResult;
   /** F08 — وضعیت مهارت‌ها برای تأیید آگاه از سابقهٔ پیش‌نیاز (اختیاری) */
   skillStates?: Record<string, SkillState>;
+  /**
+   * حفظ وضعیت مرحله پس از خروج و ورود مجدد: اندیس شروع (ذخیره‌شده از اجرای قبل).
+   * مقدار نامعتبر/خارج از بازه به ۰ بازمی‌گردد (رفتار پیش‌فرض).
+   */
+  startStageIndex?: number;
+  /** ثبت ورود به هر مرحله برای پایدارسازی؛ null یعنی جریان تمام شده و ازسرگیری لازم نیست */
+  onStagePersist?: (stageIndex: number | null) => void;
   onExit: () => void;
 }
 
@@ -41,13 +48,23 @@ const KIND_COLORS: Record<FlowStage['kind'], string> = {
   'transfer-assessment': 'bg-rose-600',
 };
 
-export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questionsById, onRecordAnswer, skillStates, onExit }) => {
-  const [stageIndex, setStageIndex] = useState(0);
+export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questionsById, onRecordAnswer, skillStates, startStageIndex, onStagePersist, onExit }) => {
+  const [stageIndex, setStageIndex] = useState(() => {
+    const s = startStageIndex;
+    return typeof s === 'number' && Number.isInteger(s) && s >= 0 && s < flow.stages.length ? s : 0;
+  });
   const [remedialMode, setRemedialMode] = useState(false);
   const [outcomes, setOutcomes] = useState<StageAttemptOutcome[]>([]);
   /** آینه فوری outcomes برای جلوگیری از تداخل submitهای هم‌زمان روی closure قدیمی */
   const outcomesRef = useRef<StageAttemptOutcome[]>([]);
   const [finished, setFinished] = useState(false);
+
+  // حفظ وضعیت مرحله: ورود به هر مرحله پایدار می‌شود تا پس از خروج/باز شدن مجدد صفحه
+  // دانش‌آموز از همان مرحله ادامه دهد؛ پایان جریان مدخل را پاک می‌کند (اجراهای بعدی از ابتدا).
+  React.useEffect(() => {
+    if (!onStagePersist) return;
+    onStagePersist(finished ? null : stageIndex);
+  }, [finished, stageIndex, onStagePersist]);
 
   // وضعیت مرحله مثال ناقص
   const [stepInputs, setStepInputs] = useState<Record<string, string>>({});
