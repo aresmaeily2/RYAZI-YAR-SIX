@@ -1,0 +1,23 @@
+
+ RUN  v5.0.5 /home/z/my-project/ryazi-yar-six
+
+ ✓ tests/auditFlowPaths.test.tsx (2 tests) 651ms
+   ✓ ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ خطا با نردبان راهنما (1)
+     ✓ شکست در A → یادآوری → شکست در بازآزمون → تکرار حلقهٔ اصلاحی → عبور؛ سپس شکست مرحله C و تکرار آن؛ ثبت شواهد با راهنما 481ms
+ ✓ tests/flowOperationOrder.test.tsx (25 tests) 513ms
+   ✓ مسیر کامل موفق جریان عملیات ترکیبی در UI (A تا G) (2)
+     ✓ ۲۰ تلاش درست با منبع درست ثبت و جریان کامل می‌شود 344ms
+ ✓ tests/flowIntegration.test.tsx (2 tests) 400ms
+   ✓ یکپارچگی کامل مسیر درس پایلوت (UI) (2)
+     ✓ مسیر موفق: از سنجش پیش‌نیاز تا سنجش انتقال با پاسخ‌های درست طی می‌شود 349ms
+ ✓ tests/auditFixF10.test.tsx (5 tests) 342ms
+ ✓ tests/auditFixF08.test.tsx (12 tests) 256ms
+
+ Test Files  5 passed (5)
+      Tests  46 passed (46)
+   Start at  06:28:13
+   Duration  5.28s (tests 46%, environment 33%, import 10%, setup 8%, transform 3%)
+
+    Isolate  5 workers spawned · ~412ms startup each (spawn + environment, per file)
+             at least ~1.65s faster with isolate: false — reuses workers across files instead of one per file
+
