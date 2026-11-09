@@ -37,10 +37,10 @@ URL: https://github.com/aresmaeily2/RYAZI-YAR-SIX
 
 ```text
 $ git ls-remote origin
-77a5a383e9785be9ce8ad02cdee403cb339e33e3	HEAD
-77a5a383e9785be9ce8ad02cdee403cb339e33e3	refs/heads/main
-903d0a9a18a02e0466d090cdac8e6cef3815c888	refs/tags/audit-accepted-final
-2993c704637ca78594eca6bad9d45bde7f9dee40	refs/tags/audit-accepted-final^{}
+77a5a383e9785be9ce8ad02cdee403cb339e33e3        HEAD
+77a5a383e9785be9ce8ad02cdee403cb339e33e3        refs/heads/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888        refs/tags/audit-accepted-final
+2993c704637ca78594eca6bad9d45bde7f9dee40        refs/tags/audit-accepted-final^{}
 ```
 
 | SHA اعلامی | ادعا | نتیجه راستی‌آزمایی (`git rev-parse --verify SHA^{commit}` روی همه refها) |
@@ -86,11 +86,13 @@ origin/main → 77a5a383e9785be9ce8ad02cdee403cb339e33e3  (فقط-خواندنی
 - `main` محلی: روی `77a5a38` ثابت می‌ماند (مقایسه نهایی در §۹ همین سند و FINAL_ACCEPTANCE_REPORT).
 - `origin/main`: هیچ عملیات نوشتن روی ریموت انجام نشده است.
 
-## ۷. Commit اصلاحی نهایی مأموریت
-
-پس از اجرای Agent 2/3/4 و تأیید Agent 5، SHA کامل commit اصلاحی روی شاخه `mission-2r/rtl-core`
-در این بخش ثبت می‌شود (مقدار نهایی پایین همین فایل پس از commit واقعی تکمیل شده است):
+## ۷. Commit اصلاحی نهایی مأموریت (ثبت‌شده پس از commit واقعی)
 
 ```text
-FIX COMMIT: (پس از commit — در انتهای همین فایل به‌روزرسانی می‌شود)
+FIX COMMIT (هسته + تست‌ها):        ed1892359a35bbfb93eca5b0468df2598841ce15
+FIX COMMIT (مثال‌های صفحهٔ درس):   41d57935e7f398a6cbb9929597fdfa50798f4b72
+EVIDENCE COMMITS:                  5dc87ad39f1fb6bc7ad272e684ad8725dbb3d7d8
+                                   c43a773e78bc367286e626e215034e63c824f83c
+BRANCH:                            mission-2r/rtl-core
+BASE (دست‌نخورده):                 77a5a383e9785be9ce8ad02cdee403cb339e33e3  (main = origin/main)
 ```
