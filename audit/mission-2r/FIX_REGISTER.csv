@@ -1,0 +1,7 @@
+fix_id,fixes_bug,commit,file_scope,summary,evidence
+FIX-2R-01,BUG-2R-01,"ed1892359a35bbfb93eca5b0468df2598841ce15","src/utils/mathBidi.ts (جدید)","هستهٔ MATH_RUN/OP_BETWEEN با پوشش ٪ U+066A و % و ٬ U+066C و , و هر سه سامانهٔ عدد + wrapMathRuns/bidiText با LRI/PDI؛ محافظه‌کارانه؛ بدون معکوس‌سازی؛ idempotent","tests/mathBidi.test.ts 28/28 + رندر واقعی"
+FIX-2R-02,BUG-2R-01,"ed1892359a35bbfb93eca5b0468df2598841ce15","QuestionCard.tsx / LessonFlowPlayer.tsx / App.tsx","ادغام bidiText در تمام مسیرهای نمایش ریاضی: صورت/گزینه/راهنما/بازخورد/پزشک خطا/مرور قفل + مثال حل‌شده (هر دو مسیر) + formulaBox (حذف LTR اجباری)","tests/mathBidiRender.test.tsx 11/11 + browser-evidence/dom_evidence.jsonl"
+FIX-2R-03,BUG-2R-02,"ed1892359a35bbfb93eca5b0468df2598841ce15","App.tsx:342","حذف کلاس ltr-nums از formulaBox و رندر طبیعی RTL + جزیره‌های LTR فقط برای قطعات ریاضی","lesson_top_*.png در هر ۵ اندازه"
+FIX-2R-04,BUG-2R-02,"41d57935e7f398a6cbb9929597fdfa50798f4b72","App.tsx:379-390","مثال حل‌شدهٔ صفحهٔ درس (پرسش/گام‌ها/پاسخ نهایی) نیز bidiText شد — تکمیل پوشش مسیرها","MATHSPANS خطوط dom_evidence.jsonl"
+FIX-2R-05,BUG-2R-04,"ed1892359a35bbfb93eca5b0468df2598841ce15","QuestionCard.tsx","aria-label={opt} تمیز روی دکمهٔ گزینه — نام دسترس‌پذیری عیناً متن گزینه بدون نویسهٔ نامرئی","تست‌های موجود ۳۰۶/۳۰۶ بدون تغییر پاس"
+FIX-2R-06,BUG-2R-03,"ed1892359a35bbfb93eca5b0468df2598841ce15","tests/mathBidi.test.ts + tests/mathBidiRender.test.tsx","۳۹ تست رگرسیون جدید (مثبت/منفی/رندر) — مجموع پروژه ۳۰۶→۳۴۵","raw-logs/final_test_run.log"
