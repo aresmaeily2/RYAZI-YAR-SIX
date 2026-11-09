@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { Question } from '../types/curriculum';
 import type { SubmitResult } from '../hooks/useLearnerState';
 import { toPersianDigits } from '../utils/mathEngine';
+import { bidiText } from '../utils/mathBidi';
 import { CheckCircle2, AlertTriangle, HelpCircle, RotateCcw, Send } from 'lucide-react';
 
 export interface QuestionCardProps {
@@ -72,15 +73,15 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             سطح: {difficultyLabel(question.difficulty)}
           </span>
         </div>
-        <p className="font-bold text-sm text-slate-900 leading-relaxed">{question.prompt}</p>
+        <p className="font-bold text-sm text-slate-900 leading-relaxed">{bidiText(question.prompt)}</p>
         {wasAnswered && (
           <div className="text-xs text-slate-600 space-y-1">
             <div>
-              پاسخ شما: <strong>{lockedAnswer}</strong>
+              پاسخ شما: <strong>{bidiText(lockedAnswer)}</strong>
             </div>
             {showCorrectOnLock && (
               <div className="text-emerald-700">
-                پاسخ درست: <strong>{question.type === 'mcq' ? question.correctAnswer : question.acceptedAnswers[0]}</strong>
+                پاسخ درست: <strong>{bidiText(question.type === 'mcq' ? question.correctAnswer : question.acceptedAnswers[0])}</strong>
               </div>
             )}
           </div>
@@ -88,7 +89,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
         {!wasAnswered && <div className="text-xs text-sun-700 bg-sun-50 border border-sun-200 rounded-xl p-2.5 font-bold">به این سؤال پاسخ ندادی.</div>}
         <div className="p-3.5 rounded-xl border-r-4 border-r-slate-300 text-xs bg-slate-50 border border-slate-200 text-slate-700 leading-relaxed">
           <strong className="block mb-1">توضیح:</strong>
-          {question.explanation}
+          {bidiText(question.explanation)}
         </div>
       </div>
     );
@@ -117,14 +118,14 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
         </button>
       </div>
 
-      <p className="font-bold text-[15px] text-slate-900 leading-relaxed">{question.prompt}</p>
+      <p className="font-bold text-[15px] text-slate-900 leading-relaxed">{bidiText(question.prompt)}</p>
 
       {hintStep > 0 && (
         <div className="bg-sun-50 border border-sun-200 rounded-xl p-3.5 space-y-1.5 text-xs text-sun-700 shadow-soft animate-pop" aria-live="polite">
           {question.hints.slice(0, hintStep).map((h, idx) => (
             <div key={idx} className="flex items-start gap-1.5">
               <span className="w-4 h-4 rounded-full bg-sun-200 text-sun-700 text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">{toPersianDigits(idx + 1)}</span>
-              <span>راهنمایی {toPersianDigits(idx + 1)}: {h}</span>
+              <span>راهنمایی {toPersianDigits(idx + 1)}: {bidiText(h)}</span>
             </div>
           ))}
         </div>
@@ -138,6 +139,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               type="button"
               role="radio"
               aria-checked={selected === opt}
+              aria-label={opt}
               onClick={() => {
                 setSelected(opt);
                 setFeedback(null);
@@ -157,7 +159,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               >
                 {toPersianDigits(optIdx + 1)}
               </span>
-              <span className="flex-1">{opt}</span>
+              <span className="flex-1">{bidiText(opt)}</span>
             </button>
           ))}
         </div>
@@ -245,11 +247,11 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               {feedback.isCorrect ? `آفرین! پاسخ درست است (+${toPersianDigits(feedback.xp)} امتیاز).` : 'پاسخ نادرست است.'}
             </span>
           </div>
-          <div className="leading-relaxed">{feedback.explanation}</div>
+          <div className="leading-relaxed">{bidiText(feedback.explanation)}</div>
           {feedback.diagnosis && (
             <div className="text-rose-800 font-bold pt-1.5 border-t border-rose-200/70 flex items-start gap-1.5">
               <span className="chip bg-rose-100 text-rose-700 shrink-0" aria-hidden="true">پزشک خطا</span>
-              {feedback.diagnosis}
+              {bidiText(feedback.diagnosis)}
             </div>
           )}
         </div>

@@ -17,6 +17,11 @@ function questionCard(questionId: string): HTMLElement {
   return card;
 }
 
+/** متن بدون نویسه‌های جداساز bidi (برای مقایسهٔ رشتهٔ خام با DOM) */
+function stripBidi(s: string | null | undefined): string {
+  return (s ?? '').replaceAll('\u2066', '').replaceAll('\u2069', '');
+}
+
 describe('نمایش اولیه و ناوبری', () => {
   it('صفحه اصلی با عنوان و هفت کارت فصل رندر می‌شود', async () => {
     render(<App />);
@@ -66,7 +71,8 @@ describe('پاسخ‌دهی و بازخورد تمرین‌ها', () => {
 
     const feedback = within(card).getByTestId('feedback');
     expect(within(feedback).getByText(/آفرین! پاسخ درست است/)).toBeInTheDocument();
-    expect(within(feedback).getByText(firstQuestion.explanation)).toBeInTheDocument();
+    // توضیح با قطعهٔ ریاضی محصور (MISSION-2R) رندر می‌شود؛ مقایسه پس از حذف جداسازها
+    expect(stripBidi(feedback.textContent)).toContain(firstQuestion.explanation);
     // امتیاز XP در هدر (پاسخ درست آسان بدون راهنمایی = ۱۵)
     expect(screen.getByTitle('امتیاز تجربه')).toHaveTextContent('۱۵');
   });

@@ -9,6 +9,7 @@ import { LessonFlowPlayer } from './components/LessonFlowPlayer';
 import { DiagnosticDashboard, ParentSkillReport } from './components/DiagnosticDashboard';
 import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
+import { bidiText } from './utils/mathBidi';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import {
@@ -338,7 +339,7 @@ const App: React.FC = () => {
                   {currentLesson.formulaBox && (
                     <div className="relative bg-brand-50/70 border border-brand-200 rounded-2xl p-4 pr-5 text-sm font-bold text-brand-900 leading-relaxed overflow-hidden">
                       <span className="absolute top-0 bottom-0 right-0 w-1.5 bg-gradient-to-b from-brand-500 to-violet-500" aria-hidden="true" />
-                      رابطهٔ کلیدی: <span className="math-expr ltr-nums">{currentLesson.formulaBox}</span>
+                      رابطهٔ کلیدی: <span className="math-expr">{bidiText(currentLesson.formulaBox)}</span>
                     </div>
                   )}
 

@@ -10,6 +10,7 @@ import { StepSolverAnimation } from './StepSolverAnimation';
 import { GroupsVisual } from './GroupsVisual';
 import type { SubmitResult } from '../hooks/useLearnerState';
 import { toPersianDigits } from '../utils/mathEngine';
+import { bidiText } from '../utils/mathBidi';
 import { CheckCircle2, ChevronLeft, ChevronRight, XCircle, Info } from 'lucide-react';
 
 /**
@@ -307,22 +308,22 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
       {/* مرحله D — مثال حل‌شده با بلنداندیشی */}
       {stage.workedExample && !remedialMode && (
         <div className="card p-5 space-y-3">
-          <p className="font-bold text-sm text-slate-900 bg-brand-50 border border-brand-200 rounded-xl p-3.5">{stage.workedExample.problem}</p>
+          <p className="font-bold text-sm text-slate-900 bg-brand-50 border border-brand-200 rounded-xl p-3.5">{bidiText(stage.workedExample.problem)}</p>
           {stage.solverAnimation && <StepSolverAnimation spec={stage.solverAnimation} />}
           {stage.workedExample.steps.map((st, i) => (
             <div key={i} className="border border-slate-200 rounded-xl p-3.5 space-y-1.5 text-xs bg-slate-50/50">
               <div className="font-bold text-slate-800 flex items-start gap-2">
                 <span className="w-5 h-5 rounded-md bg-brand-100 text-brand-700 text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">{toPersianDigits(i + 1)}</span>
-                {st.text}
+                {bidiText(st.text)}
               </div>
-              <div className="text-slate-600 leading-relaxed pr-7">چرا؟ {st.why}</div>
-              {st.check && <div className="text-emerald-700 leading-relaxed pr-7">✓ بررسی صحت: {st.check}</div>}
-              {st.commonMistake && <div className="text-rose-700 leading-relaxed pr-7">✗ اشتباه رایج: {st.commonMistake}</div>}
+              <div className="text-slate-600 leading-relaxed pr-7">چرا؟ {bidiText(st.why)}</div>
+              {st.check && <div className="text-emerald-700 leading-relaxed pr-7">✓ بررسی صحت: {bidiText(st.check)}</div>}
+              {st.commonMistake && <div className="text-rose-700 leading-relaxed pr-7">✗ اشتباه رایج: {bidiText(st.commonMistake)}</div>}
             </div>
           ))}
           <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3.5 text-xs font-bold text-emerald-900 flex items-center gap-1.5">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />
-            پاسخ نهایی: <span className="math-expr">{stage.workedExample.finalAnswer}</span>
+            پاسخ نهایی: <span className="math-expr">{bidiText(stage.workedExample.finalAnswer)}</span>
           </div>
         </div>
       )}
@@ -331,11 +332,11 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
       {stage.completionExample && !remedialMode && (
         <div className="card p-5 space-y-4 border-r-4 border-r-emerald-400">
           <p className="font-bold text-sm text-slate-900 bg-emerald-50 border border-emerald-200 rounded-xl p-3.5">
-            {stage.completionExample.problem}
+            {bidiText(stage.completionExample.problem)}
           </p>
           <ol className="text-xs text-slate-600 space-y-1 list-decimal list-inside">
             {stage.completionExample.givenSteps.map((g, i) => (
-              <li key={i}>{g}</li>
+              <li key={i}>{bidiText(g)}</li>
             ))}
           </ol>
           {stage.completionExample.missingSteps.map((step, idx) => {
@@ -345,7 +346,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
             return (
               <div key={step.id} className="border border-slate-200 rounded-xl p-3.5 space-y-2 bg-slate-50/50" data-testid={`missing-step-${idx + 1}`}>
                 <div className="text-xs font-bold text-slate-700">
-                  جای خالی {toPersianDigits(idx + 1)}: {useFallback ? step.fallbackPrompt : step.prompt}
+                  جای خالی {toPersianDigits(idx + 1)}: {bidiText(useFallback ? step.fallbackPrompt : step.prompt)}
                 </div>
                 {stepDone[step.id] ? (
                   <div className="text-xs text-emerald-700 font-bold flex items-center gap-1 animate-pop">
@@ -376,7 +377,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
                 )}
                 {fb === 'retry' && (
                   <div className="text-xs text-sun-700 bg-sun-50 border border-sun-200 rounded-lg p-2.5 leading-relaxed animate-pop">
-                    هنوز درست نیست. راهنما: {step.hint}
+                    هنوز درست نیست. راهنما: {bidiText(step.hint)}
                   </div>
                 )}
                 {fb === 'fallback' && (
@@ -470,7 +471,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
               </button>
               {seqHintsUsed > 0 && stage.sequencing.steps[seqPlaced.length] && (
                 <div className="text-[11px] text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 leading-relaxed" aria-live="polite" data-testid="seq-hint-text">
-                  {stage.sequencing.steps[seqPlaced.length].hint}
+                  {bidiText(stage.sequencing.steps[seqPlaced.length].hint)}
                 </div>
               )}
             </div>
