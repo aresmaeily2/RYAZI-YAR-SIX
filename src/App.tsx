@@ -9,6 +9,7 @@ import { LessonFlowPlayer } from './components/LessonFlowPlayer';
 import { DiagnosticDashboard, ParentSkillReport } from './components/DiagnosticDashboard';
 import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
+import { bidiText } from './utils/mathBidi';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import {
@@ -338,7 +339,7 @@ const App: React.FC = () => {
                   {currentLesson.formulaBox && (
                     <div className="relative bg-brand-50/70 border border-brand-200 rounded-2xl p-4 pr-5 text-sm font-bold text-brand-900 leading-relaxed overflow-hidden">
                       <span className="absolute top-0 bottom-0 right-0 w-1.5 bg-gradient-to-b from-brand-500 to-violet-500" aria-hidden="true" />
-                      رابطهٔ کلیدی: <span className="math-expr ltr-nums">{currentLesson.formulaBox}</span>
+                      رابطهٔ کلیدی: <span className="math-expr">{bidiText(currentLesson.formulaBox)}</span>
                     </div>
                   )}
 
@@ -375,18 +376,18 @@ const App: React.FC = () => {
                     <h3 className="font-bold text-sm text-slate-800">مثال حل‌شده گام‌به‌گام:</h3>
                     {currentLesson.workedExamples.map((ex) => (
                       <div key={ex.id} className="card p-4 space-y-2.5 border-r-4 border-r-brand-400">
-                        <div className="font-bold text-sm text-slate-900">پرسش: <span className="math-expr">{ex.problem}</span></div>
+                        <div className="font-bold text-sm text-slate-900">پرسش: <span className="math-expr">{bidiText(ex.problem)}</span></div>
                         <div className="space-y-1.5 text-xs text-slate-700 leading-relaxed">
                           {ex.steps.map((s, idx) => (
                             <div key={idx} className="flex items-start gap-2">
                               <span className="w-4 h-4 rounded-full bg-brand-100 text-brand-700 text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">{toPersianDigits(idx + 1)}</span>
-                              <span>{s}</span>
+                              <span>{bidiText(s)}</span>
                             </div>
                           ))}
                         </div>
                         <div className="text-xs font-bold text-emerald-700 pt-1 flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
-                          پاسخ نهایی: <span className="math-expr">{ex.finalAnswer}</span>
+                          پاسخ نهایی: <span className="math-expr">{bidiText(ex.finalAnswer)}</span>
                         </div>
                         <div className="text-xs text-sun-700 bg-sun-50 p-3 rounded-xl border border-sun-200 leading-relaxed flex items-start gap-1.5">
                           <Star className="w-3.5 h-3.5 text-sun-500 shrink-0 mt-0.5 fill-sun-400" aria-hidden="true" />

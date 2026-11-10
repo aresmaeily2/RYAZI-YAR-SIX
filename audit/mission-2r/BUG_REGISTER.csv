@@ -1,0 +1,6 @@
+bug_id,severity,status,location,description_evidence,source
+BUG-2R-01,critical,OPEN-AT-BASELINE-FIXED-IN-ED18923,"src/components (all math text renders)","q623 نمایش عبارت «۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰» بدون جداسازی bidi — شکست نمایشی تأییدشده در مرورگر واقعی (گزارش POST-AUDIT مأموریت)","MISSION-2R §۱"
+BUG-2R-02,high,OPEN-AT-BASELINE-FIXED-IN-ED18923,"src/index.css .ltr-nums + src/App.tsx formulaBox","formulaBox درس ch6l2 («قیمت پرداختی = قیمت کل × ((۱۰۰ − درصد تخفیف) ÷ ۱۰۰)») در بستر LTR اجباری رندر می‌شد؛ متن فارسی مخلوط به‌هم می‌ریخت","کد مبنای 77a5a38"
+BUG-2R-03,high,OPEN-AT-BASELINE-FIXED-IN-ED18923,"بدون فایل mathBidi.ts در مبنای قابل اثبات","هستهٔ تشخیص عبارت ریاضی (MATH_RUN) در مبنا 77a5a38 وجود نداشت؛ ادعای «HEAD حاوی 15e954a» به مخزن محلیِ گمشده تعلق داشت","Agent-1 راستی‌آزمایی"
+BUG-2R-04,medium,OPEN-AT-BASELINE-FIXED-IN-ED18923,"QuestionCard گزینه‌ها","نام دسترس‌پذیری گزینه‌ها بدون aria-label صریح از محتوا ساخته می‌شد و پس از افزودن جداسازها نویسه‌های نامرئی وارد آن می‌شد","تست‌های مأموریت-2R"
+BUG-2R-05,info,CLOSED-NOT-REPRODUCIBLE,"مخزن","کامیت ادعایی 355a1de وجود ندارد (مطابق یافته POST-AUDIT)؛ هر سه SHA اعلامی مأموریت (93680a3/15e954a/355a1de) روی ریموت رسمی موجود نیستند — ریشه: از بین رفتن مخزن محلی در بازیافت sandbox","Agent-1 git ls-remote + rev-parse"
