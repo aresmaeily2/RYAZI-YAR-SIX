@@ -182,7 +182,7 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
             </div>
             <div className="bg-sun-50 border border-sun-200 rounded-xl p-3 shadow-soft">
               <div className="font-black text-sun-700">{toPersianDigits(statusGroups.needspractice.length)} نیازمند تمرین</div>
-              <div className="text-sun-600 mt-0.5">پایه‌ها را محکم کنیم</div>
+              <div className="text-sun-700 mt-0.5">پایه‌ها را محکم کنیم</div>
             </div>
           </div>
           <div className="text-[11px] text-slate-500 border-t border-slate-100 pt-2.5">
