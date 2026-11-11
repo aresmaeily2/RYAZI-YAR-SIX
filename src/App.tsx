@@ -10,6 +10,7 @@ import { DiagnosticDashboard, ParentSkillReport } from './components/DiagnosticD
 import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
 import { bidiText } from './utils/mathBidi';
+import { useCleanMathCopy } from './hooks/useCleanMathCopy';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import {
@@ -43,6 +44,9 @@ const colorMap: Record<string, { bg: string; text: string; bar: string }> = {
 const App: React.FC = () => {
   const learner = useLearnerState();
   const { state } = learner;
+
+  // کپی تمیز: نویسه‌های کنترلی bidi فقط در «نمایش» لازم‌اند، نه در متن کپی‌شده
+  useCleanMathCopy();
 
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [selectedChapterId, setSelectedChapterId] = useState<string>(state.lastVisitedChapterId);

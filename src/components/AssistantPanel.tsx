@@ -4,6 +4,7 @@ import { actionLabel } from './DiagnosticDashboard';
 import { skillForLesson } from '../learning/skills';
 import type { SkillState } from '../learning/types';
 import { toPersianDigits } from '../utils/mathEngine';
+import { bidiText } from '../utils/mathBidi';
 import { Bot, HelpCircle, Lightbulb, MessageCircleQuestion, Route, Sparkles, Scale, AlertTriangle, Trophy } from 'lucide-react';
 
 /**
@@ -73,7 +74,7 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({ lessonId, skillS
             <HelpCircle className="w-3.5 h-3.5" />
             پاسخ دستیار
           </div>
-          {latestReply.text}
+          {bidiText(latestReply.text)}
           {latestReply.uncertain && (
             <div className="text-[10px] text-sun-700 bg-sun-50 border border-sun-200 rounded-lg px-2 py-1.5 font-bold">
               این پاسخ حدس قطعی نیست؛ بر اساس شواهد فعلی شما تنظیم شده است.

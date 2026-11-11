@@ -4,6 +4,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../src/App';
 import { CURRICULUM_CHAPTERS } from '../src/data/curriculumData';
+import { radioName } from './radioName';
 
 /**
  * تست‌های UI: ناوبری، پاسخ‌دهی درست/غلط، نمایش بازخورد و جریان کامل آزمون
@@ -88,7 +89,7 @@ describe('پاسخ‌دهی و بازخورد تمرین‌ها', () => {
     if (q212.type !== 'mcq') return;
     const wrongOption = q212.misconceptions[0].wrongOptionValue;
     const card = questionCard(q212.id);
-    await user.click(within(card).getByRole('radio', { name: wrongOption }));
+    await user.click(within(card).getByRole('radio', { name: radioName(wrongOption, q212) }));
     await user.click(within(card).getByRole('button', { name: /بررسی و تصحیح پاسخ/ }));
 
     const feedback = within(card).getByTestId('feedback');
@@ -145,7 +146,7 @@ describe('جریان کامل آزمون', () => {
     for (const q of ch1Questions) {
       const card = questionCard(q.id);
       if (q.type === 'mcq') {
-        await user.click(within(card).getByRole('radio', { name: q.correctAnswer }));
+        await user.click(within(card).getByRole('radio', { name: radioName(q.correctAnswer, q) }));
       } else {
         await user.type(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), q.acceptedAnswers[0]);
       }
@@ -169,7 +170,7 @@ describe('جریان کامل آزمون', () => {
       const card = questionCard(q.id);
       if (q.type === 'mcq') {
         const wrong = q.options.find((o) => o !== q.correctAnswer);
-        await user.click(within(card).getByRole('radio', { name: wrong! }));
+        await user.click(within(card).getByRole('radio', { name: radioName(wrong!, q) }));
       } else {
         await user.type(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), '999999');
       }

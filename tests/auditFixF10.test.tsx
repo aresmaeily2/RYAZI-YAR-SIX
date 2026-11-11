@@ -8,6 +8,7 @@ import { rebuildSkillStates } from '../src/learning/builder';
 import { isNumericAnswerCorrect } from '../src/utils/answerChecking';
 import type { Question } from '../src/types/curriculum';
 import type { SubmitResult } from '../src/hooks/useLearnerState';
+import { radioName } from './radioName';
 
 /**
  * اصلاح F10 — ثبت شواهد مرحلهٔ E (مثال ناقص).
@@ -64,7 +65,7 @@ function answerStageA() {
     const qid = card.getAttribute('data-testid')!.replace('question-', '');
     const question = findQuestion(qid)!;
     if (question.type === 'mcq') {
-      fireEvent.click(within(card).getByRole('radio', { name: question.correctAnswer }));
+      fireEvent.click(within(card).getByRole('radio', { name: radioName(question.correctAnswer, question) }));
     } else {
       fireEvent.change(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), { target: { value: question.acceptedAnswers[0] } });
     }

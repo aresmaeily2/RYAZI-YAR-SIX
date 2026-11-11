@@ -1,0 +1,57 @@
+# fresh test run — 2026-11-08 20:48:20 UTC — HEAD 93680a3
+
+> ryazi-yar-six@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /home/z/my-project/ryazi-yar-six
+
+ ✓ tests/app.test.tsx (14 tests) 2927ms
+   ✓ جریان کامل آزمون (3)
+     ✓ آزمون موضوعی فصل: پاسخ درست به همه، نمره ۱۰۰٪ و مرور پاسخ‌ها 825ms
+     ✓ آزمون با پاسخ‌های غلط: نمره صفر، مرور با پاسخ درست و تمرین مجدد غلط‌ها 762ms
+ ✓ tests/prototypeLab.test.tsx (12 tests) 2419ms
+   ✓ نمونهٔ B — چهار نوع فعالیت (5)
+     ✓ تکمیل هر چهار فعالیت، کارت پایان را نشان می‌دهد 741ms
+   ✓ نمونهٔ C — کلینیک خطا (3)
+     ✓ تکرار خطا → گام‌های هدایت‌شده؛ سپس حل مستقل و پرسش انتقال 753ms
+ ✓ tests/flowStagePersistence.test.tsx (8 tests) 1646ms
+   ✓ سناریوی واقعی خروج و ورود مجدد در سطح App (1)
+     ✓ پس از عبور مرحلهٔ A و بستن صفحه، ورود مجدد مستقیماً از مرحلهٔ B ادامه می‌دهد 1449ms
+ ✓ tests/auditFlowPaths.test.tsx (2 tests) 635ms
+   ✓ ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ خطا با نردبان راهنما (1)
+     ✓ شکست در A → یادآوری → شکست در بازآزمون → تکرار حلقهٔ اصلاحی → عبور؛ سپس شکست مرحله C و تکرار آن؛ ثبت شواهد با راهنما 458ms
+ ✓ tests/flowOperationOrder.test.tsx (25 tests) 553ms
+   ✓ مسیر کامل موفق جریان عملیات ترکیبی در UI (A تا G) (2)
+     ✓ ۲۰ تلاش درست با منبع درست ثبت و جریان کامل می‌شود 375ms
+ ✓ tests/flowIntegration.test.tsx (2 tests) 410ms
+   ✓ یکپارچگی کامل مسیر درس پایلوت (UI) (2)
+     ✓ مسیر موفق: از سنجش پیش‌نیاز تا سنجش انتقال با پاسخ‌های درست طی می‌شود 353ms
+ ✓ tests/auditFixF10.test.tsx (5 tests) 369ms
+ ✓ tests/auditFixF08.test.tsx (12 tests) 277ms
+ ✓ tests/diagnostic.test.tsx (14 tests) 141ms
+ ✓ tests/auditDashboardConsistency.test.tsx (6 tests) 122ms
+ ✓ tests/mathBidiRendering.test.tsx (40 tests) 89ms
+ ✓ tests/curriculumData.test.ts (16 tests) 33ms
+ ✓ tests/auditFixF07.test.ts (10 tests) 22ms
+ ✓ tests/auditEngineScenarios.test.ts (43 tests) 18ms
+ ✓ tests/learningEngine.test.ts (45 tests) 16ms
+ ✓ tests/lessonFlow.test.ts (19 tests) 10ms
+ ✓ tests/protoLogic.test.ts (28 tests) 10ms
+ ✓ tests/ch7l3Fractions.test.ts (12 tests) 8ms
+ ✓ tests/mathEngine.test.ts (20 tests) 11ms
+ ✓ tests/auditFixF06.test.ts (14 tests) 9ms
+ ✓ tests/examEngine.test.ts (8 tests) 9ms
+ ✓ tests/auditStorageSecurity.test.ts (9 tests) 11ms
+ ✓ tests/answerChecking.test.ts (14 tests) 9ms
+ ✓ tests/contentGolden.test.ts (8 tests) 8ms
+
+ Test Files  24 passed (24)
+      Tests  386 passed (386)
+   Start at  20:48:21
+   Duration  23.02s (tests 47%, environment 35%, setup 9%, import 7%, transform 2%)
+
+Environment  jsdom was created 24 times · 7.11s total, 35% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
