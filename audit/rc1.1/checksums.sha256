@@ -1,10 +1,16 @@
+# RC1.1 audit pack + final production bundle — SHA-256 manifest
+# audit/rc1.1/* : verifies directly from the git working tree
+# dist/*        : verifies after `npm run build` (dist/ is gitignored)
+# regenerate    : python3 scripts/rc11_regen_manifest.py
+# file count   : 31 audit files + 3 bundle artifacts
+
 80ddd4bb78ae90454c65391dd900c1ea6fdc2242a1da6b8a735490b08366ae5a  audit/rc1.1/accessibility-report.md
 8059034a8ac841d802ca51cc2733cda6c11537d6ab3fd538127f05045f6ea2d9  audit/rc1.1/baseline-evidence.md
 b4021d657ff5473b6363e9b7a7f0fa8ce2986bbd8e0a329e8a903b3f80e518be  audit/rc1.1/browser-qa-report.md
 995b8aa65d1daff3afb04b4fcf02680035332818cc24f9654710c29c1e6f9d16  audit/rc1.1/bug-register.md
-0b18c5ffa658fcc24c9cba2a1c7c1a7e4907eab58cb167187dfa87fcc3d3334e  audit/rc1.1/final-release-readiness.md
+eb4a832276ea3ae1330e48a741e3cbcb218e9c9671598b7b98fae59e21f6e076  audit/rc1.1/final-release-readiness.md
 f2109b728158eb520bab6e5dfd3896376c907c1289b762302ec043bb1da062b8  audit/rc1.1/git-forensics.md
-33d37f0d2d070c9882c130e150d9c96d11a197e5b66edd0d67ca94f7336109fa  audit/rc1.1/independent-agent-5-report.md
+d2616bd15d76c1da5f52d7f9a2fae127ec41c0eb31dd53196017a543f988a0c7  audit/rc1.1/independent-agent-5-report.md
 52b6d433149f66e0d2bcdb2bf464743980d1dff85885a1fd724ef09ba89c7e98  audit/rc1.1/raw-evidence/00-env-reset.txt
 7213ec51f56e6461caf6a9d03e4713b4f3d3b17fa2423ae386fcf9d27c7a200a  audit/rc1.1/raw-evidence/01-git-forensics.txt
 65aff0c1bf678c730c36226eb2be192e6036d2a47dcb9c3f1bfc37a9774e465a  audit/rc1.1/raw-evidence/05-contrast-keyboard-before.json
@@ -14,6 +20,9 @@ f2109b728158eb520bab6e5dfd3896376c907c1289b762302ec043bb1da062b8  audit/rc1.1/gi
 62238a4b437b0d3332e82da30591f68e02f090e59674567b72d3f8263bd41d5f  audit/rc1.1/raw-evidence/08-visual-order-script.py
 9475078a5751e42e19811fd21590fd28dbdf68da51d8c1d516fde0b5d20baddc  audit/rc1.1/raw-evidence/08-visual-order.json
 7c1bab38555225333b9fbee053ed66f055d056771081e2ebcb2c6d76b04f9a3e  audit/rc1.1/raw-evidence/09-agent5-reproduction.json
+f45b6f951bc8044e2997fea3f73cd07eacd64ab99752351038e2cb9cfbad7bd8  audit/rc1.1/raw-evidence/10-incident-recovery.txt
+a3e1448efc101ff51d97b0013f84844862b3bedeec8bcbf02010aa9b5fe4ccf6  audit/rc1.1/raw-evidence/11-agent5-fresh-reaudit.txt
+0362c82f72e80cbf5502e1387c19680bf5c4c1ffb85c04191c931460725f657b  audit/rc1.1/raw-evidence/12-final-prepush-state.txt
 7bf46134583c5072e7d7e56ec95aca25bb398fa53d5dee63d9d9e855e1f276bc  audit/rc1.1/render-path-matrix.md
 b5d88100eeaaba17d53a131fe8664eae51066f14e91f43d48f77191194f9bdc5  audit/rc1.1/rtl-regression-report.md
 c56b12ea24ef97962ccc40027cac650e829ca24db0f2dc9421db971d73000997  audit/rc1.1/screenshots/a1-pixel-sidebar-active.png
@@ -26,3 +35,6 @@ e01b50c75923e8b7a385b641cf0839a5341b48f3325ba4fdd60e1c93bc59a17e  audit/rc1.1/sc
 d2e715b9fe7b38d8cbf460c7fb58dc28711aa020618be075620f39236bcc0c61  audit/rc1.1/screenshots/rtl-paren-before-after-1366.png
 bcf4846a4bca1d7e5b6a6e90da87805288272ba1dc6440c3f09aa44f733fded3  audit/rc1.1/screenshots/sw-offline-desktop.png
 523b311a1dc7cdbfee925e877dbc785c83f829275e978ebfd13bc37c4479eb24  audit/rc1.1/service-worker-report.md
+baefee6b3546fe5ff9fb24006c2a14d769541c1262109f16263cce1693bfeca1  dist/index.html
+e8e374dc68492e7a27298fe2ab9c9f57f5c8edcec661d19d0374404a8b620f56  dist/assets/index-HPYyQBai.css
+c48797041e43cf55b07b483c1081c374e9ffbd962de10ecb3e49187b75c2f2f2  dist/assets/index-CrETePCt.js
