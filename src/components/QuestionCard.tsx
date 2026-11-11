@@ -139,7 +139,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               type="button"
               role="radio"
               aria-checked={selected === opt}
-              aria-label={opt}
+              aria-label={`گزینه ${toPersianDigits(optIdx + 1)}: ${opt}`}
               onClick={() => {
                 setSelected(opt);
                 setFeedback(null);
