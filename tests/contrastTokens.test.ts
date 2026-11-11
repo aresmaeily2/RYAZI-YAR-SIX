@@ -45,6 +45,18 @@ describe('قرارداد کلاس‌ها — جلوگیری از بازگشت ر
     expect(src).toContain('bg-slate-100 text-slate-600');
   });
 
+  it('کارت گام بعدی دیگر گرادیان emerald-600 ندارد (بدترین stop قبلاً FAIL بود)', () => {
+    const src = read('components/DiagnosticDashboard.tsx');
+    expect(src).not.toContain('from-emerald-700 to-emerald-600 text-white');
+    expect(src).toContain('from-emerald-800 to-emerald-700 text-white');
+  });
+
+  it('یادداشت تشویق دستیار دیگر slate-500 روی brand-50 نیست (4.26→6.0)', () => {
+    const src = read('components/AssistantPanel.tsx');
+    expect(src).toContain('text-[11px] text-slate-600');
+    expect(src).not.toContain('text-[11px] text-slate-500');
+  });
+
   it('متادیتای کوچک App دیگر text-slate-400 ندارد', () => {
     const src = read('App.tsx');
     expect(src).not.toContain('text-[11px] text-slate-400');

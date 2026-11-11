@@ -45,7 +45,7 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({ lessonId, skillS
         </span>
         <div>
           <h3 className="font-black text-sm text-slate-900">دستیار آموزشی ریاضی‌یار</h3>
-          <p className="text-[11px] text-slate-500">{encouragingNote(skillState ?? emptyEncouragingState())}</p>
+          <p className="text-[11px] text-slate-600">{encouragingNote(skillState ?? emptyEncouragingState())}</p>
         </div>
       </div>
 

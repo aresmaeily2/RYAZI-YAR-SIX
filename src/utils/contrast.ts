@@ -34,6 +34,12 @@ export const TOKENS = {
   'sun-100': '#fef3c7',
   'sun-600': '#d97706',
   'sun-700': '#b45309',
+  'emerald-50': '#ecfdf5',
+  'emerald-100': '#d1fae5',
+  'emerald-700': '#047857',
+  'emerald-800': '#065f46',
+  'brand-100': '#e0e7ff',
+  'brand-800': '#3730a3',
 } as const;
 
 export type ContrastCase = {
@@ -67,6 +73,16 @@ export const CONTRAST_CASES: ContrastCase[] = [
   { id: 'option-selected-white-on-violet600', fg: 'white', bg: 'violet-600', min: 4.5 },
   { id: 'chapter-badge-white-on-brand600', fg: 'white', bg: 'brand-600', min: 4.5, note: 'badge درس ۱۲px/۹۰۰ بعد از اصلاح' },
   { id: 'logo-badge-large-white-on-brand500', fg: 'white', bg: 'brand-500', min: 3.0, note: 'لوگو ۱۸px/۹۰۰ — متن بزرگ' },
+  // کارت «گام بعدی» روی گرادیان سبز — بعد از اصلاح RC1.1 (بدترین stop)
+  { id: 'nextstep-white-on-emerald800', fg: 'white', bg: 'emerald-800', min: 4.5 },
+  { id: 'nextstep-white-on-emerald700', fg: 'white', bg: 'emerald-700', min: 4.5 },
+  { id: 'nextstep-emerald50-on-emerald800', fg: 'emerald-50', bg: 'emerald-800', min: 4.5 },
+  { id: 'nextstep-emerald50-on-emerald700', fg: 'emerald-50', bg: 'emerald-700', min: 4.5 },
+  { id: 'nextstep-emerald100-on-emerald800', fg: 'emerald-100', bg: 'emerald-800', min: 4.5 },
+  { id: 'nextstep-emerald100-on-emerald700', fg: 'emerald-100', bg: 'emerald-700', min: 4.5 },
+  // hero داشبورد روی گرادیان نیلی (بدترین stop — مستند به evidence پیکسلی)
+  { id: 'hero-white-24px-on-violet600', fg: 'white', bg: 'violet-600', min: 3.0 },
+  { id: 'hero-brand100-on-violet600', fg: 'brand-100', bg: 'violet-600', min: 4.5 },
   // نشانگر فوکوس — غیرمتنی، ۳٫۰ در برابر پس‌زمینه‌های مجاور
   { id: 'focus-ring-brand600-on-white', fg: 'brand-600', bg: 'white', min: 3.0 },
   { id: 'focus-ring-brand600-on-slate100', fg: 'brand-600', bg: 'slate-100', min: 3.0 },
