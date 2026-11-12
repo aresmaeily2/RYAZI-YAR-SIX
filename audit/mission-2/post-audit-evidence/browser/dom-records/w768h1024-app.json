@@ -1,0 +1,37 @@
+{
+  "url": "http://127.0.0.1:5199/",
+  "islands": [
+    {
+      "text": "۲۰/۸۰ = ۱/۴ = ۲۵/۱۰۰،",
+      "dir": "ltr",
+      "unicodeBidi": "isolate",
+      "rect": {
+        "x": 611,
+        "y": 252,
+        "w": 103,
+        "h": 18
+      }
+    },
+    {
+      "text": "۰۰۰ = ۳۴۰",
+      "dir": "ltr",
+      "unicodeBidi": "isolate",
+      "rect": {
+        "x": 540,
+        "y": 662,
+        "w": 48,
+        "h": 18
+      }
+    }
+  ],
+  "samples": [],
+  "textOverflow": [],
+  "documentScrollWidth": 768,
+  "documentClientWidth": 768,
+  "horizontalOverflow": false,
+  "case": "real-app ch6l2 q622+q623 answered",
+  "viewport": {
+    "w": 768,
+    "h": 1024
+  }
+}

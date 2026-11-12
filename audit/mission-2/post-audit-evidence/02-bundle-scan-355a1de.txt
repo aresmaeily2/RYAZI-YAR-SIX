@@ -1,0 +1,166 @@
+################################################################
+# Bundle scan for object 355a1de — 2026-11-08 20:43:38 UTC
+# Method: for each bundle, clone into temp repo, then git cat-file -t 355a1de
+################################################################
+
+=== Bundle: /home/z/my-project/download/ryazi-yar-six-pre-lesson1-push.bundle ===
+-- size / sha256:
+5449258 bytes
+69d9ceef305cc12b3437d09bcba8b2591729c79f848566f0817098db79cba095  /home/z/my-project/download/ryazi-yar-six-pre-lesson1-push.bundle
+-- git bundle verify:
+/home/z/my-project/download/ryazi-yar-six-pre-lesson1-push.bundle is okay
+The bundle contains these 5 refs:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+fb60b5e6645b2b6a0a3903d7fc537f6a4a2624fa refs/heads/main
+bd28d3e8e5842fb549bf1f6aa928caebb40a3928 refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+fb60b5e6645b2b6a0a3903d7fc537f6a4a2624fa HEAD
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+-- git bundle list-heads:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+fb60b5e6645b2b6a0a3903d7fc537f6a4a2624fa refs/heads/main
+bd28d3e8e5842fb549bf1f6aa928caebb40a3928 refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+fb60b5e6645b2b6a0a3903d7fc537f6a4a2624fa HEAD
+-- clone: OK
+-- git rev-parse --verify 355a1de^{commit}:
+fatal: Needed a single revision
+[exit=128]
+-- git cat-file -t 355a1de:
+fatal: Not a valid object name 355a1de
+[exit=128]
+-- total commits:
+48
+-- tip:
+fb60b5e feat(content)+audit: ch7l3 fraction coverage per official textbook (exercises 3 & 5, p.141) — questions q735/q736 + worked example ex74; stage F pass rule 4/7; golden table 96→98; mission-path-correction evidence (audit/lesson1/GIT_STATE.md: riazi_yar discrepancy documented, ee359e2 NOT on remote, no v1.0.0 tag, no audit-fixes branch; zero changes to that repo); F06/F07/F08/F10 regression 41/41 green
+
+=== Bundle: /home/z/my-project/download/ryazi-yar-six-pre-lesson1-push2.bundle ===
+-- size / sha256:
+7757247 bytes
+9105f3ac655cb400013bad46b51d2775344f18b54a41adda83ecdd563c54e51e  /home/z/my-project/download/ryazi-yar-six-pre-lesson1-push2.bundle
+-- git bundle verify:
+/home/z/my-project/download/ryazi-yar-six-pre-lesson1-push2.bundle is okay
+The bundle contains these 5 refs:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+8eb6a363a324ffbd977affd76f1fc880b74cee88 refs/heads/main
+fb60b5e6645b2b6a0a3903d7fc537f6a4a2624fa refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+8eb6a363a324ffbd977affd76f1fc880b74cee88 HEAD
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+-- git bundle list-heads:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+8eb6a363a324ffbd977affd76f1fc880b74cee88 refs/heads/main
+fb60b5e6645b2b6a0a3903d7fc537f6a4a2624fa refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+8eb6a363a324ffbd977affd76f1fc880b74cee88 HEAD
+-- clone: OK
+-- git rev-parse --verify 355a1de^{commit}:
+fatal: Needed a single revision
+[exit=128]
+-- git cat-file -t 355a1de:
+fatal: Not a valid object name 355a1de
+[exit=128]
+-- total commits:
+49
+-- tip:
+8eb6a36 feat(flow)+audit: flow stage persistence — resume exactly where the student left (exit/re-entry requirement); optional flowProgress in LearnerState (backward-compatible like reviewPlan), stage-index validated & clamped, cleared on finish; app-level exit/re-entry test proves stage B resume; storage corruption tests; gates: 306/306 tests, tsc, eslint, build clean
+
+=== Bundle: /home/z/my-project/download/ryazi-yar-six-pre-push-20261030-0740.bundle ===
+-- size / sha256:
+2746564 bytes
+7b30ad6cc452ee67d27257458352fbd9d8ff7fdc854fa7eb5fb790091458feba  /home/z/my-project/download/ryazi-yar-six-pre-push-20261030-0740.bundle
+-- git bundle verify:
+/home/z/my-project/download/ryazi-yar-six-pre-push-20261030-0740.bundle is okay
+The bundle contains these 4 refs:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+d39c15e0f98ed88f47d65f7f3df3a03b89e7c1f6 refs/heads/main
+1a90e4fa383aefb684e852480448aa35acbd7a01 refs/remotes/origin/main
+d39c15e0f98ed88f47d65f7f3df3a03b89e7c1f6 HEAD
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+-- git bundle list-heads:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+d39c15e0f98ed88f47d65f7f3df3a03b89e7c1f6 refs/heads/main
+1a90e4fa383aefb684e852480448aa35acbd7a01 refs/remotes/origin/main
+d39c15e0f98ed88f47d65f7f3df3a03b89e7c1f6 HEAD
+-- clone: OK
+-- git rev-parse --verify 355a1de^{commit}:
+fatal: Needed a single revision
+[exit=128]
+-- git cat-file -t 355a1de:
+fatal: Not a valid object name 355a1de
+[exit=128]
+-- total commits:
+35
+-- tip:
+d39c15e audit(phase7): FINAL REPORT — 7 phases verified, 0 critical / 4 major (all fixed) / 8 medium / 9 minor, ACCEPTED WITH MINOR ISSUES
+
+=== Bundle: /home/z/my-project/download/ryazi-yar-six-pre-rtl-math-fix-20261101.bundle ===
+-- size / sha256:
+42052292 bytes
+029e9a83675acd1a4b1b8d8229744422dec38efc6ee10097de4f4dbdd7c9d83a  /home/z/my-project/download/ryazi-yar-six-pre-rtl-math-fix-20261101.bundle
+-- git bundle verify:
+/home/z/my-project/download/ryazi-yar-six-pre-rtl-math-fix-20261101.bundle is okay
+The bundle contains these 6 refs:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/heads/main
+1b00eb280335afb38b0ecfb96f88ea4733f5b0ef refs/heads/prototypes/interactive-learning
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+1b00eb280335afb38b0ecfb96f88ea4733f5b0ef HEAD
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+-- git bundle list-heads:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/heads/main
+1b00eb280335afb38b0ecfb96f88ea4733f5b0ef refs/heads/prototypes/interactive-learning
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+1b00eb280335afb38b0ecfb96f88ea4733f5b0ef HEAD
+-- clone: OK
+-- git rev-parse --verify 355a1de^{commit}:
+fatal: Needed a single revision
+[exit=128]
+-- git cat-file -t 355a1de:
+fatal: Not a valid object name 355a1de
+[exit=128]
+-- total commits:
+59
+-- tip:
+1b00eb2 docs(proto-v2): add stage 3.1 owner-evaluation reports (7 md) to repo evidence — SHA of evidence commit 28baf53 recorded in git-state report; download package kept in sync
+
+=== Bundle: /home/z/my-project/download/ryazi-yar-six-pre-visual-transform-20261031.bundle ===
+-- size / sha256:
+13366954 bytes
+5607f55dd68830deec9c701e444c273420a4ed54811cf046ed8963fa406ea836  /home/z/my-project/download/ryazi-yar-six-pre-visual-transform-20261031.bundle
+-- git bundle verify:
+/home/z/my-project/download/ryazi-yar-six-pre-visual-transform-20261031.bundle is okay
+The bundle contains these 5 refs:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/heads/main
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 HEAD
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+-- git bundle list-heads:
+5c179cbf76076575392fd46857ad2aa7a8636662 refs/heads/adaptive-learning
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/heads/main
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 refs/remotes/origin/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888 refs/tags/audit-accepted-final
+77a5a383e9785be9ce8ad02cdee403cb339e33e3 HEAD
+-- clone: OK
+-- git rev-parse --verify 355a1de^{commit}:
+fatal: Needed a single revision
+[exit=128]
+-- git cat-file -t 355a1de:
+fatal: Not a valid object name 355a1de
+[exit=128]
+-- total commits:
+54
+-- tip:
+77a5a38 audit(redesign): Math Slate evidence pack — visual/UX audit (6 structural + 10 component findings, 8 before-shots), DESIGN_SYSTEM.md (tokens/typography/backgrounds/motion/guardrails), gates evidence (306/306 + F06-F10 46/46 + tsc/lint/build), reduced-motion CSS proof, live-bundle byte-identity proof (index-JR2jRQub.js SHA-256 0a16a4e7…), CI/Deploy run evidence per SHA, 30 after-shots of live design, 4 before/after comparisons, 11-deliverable delivery report with honest limitations
+
+### END BUNDLE SCAN

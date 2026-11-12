@@ -1,0 +1,4875 @@
+{
+ "dom": [
+  {
+   "txt": "پرش به محتوای اصلی",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/400",
+   "cls": "sr-only focus:not-sr-only focus:absolute focus:top-2 focus:r",
+   "ratio": 13.9,
+   "worst_bg": "#f7f9ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "ریاضی‌یار ششم",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "18/900",
+   "cls": "font-black text-base sm:text-lg text-slate-900 tracking-tigh",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "آموزش تعاملی ریاضی پایه شش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-500 font-medium",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "داشبورد",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "درس‌نامه و تمرین",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 1.1,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "آزمون",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "گزارش پیشرفت",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "آزمایشگاه تعاملی",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "تسلط کل: ٪۰",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "hidden sm:inline-flex chip bg-emerald-50 text-emerald-700 sh",
+   "ratio": 5.21,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فهرست فصل‌ها و درس‌ها",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فصل ۱: عدد و الگوهای عددی",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(79, 70, 229)",
+    "rgb(124, 58, 237)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2.5 rounded-xl text-xs font-bold t",
+   "ratio": 5.7,
+   "worst_bg": "#7c3aed",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "• الگوهای عددی و رابطه عمو",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2 rounded-lg text-xs transition-al",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "• عددنویسی و ارزش مکانی",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "w-full text-right px-3 py-2 rounded-lg text-xs transition-al",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "• قواعد بخش‌پذیری",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "w-full text-right px-3 py-2 rounded-lg text-xs transition-al",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "• اعداد صحیح",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "w-full text-right px-3 py-2 rounded-lg text-xs transition-al",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فصل ۲: کسر",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2.5 rounded-xl text-xs font-bold t",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فصل ۳: اعداد اعشاری",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2.5 rounded-xl text-xs font-bold t",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فصل ۴: تقارن و مختصات",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2.5 rounded-xl text-xs font-bold t",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فصل ۵: اندازه‌گیری",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2.5 rounded-xl text-xs font-bold t",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فصل ۶: تناسب و درصد",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2.5 rounded-xl text-xs font-bold t",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فصل ۷: تقریب و تخمین",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "w-full text-right px-3 py-2.5 rounded-xl text-xs font-bold t",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۱",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(224, 231, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg bg-brand-100 text-brand-700 flex items-ce",
+   "ratio": 6.41,
+   "worst_bg": "#e0e7ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "الگوهای عددی و رابطه عمومی",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": true,
+   "need": 3,
+   "fs": "24/900",
+   "cls": "text-xl sm:text-2xl font-black text-slate-900 tracking-tight",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "کشف رابطه بین شماره شکل و ",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/400",
+   "cls": "text-sm text-slate-600 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "مراحل یادگیری مفهومی:",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "font-bold text-sm text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۱",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(99, 102, 241)",
+    "rgb(124, 58, 237)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "w-6 h-6 rounded-lg bg-gradient-to-br from-brand-500 to-viole",
+   "ratio": 4.47,
+   "worst_bg": "#6366f1",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۲",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(99, 102, 241)",
+    "rgb(124, 58, 237)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "w-6 h-6 rounded-lg bg-gradient-to-br from-brand-500 to-viole",
+   "ratio": 4.47,
+   "worst_bg": "#6366f1",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۳",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(99, 102, 241)",
+    "rgb(124, 58, 237)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "w-6 h-6 rounded-lg bg-gradient-to-br from-brand-500 to-viole",
+   "ratio": 4.47,
+   "worst_bg": "#6366f1",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "دستیار آموزشی ریاضی‌یار",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "هر وقت آماده بودی شروع کن؛",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/400",
+   "cls": "text-[11px] text-slate-500",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "مثال حل‌شده گام‌به‌گام:",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "font-bold text-sm text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "در الگوی ۴، ۷، ۱۰، ۱۳، … ج",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14.7/700",
+   "cls": "math-expr",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۱",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(224, 231, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "10/900",
+   "cls": "w-4 h-4 rounded-full bg-brand-100 text-brand-700 text-[10px]",
+   "ratio": 6.41,
+   "worst_bg": "#e0e7ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "گام ۱: اختلاف جمله‌های متو",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۲",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(224, 231, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "10/900",
+   "cls": "w-4 h-4 rounded-full bg-brand-100 text-brand-700 text-[10px]",
+   "ratio": 6.41,
+   "worst_bg": "#e0e7ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "گام ۲: برای شکل اول داریم:",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۳",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(224, 231, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "10/900",
+   "cls": "w-4 h-4 rounded-full bg-brand-100 text-brand-700 text-[10px]",
+   "ratio": 6.41,
+   "worst_bg": "#e0e7ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "گام ۳: برای جمله بیستم عدد",
+   "fg": "rgb(51, 65, 85)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "",
+   "ratio": 10.35,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۶۱",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12.6/700",
+   "cls": "math-expr",
+   "ratio": 5.48,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "نکتهٔ طلایی:",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 4.84,
+   "worst_bg": "#fffbeb",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "تمرین‌های تعاملی سطح‌بندی‌",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 16.96,
+   "worst_bg": "#f7f9ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سؤال ۱",
+   "fg": "rgb(79, 70, 229)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-xs font-black text-brand-600 bg-brand-50 rounded-lg px-",
+   "ratio": 5.62,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سطح: آسان",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold px-2.5 py-1 rounded-full border bg-emerald",
+   "ratio": 5.21,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "دریافت راهنمایی (۰/۳)",
+   "fg": "rgb(217, 119, 6)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 3.07,
+   "worst_bg": "#fffbeb",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "در الگوی ۵، ۹، ۱۳، ۱۷، … ع",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "15/700",
+   "cls": "",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "پاسخ عددی خود را بنویس (ار",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "block text-xs font-bold text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "فقط عدد صحیح",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سؤال ۲",
+   "fg": "rgb(79, 70, 229)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-xs font-black text-brand-600 bg-brand-50 rounded-lg px-",
+   "ratio": 5.62,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سطح: متوسط",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold px-2.5 py-1 rounded-full border bg-amber-5",
+   "ratio": 4.84,
+   "worst_bg": "#fffbeb",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "دریافت راهنمایی (۰/۳)",
+   "fg": "rgb(217, 119, 6)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 3.07,
+   "worst_bg": "#fffbeb",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "رابطه یک الگوی عددی به‌صور",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "15/700",
+   "cls": "",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۱",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۵۹",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۲",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۶۰",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۳",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۶۱",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۴",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۵۶",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سؤال ۳",
+   "fg": "rgb(79, 70, 229)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-xs font-black text-brand-600 bg-brand-50 rounded-lg px-",
+   "ratio": 5.62,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سطح: متوسط",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold px-2.5 py-1 rounded-full border bg-amber-5",
+   "ratio": 4.84,
+   "worst_bg": "#fffbeb",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "دریافت راهنمایی (۰/۳)",
+   "fg": "rgb(217, 119, 6)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 3.07,
+   "worst_bg": "#fffbeb",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "در الگوی ۲، ۵، ۸، ۱۱، … جم",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "15/700",
+   "cls": "",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۱",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۲۹",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۲",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۳۰",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۳",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۳۲",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۴",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۲۷",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سؤال ۴",
+   "fg": "rgb(79, 70, 229)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-xs font-black text-brand-600 bg-brand-50 rounded-lg px-",
+   "ratio": 5.62,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "سطح: دشوار",
+   "fg": "rgb(190, 18, 60)",
+   "bgs": [
+    "rgb(255, 241, 242)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold px-2.5 py-1 rounded-full border bg-rose-50",
+   "ratio": 5.72,
+   "worst_bg": "#fff1f2",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "دریافت راهنمایی (۰/۳)",
+   "fg": "rgb(217, 119, 6)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 3.07,
+   "worst_bg": "#fffbeb",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "رابطه یک الگو «(۷ × شماره ",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "15/700",
+   "cls": "",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۱",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۷۰۳",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۲",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۷۰۰",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۳",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۷۱۰",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۴",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/900",
+   "cls": "w-6 h-6 rounded-lg flex items-center justify-center text-[11",
+   "ratio": 4.34,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "۷۰۷",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "درس‌نامه و تمرین"
+  },
+  {
+   "txt": "پرش به محتوای اصلی",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/400",
+   "cls": "sr-only focus:not-sr-only focus:absolute focus:top-2 focus:r",
+   "ratio": 13.9,
+   "worst_bg": "#f7f9ff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "ریاضی‌یار ششم",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "18/900",
+   "cls": "font-black text-base sm:text-lg text-slate-900 tracking-tigh",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "آموزش تعاملی ریاضی پایه شش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-500 font-medium",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "داشبورد",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "درس‌نامه و تمرین",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "آزمون",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 1.1,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "گزارش پیشرفت",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "آزمایشگاه تعاملی",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "تسلط کل: ٪۰",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "hidden sm:inline-flex chip bg-emerald-50 text-emerald-700 sh",
+   "ratio": 5.21,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "آزمون موضوعی یک فصل یا آزم",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "آزمون جامع کل کتاب",
+   "fg": "rgb(49, 46, 129)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-brand-900",
+   "ratio": 11.42,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۹۸ پرسش از هر ۷ فصل",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-brand-700 mt-1",
+   "ratio": 7.9,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "فصل ۱: عدد و الگوهای عددی",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۱۶ پرسش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 mt-1",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "فصل ۲: کسر",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۱۶ پرسش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 mt-1",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "فصل ۳: اعداد اعشاری",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۱۶ پرسش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 mt-1",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "فصل ۴: تقارن و مختصات",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۱۲ پرسش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 mt-1",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "فصل ۵: اندازه‌گیری",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۱۲ پرسش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 mt-1",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "فصل ۶: تناسب و درصد",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۱۲ پرسش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 mt-1",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "فصل ۷: تقریب و تخمین",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "۱۴ پرسش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 mt-1",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "آزمون"
+  },
+  {
+   "txt": "پرش به محتوای اصلی",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/400",
+   "cls": "sr-only focus:not-sr-only focus:absolute focus:top-2 focus:r",
+   "ratio": 13.9,
+   "worst_bg": "#f7f9ff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "ریاضی‌یار ششم",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "18/900",
+   "cls": "font-black text-base sm:text-lg text-slate-900 tracking-tigh",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "آموزش تعاملی ریاضی پایه شش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-500 font-medium",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "داشبورد",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "درس‌نامه و تمرین",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "آزمون",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "گزارش پیشرفت",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 1.1,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "آزمایشگاه تعاملی",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "تسلط کل: ٪۰",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "hidden sm:inline-flex chip bg-emerald-50 text-emerald-700 sh",
+   "ratio": 5.21,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "گزارش تحلیلی پیشرفت و تشخی",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "18/900",
+   "cls": "text-lg font-black text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بازنشانی داده‌های پیشرفت",
+   "fg": "rgb(225, 29, 72)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 4.7,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "کل تلاش‌ها",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(248, 250, 252)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/500",
+   "cls": "text-xs text-slate-500 font-medium",
+   "ratio": 4.55,
+   "worst_bg": "#f8fafc",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "۰",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(248, 250, 252)"
+   ],
+   "large": true,
+   "need": 3,
+   "fs": "20/900",
+   "cls": "text-xl font-black text-slate-900 mt-1",
+   "ratio": 17.06,
+   "worst_bg": "#f8fafc",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "پاسخ‌های درست",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/500",
+   "cls": "text-xs text-emerald-700 font-medium",
+   "ratio": 5.21,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "۰",
+   "fg": "rgb(6, 78, 59)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": true,
+   "need": 3,
+   "fs": "20/900",
+   "cls": "text-xl font-black text-emerald-900 mt-1",
+   "ratio": 9.23,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "میانگین تسلط کل کتاب",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/500",
+   "cls": "text-xs text-sun-700 font-medium",
+   "ratio": 4.84,
+   "worst_bg": "#fffbeb",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": true,
+   "need": 3,
+   "fs": "20/900",
+   "cls": "text-xl font-black text-sun-700 mt-1",
+   "ratio": 4.84,
+   "worst_bg": "#fffbeb",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "درس‌های تکمیل‌شده",
+   "fg": "rgb(194, 65, 12)",
+   "bgs": [
+    "rgb(255, 247, 237)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/500",
+   "cls": "text-xs text-orange-700 font-medium",
+   "ratio": 4.88,
+   "worst_bg": "#fff7ed",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "۰",
+   "fg": "rgb(124, 45, 18)",
+   "bgs": [
+    "rgb(255, 247, 237)"
+   ],
+   "large": true,
+   "need": 3,
+   "fs": "20/900",
+   "cls": "text-xl font-black text-orange-900 mt-1",
+   "ratio": 8.83,
+   "worst_bg": "#fff7ed",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "تسلط فصل به فصل:",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "font-bold text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "فصل ۱: عدد و الگوهای عددی",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold text-slate-600 w-40 sm:w-56 truncate",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰ — شروع نشده",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold w-28 text-left text-indigo-700",
+   "ratio": 7.9,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "فصل ۲: کسر",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold text-slate-600 w-40 sm:w-56 truncate",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰ — شروع نشده",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold w-28 text-left text-emerald-700",
+   "ratio": 5.48,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "فصل ۳: اعداد اعشاری",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold text-slate-600 w-40 sm:w-56 truncate",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰ — شروع نشده",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold w-28 text-left text-amber-700",
+   "ratio": 5.02,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "فصل ۴: تقارن و مختصات",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold text-slate-600 w-40 sm:w-56 truncate",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰ — شروع نشده",
+   "fg": "rgb(190, 18, 60)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold w-28 text-left text-rose-700",
+   "ratio": 6.29,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "فصل ۵: اندازه‌گیری",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold text-slate-600 w-40 sm:w-56 truncate",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰ — شروع نشده",
+   "fg": "rgb(14, 116, 144)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold w-28 text-left text-cyan-700",
+   "ratio": 5.36,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "فصل ۶: تناسب و درصد",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold text-slate-600 w-40 sm:w-56 truncate",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰ — شروع نشده",
+   "fg": "rgb(109, 40, 217)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold w-28 text-left text-violet-700",
+   "ratio": 7.1,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "فصل ۷: تقریب و تخمین",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold text-slate-600 w-40 sm:w-56 truncate",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰ — شروع نشده",
+   "fg": "rgb(15, 118, 110)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-xs font-bold w-28 text-left text-teal-700",
+   "ratio": 5.47,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "اشتباهات اخیر و توصیه جبرا",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "font-bold text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "هنوز خطای تشخیص‌داده‌شده‌ا",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "گزارش والد/مربی — وضعیت مه",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "font-bold text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "تمرکز این گزارش بر تسلط وا",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 leading-relaxed",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "مهارت",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(248, 250, 252)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-right py-2.5 px-2.5 font-black",
+   "ratio": 4.55,
+   "worst_bg": "#f8fafc",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "وضعیت",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(248, 250, 252)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-right py-2.5 px-2.5 font-black",
+   "ratio": 4.55,
+   "worst_bg": "#f8fafc",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "اطمینان سامانه",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(248, 250, 252)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-right py-2.5 px-2.5 font-black",
+   "ratio": 4.55,
+   "worst_bg": "#f8fafc",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "مرور بعدی",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(248, 250, 252)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "text-right py-2.5 px-2.5 font-black",
+   "ratio": 4.55,
+   "worst_bg": "#f8fafc",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "کشف رابطه الگوهای عددی",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "عددنویسی و ارزش مکانی",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "قواعد بخش‌پذیری",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "اعداد صحیح و محور اعداد",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "یادآوری کسر، ساده‌سازی و م",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "جمع و تفریق کسرها",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "ضرب و تقسیم کسرها و اعداد ",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "کسر بین دو کسر",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "مرتبه‌های اعشاری و مقایسه",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "تبدیل کسر و اعشار",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "جمع و تفریق اعداد اعشاری",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "ضرب و تقسیم اعداد اعشاری",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "تقارن محوری و شمارش خط‌های",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "تقارن مرکزی و قرینه نسبت ب",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "دستگاه مختصات و زوج مرتب",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "واحدهای سطح و زمین",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "محیط و مساحت دایره",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "حجم و گنجایش",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "نسبت و جدول تناسب",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "درصد و کاربردهای آن",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "نمودارهای آماری",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "قطع کردن و گرد کردن",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "کاربرد تقریب در محاسبات",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "عملیات ترکیبی",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "py-2 px-2 font-bold text-slate-800",
+   "ratio": 14.63,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "شروع نشده",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "٪۰",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "بدون برنامه مرور",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "py-2 px-2 text-slate-600",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "پشتیبان‌گیری داده‌ها (فقط ",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "font-bold text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "حریم خصوصی",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "font-bold text-sm text-slate-900 mb-2",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "همه پیشرفت تو فقط روی دستگ",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "گزارش پیشرفت"
+  },
+  {
+   "txt": "پرش به محتوای اصلی",
+   "fg": "rgb(30, 41, 59)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/400",
+   "cls": "sr-only focus:not-sr-only focus:absolute focus:top-2 focus:r",
+   "ratio": 13.9,
+   "worst_bg": "#f7f9ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ریاضی‌یار ششم",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "18/900",
+   "cls": "font-black text-base sm:text-lg text-slate-900 tracking-tigh",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "آموزش تعاملی ریاضی پایه شش",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-500 font-medium",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "داشبورد",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 1.1,
+   "worst_bg": "#f1f5f9",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "درس‌نامه و تمرین",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "آزمون",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "آزمایشگاه تعاملی",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط کل: ٪۰",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "hidden sm:inline-flex chip bg-emerald-50 text-emerald-700 sh",
+   "ratio": 5.21,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "سلام دانش‌آموز پایه ششم!",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": true,
+   "need": 3,
+   "fs": "24/900",
+   "cls": "text-xl sm:text-2xl font-black mt-2 tracking-tight",
+   "ratio": 1.05,
+   "worst_bg": "#f7f9ff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "یادگیری را از آخرین مبحث م",
+   "fg": "rgb(224, 231, 255)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/500",
+   "cls": "text-sm text-brand-100 mt-1 font-medium",
+   "ratio": 1.17,
+   "worst_bg": "#f7f9ff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ادامه آخرین درس: الگوهای ع",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/700",
+   "cls": "relative px-5 py-2.5 bg-white text-brand-700 font-bold text-",
+   "ratio": 7.9,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "کشف رابطه الگوهای عددی",
+   "fg": "rgb(255, 255, 255)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "18/900",
+   "cls": "font-black text-lg mt-1.5",
+   "ratio": 1.05,
+   "worst_bg": "#f7f9ff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "سنجش پیش‌نیاز — پیش از «کش",
+   "fg": "rgb(236, 253, 245)",
+   "bgs": [
+    "rgb(247, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-emerald-50 mt-1.5 leading-relaxed",
+   "ratio": 1.0,
+   "worst_bg": "#f7f9ff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "چه یاد گرفته‌ای و کجا نیاز",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "14/900",
+   "cls": "font-black text-sm text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۰ تسلط تأییدشده",
+   "fg": "rgb(6, 95, 70)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "font-black text-emerald-800",
+   "ratio": 7.29,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "با مرور تأخیری موفق",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(236, 253, 245)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-emerald-700 mt-0.5",
+   "ratio": 5.21,
+   "worst_bg": "#ecfdf5",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۰ تسلط موقت",
+   "fg": "rgb(7, 89, 133)",
+   "bgs": [
+    "rgb(240, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "font-black text-sky-800",
+   "ratio": 7.09,
+   "worst_bg": "#f0f9ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "نیازمند انتقال و مرور",
+   "fg": "rgb(3, 105, 161)",
+   "bgs": [
+    "rgb(240, 249, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-sky-700 mt-0.5",
+   "ratio": 5.57,
+   "worst_bg": "#f0f9ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۰ در حال یادگیری",
+   "fg": "rgb(55, 48, 163)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "font-black text-brand-800",
+   "ratio": 8.88,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "مسیر ادامه دارد",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-brand-700 mt-0.5",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۰ نیازمند تمرین",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/900",
+   "cls": "font-black text-sun-700",
+   "ratio": 4.84,
+   "worst_bg": "#fffbeb",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "پایه‌ها را محکم کنیم",
+   "fg": "rgb(217, 119, 6)",
+   "bgs": [
+    "rgb(255, 251, 235)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-sun-600 mt-0.5",
+   "ratio": 3.07,
+   "worst_bg": "#fffbeb",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "پیشرفت واقعی: ۰ درس از ۲۴ ",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/400",
+   "cls": "text-[11px] text-slate-500 border-t border-slate-100 pt-2.5",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "مرور سررسیدشده‌ای نداری. پ",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 leading-relaxed",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "مرور تأخیری شرط «تسلط تأیی",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/400",
+   "cls": "text-[11px] text-slate-500 border-t border-slate-100 pt-2.5",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "هنوز الگوی خطای مشخصی ثبت ",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 leading-relaxed",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "یک پاسخ غلط مدرک قطعی سوءب",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/400",
+   "cls": "text-[11px] text-slate-500 border-t border-slate-100 pt-2.5",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "پس از نخستین تمرین‌ها، سنج",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-500 leading-relaxed",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "آزمون فوری و آزمون تأخیری ",
+   "fg": "rgb(100, 116, 139)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/400",
+   "cls": "text-[11px] text-slate-500 border-t border-slate-100 pt-2.5",
+   "ratio": 4.76,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "فصل ۱",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "chip bg-slate-100 text-slate-600",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط: ٪۰",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-indigo-700",
+   "ratio": 7.9,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "عدد و الگوهای عددی",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "الگوهای خطی و هندسی، عددنو",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۴ درس — ۱۶ پرسش",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 mt-2 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ورود به درس‌نامه و تمرین‌ه",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "mt-4 w-full py-2.5 rounded-xl bg-brand-50 hover:bg-gradient-",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "فصل ۲",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "chip bg-slate-100 text-slate-600",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط: ٪۰",
+   "fg": "rgb(4, 120, 87)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-emerald-700",
+   "ratio": 5.48,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "کسر",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ساده‌سازی، جمع و تفریق، ضر",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۴ درس — ۱۶ پرسش",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 mt-2 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ورود به درس‌نامه و تمرین‌ه",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "mt-4 w-full py-2.5 rounded-xl bg-brand-50 hover:bg-gradient-",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "فصل ۳",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "chip bg-slate-100 text-slate-600",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط: ٪۰",
+   "fg": "rgb(180, 83, 9)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-amber-700",
+   "ratio": 5.02,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "اعداد اعشاری",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "مرتبه‌های اعشاری، تبدیل کس",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۴ درس — ۱۶ پرسش",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 mt-2 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ورود به درس‌نامه و تمرین‌ه",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "mt-4 w-full py-2.5 rounded-xl bg-brand-50 hover:bg-gradient-",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "فصل ۴",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "chip bg-slate-100 text-slate-600",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط: ٪۰",
+   "fg": "rgb(190, 18, 60)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-rose-700",
+   "ratio": 6.29,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تقارن و مختصات",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تقارن محوری، تقارن مرکزی (",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۳ درس — ۱۲ پرسش",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 mt-2 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ورود به درس‌نامه و تمرین‌ه",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "mt-4 w-full py-2.5 rounded-xl bg-brand-50 hover:bg-gradient-",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "فصل ۵",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "chip bg-slate-100 text-slate-600",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط: ٪۰",
+   "fg": "rgb(14, 116, 144)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-cyan-700",
+   "ratio": 5.36,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "اندازه‌گیری",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "واحدهای سطح و زمین، محیط و",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۳ درس — ۱۲ پرسش",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 mt-2 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ورود به درس‌نامه و تمرین‌ه",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "mt-4 w-full py-2.5 rounded-xl bg-brand-50 hover:bg-gradient-",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "فصل ۶",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "chip bg-slate-100 text-slate-600",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط: ٪۰",
+   "fg": "rgb(109, 40, 217)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-violet-700",
+   "ratio": 7.1,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تناسب و درصد",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "نسبت و جدول تناسب، محاسبه ",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۳ درس — ۱۲ پرسش",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 mt-2 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ورود به درس‌نامه و تمرین‌ه",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "mt-4 w-full py-2.5 rounded-xl bg-brand-50 hover:bg-gradient-",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "فصل ۷",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(241, 245, 249)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/700",
+   "cls": "chip bg-slate-100 text-slate-600",
+   "ratio": 6.92,
+   "worst_bg": "#f1f5f9",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تسلط: ٪۰",
+   "fg": "rgb(15, 118, 110)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "text-teal-700",
+   "ratio": 5.47,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "تقریب و تخمین",
+   "fg": "rgb(15, 23, 42)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "16/900",
+   "cls": "font-black text-base text-slate-900",
+   "ratio": 17.85,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "قطع کردن و گرد کردن اعداد ",
+   "fg": "rgb(71, 85, 105)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/400",
+   "cls": "text-xs text-slate-600 mt-1 leading-relaxed",
+   "ratio": 7.58,
+   "worst_bg": "#ffffff",
+   "ok": true,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "۳ درس — ۱۴ پرسش",
+   "fg": "rgb(148, 163, 184)",
+   "bgs": [
+    "rgb(255, 255, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "11/500",
+   "cls": "text-[11px] text-slate-400 mt-2 font-medium",
+   "ratio": 2.56,
+   "worst_bg": "#ffffff",
+   "ok": false,
+   "tab": "داشبورد"
+  },
+  {
+   "txt": "ورود به درس‌نامه و تمرین‌ه",
+   "fg": "rgb(67, 56, 202)",
+   "bgs": [
+    "rgb(238, 242, 255)"
+   ],
+   "large": false,
+   "need": 4.5,
+   "fs": "12/700",
+   "cls": "mt-4 w-full py-2.5 rounded-xl bg-brand-50 hover:bg-gradient-",
+   "ratio": 7.07,
+   "worst_bg": "#eef2ff",
+   "ok": true,
+   "tab": "داشبورد"
+  }
+ ],
+ "pixel": [
+  {
+   "el": "sidebar active chapter (gradient brand→violet)",
+   "out": "{'bg_point_0': (123, 58, 237), 'bg_point_1': (101, 64, 233), 'bg_point_2': (80, 70, 229), 'text_pixel': (1077, (255, 255, 255))}"
+  }
+ ],
+ "keyboard": {
+  "focus_visible_nav_tab": {
+   "text": "داشبورد",
+   "matchesFV": true,
+   "outline": "0px solid rgb(255, 255, 255)",
+   "outlineOffset": "0px"
+  },
+  "traversal_40_unique": 10,
+  "traversal_seq": [
+   "BUTTON:درس‌نامه و ت",
+   "BUTTON:آزمون",
+   "BUTTON:گزارش پیشرفت",
+   "BUTTON:آزمایشگاه تع",
+   "BUTTON:ادامه آخرین ",
+   "BUTTON:شروع",
+   "BUTTON:ورود به درس‌",
+   "BUTTON:ورود به درس‌",
+   "BUTTON:ورود به درس‌",
+   "BUTTON:ورود به درس‌",
+   "BUTTON:ورود به درس‌",
+   "BUTTON:ورود به درس‌",
+   "BUTTON:ورود به درس‌",
+   "BODY:پرش به محتوا",
+   "A:پرش به محتوا",
+   "BUTTON:داشبورد",
+   "BUTTON:درس‌نامه و ت",
+   "BUTTON:آزمون",
+   "BUTTON:گزارش پیشرفت",
+   "BUTTON:آزمایشگاه تع",
+   "BUTTON:ادامه آخرین ",
+   "BUTTON:شروع",
+   "BUTTON:ورود به درس‌",
+   "BUTTON:ورود به درس‌"
+  ],
+  "dialog_roles_on_exam": 0,
+  "disabled_present": 0
+ },
+ "reduced_motion": {
+  "home": {
+   "activeAnimations": 0,
+   "activeTransitions": 28
+  },
+  "solver": {
+   "found": false
+  }
+ }
+}

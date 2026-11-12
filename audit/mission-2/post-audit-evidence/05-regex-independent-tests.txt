@@ -1,0 +1,130 @@
+==================================================================
+# Independent regex/segmentation verification — mathBidi at HEAD 93680a3
+# Generated: 2026-11-08T20:47:45.347Z
+# Input module: /tmp/postaudit/mathBidi.transpiled.mjs (esbuild transpile of src/utils/mathBidi.ts)
+==================================================================
+
+## [0] Codepoint audit — which separator/percent chars are in MATH_RUN?
+  ٪ ARABIC PERCENT SIGN U+066A  → MATH_RUN: ABSENT (no literal, no escape) | OP_BETWEEN: ABSENT
+  %  PERCENT SIGN U+0025  → MATH_RUN: ABSENT (no literal, no escape) | OP_BETWEEN: ABSENT
+  ٬ ARABIC THOUSANDS SEPARATOR U+066C  → MATH_RUN: ABSENT (no literal, no escape) | OP_BETWEEN: ABSENT
+  ,  COMMA U+002C  → MATH_RUN: ABSENT (no literal, no escape) | OP_BETWEEN: ABSENT
+  ٫ ARABIC DECIMAL SEPARATOR U+066B  → MATH_RUN: PRESENT (literal) | OP_BETWEEN: ABSENT
+  ، ARABIC COMMA U+060C  → MATH_RUN: PRESENT (literal or as \u060C) | OP_BETWEEN: ABSENT
+  − MINUS SIGN U+2212  → MATH_RUN: PRESENT (literal or as \u2212) | OP_BETWEEN: PRESENT
+  – EN DASH U+2013  → MATH_RUN: PRESENT (literal or as \u2013) | OP_BETWEEN: PRESENT
+
+  Claimed Mission-2 change was: ADD ٪ % ٬ , to MATH_RUN/OP_BETWEEN.
+  PASS  Claimed additions (٪ U+066A, % U+0025, ٬ U+066C, , U+002C) are ABSENT from MATH_RUN source line — neither literal nor escaped — claimed fix NOT in codebase
+  PASS  MATH_RUN contains ٪ (U+066A)? (expected: NO) — ٪ absent ⇒ claimed addition NOT present
+  PASS  MATH_RUN contains ٬ (U+066C)? (expected: NO) — ٬ absent ⇒ claimed addition NOT present
+  PASS  MATH_RUN contains ASCII % ? (expected: NO)
+  PASS  MATH_RUN contains ASCII , ? (expected: NO)
+
+## [1] The 5 owner-directive sample expressions — actual splitMathSegments behaviour
+
+  INPUT: «۲ + ۷ + ۴ = ۱۳»
+    segments (1):
+      [math] «۲ + ۷ + ۴ = ۱۳»
+  PASS  content preserved byte-for-byte (logical order untouched) — join === input
+    math islands: 1 → ["۲ + ۷ + ۴ = ۱۳"]
+
+  INPUT: «(۳ × ۱) + ۱ = ۴»
+    segments (1):
+      [math] «(۳ × ۱) + ۱ = ۴»
+  PASS  content preserved byte-for-byte (logical order untouched) — join === input
+    math islands: 1 → ["(۳ × ۱) + ۱ = ۴"]
+
+  INPUT: «۲۵٪ × ۸۰»
+    segments (1):
+      [text] «۲۵٪ × ۸۰»
+  PASS  content preserved byte-for-byte (logical order untouched) — join === input
+    math islands: 0 → []
+
+  INPUT: «۱۰٬۰۰۰ + ۲۵۰»
+    segments (2):
+      [text] «۱۰٬»
+      [math] «۰۰۰ + ۲۵۰»
+  PASS  content preserved byte-for-byte (logical order untouched) — join === input
+    math islands: 1 → ["۰۰۰ + ۲۵۰"]
+
+  INPUT: «مبلغ پرداختی = ۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰»
+    segments (3):
+      [text] «مبلغ پرداختی = ۸۵٪ × ۴۰۰٬»
+      [math] «۰۰۰ = ۳۴۰»
+      [text] «٬۰۰۰»
+  PASS  content preserved byte-for-byte (logical order untouched) — join === input
+    math islands: 1 → ["۰۰۰ = ۳۴۰"]
+
+## [2] REAL app data strings — q622 & q623 (copied verbatim from src/data/chapters/ch6.ts)
+  q622.prompt
+    input:  «۲۰ از ۸۰ چند درصد است؟»
+    math islands (0): []
+  PASS  q622.prompt: content preserved
+  q622.option[0]
+    input:  «۲۵٪»
+    math islands (0): []
+  PASS  q622.option[0]: content preserved
+  q622.explanation
+    input:  «۲۰/۸۰ = ۱/۴ = ۲۵/۱۰۰، پس ۲۵ درصد است.»
+    math islands (1): ["۲۰/۸۰ = ۱/۴ = ۲۵/۱۰۰،"]
+  PASS  q622.explanation: content preserved
+  q623.prompt
+    input:  «قیمت کیفی ۴۰۰٬۰۰۰ تومان است و فروشنده ۱۵٪ تخفیف می‌دهد. مبلغ قابل پرداخت چقدر است؟»
+    math islands (0): []
+  PASS  q623.prompt: content preserved
+  q623.option[0]
+    input:  «۳۴۰٬۰۰۰ تومان»
+    math islands (0): []
+  PASS  q623.option[0]: content preserved
+  q623.hint[2]
+    input:  «۸۵ × ۴٬۰۰۰ را حساب کن.»
+    math islands (1): ["۸۵ × ۴"]
+  PASS  q623.hint[2]: content preserved
+  q623.explanation
+    input:  «مبلغ پرداختی = ۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰ تومان (مبلغ تخفیف ۶۰٬۰۰۰ تومان است).»
+    math islands (1): ["۰۰۰ = ۳۴۰"]
+  PASS  q623.explanation: content preserved
+
+  >>> FOCUS: q623.explanation — does isolation split INSIDE a number at the ٬ boundary?
+  math islands: ["۰۰۰ = ۳۴۰"]
+  PASS  DANGER SIGN — an island begins mid-number with «۰۰۰» (thousands tail) — this proves the CURRENT regex fragments «۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰» at the ٬ boundary
+
+## [3] Negative & boundary cases (must NOT corrupt normal text)
+  PASS  «به این سؤال پاسخ ندادی.» → no math island (expected), content preserved — islands=[]
+  PASS  «فصل» → no math island (expected), content preserved — islands=[]
+  PASS  «۱۵» → no math island (expected), content preserved — islands=[]
+  PASS  «۳/۴» → no math island (expected), content preserved — islands=[]
+  PASS  «۷۸٫۵» → no math island (expected), content preserved — islands=[]
+  PASS  «۱٬۲۰۰» → no math island (expected), content preserved — islands=[]
+  PASS  «۳−» → no math island (expected), content preserved — islands=[]
+  PASS  «(۲−)» → no math island (expected), content preserved — islands=[]
+  PASS  «۲³» → no math island (expected), content preserved — islands=[]
+  PASS  «اختلاف ثابت × شماره شکل» → no math island (expected), content preserved — islands=[]
+
+## [4] Positive controls (ISOLATION expected) + mixed digit systems
+  PASS  «۱۰−۲×۳» → isolated (>=1 island), content preserved — islands=["۱۰−۲×۳"]
+  PASS  «۱۰ − ۲ × ۳» → isolated (>=1 island), content preserved — islands=["۱۰ − ۲ × ۳"]
+  PASS  «۵ + (۶ × ۲) − (۴ ÷ ۲)» → isolated (>=1 island), content preserved — islands=["۵ + (۶ × ۲) − (۴ ÷ ۲)"]
+  PASS  «−۸ + ۳» → isolated (>=1 island), content preserved — islands=["−۸ + ۳"]
+  PASS  «۱۲ ÷ ۳ = ۴» → isolated (>=1 island), content preserved — islands=["۱۲ ÷ ۳ = ۴"]
+  PASS  «۵ < ۸» → isolated (>=1 island), content preserved — islands=["۵ < ۸"]
+  PASS  «(۲، ۳)» → isolated (>=1 island), content preserved — islands=["(۲، ۳)"]
+  PASS  «12 ÷ 3 = 4» → isolated (>=1 island), content preserved — islands=["12 ÷ 3 = 4"]
+  PASS  «10 - 2 * 3» → isolated (>=1 island), content preserved — islands=["10 - 2"]
+  PASS  «٠١٢ + ٣» → isolated (>=1 island), content preserved — islands=["٠١٢ + ٣"]
+  PASS  «۱۰ − ۲ × ۳ = ۴» → isolated (>=1 island), content preserved — islands=["۱۰ − ۲ × ۳ = ۴"]
+  PASS  «10 – 2» → isolated (>=1 island), content preserved — islands=["10 – 2"]
+
+## [5] The claimed-added chars behave how today? (٪ % ٬ , in expressions)
+  «۲۵٪ × ۸۰» → islands=[]  preserved=true
+  «۱۰٬۰۰۰ + ۲۵۰» → islands=["۰۰۰ + ۲۵۰"]  preserved=true
+  «۵۰% × ۸۰» → islands=[]  preserved=true
+  «۱٬۰۰۰,۲۰۰» → islands=[]  preserved=true
+  «۲۵ percent» → islands=[]  preserved=true
+  NOTE: ٪/%/٬/, break MATH_RUN ⇒ numbers around them are NOT isolated (or worse, split mid-number).
+  This is the exact defect the CLAIMED Mission-2 commit (355a1de) said it fixed — but it is NOT in HEAD.
+
+==================================================================
+SUMMARY: pass=40 fail=0
+==================================================================

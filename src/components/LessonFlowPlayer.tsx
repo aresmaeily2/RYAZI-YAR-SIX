@@ -273,19 +273,19 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
       {/* عنوان و روایت مرحله — با گذار انیمیشنی بین مراحل */}
       <div key={stage.id} className="card p-5 space-y-3 animate-rise border-r-4 border-r-brand-400">
         <h3 className="font-black text-lg text-slate-900">{stage.title}</h3>
-        <p className="text-sm text-slate-600 leading-relaxed">{stage.narrative}</p>
+        <p className="text-sm text-slate-600 leading-relaxed">{bidiText(stage.narrative)}</p>
         {remedialMode && stage.remedial && (
           <div className="bg-sun-50 border border-sun-200 rounded-xl p-3.5 text-xs text-sun-700 leading-relaxed shadow-soft animate-pop" data-testid="flow-remedial">
             <div className="flex items-center gap-1.5 font-bold mb-1">
               <Info className="w-4 h-4" />
               یادآوری کوتاه
             </div>
-            {stage.remedial}
+            {bidiText(stage.remedial)}
           </div>
         )}
         {stage.scenario && (
           <div className="bg-sky-50 border border-sky-200 rounded-xl p-3.5 text-xs text-sky-900 leading-relaxed">
-            {stage.scenario}
+            {bidiText(stage.scenario)}
           </div>
         )}
       </div>
@@ -296,9 +296,9 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
           {stage.representations.map((rep) => (
             <div key={rep.kind} className="card p-4 space-y-2 card-hover">
               <span className="text-[11px] font-bold text-violet-700 bg-violet-50 border border-violet-200 rounded-full px-2.5 py-1">
-                {rep.label}
+                {bidiText(rep.label)}
               </span>
-              <p className="text-xs text-slate-600 leading-relaxed">{rep.content}</p>
+              <p className="text-xs text-slate-600 leading-relaxed">{bidiText(rep.content)}</p>
               {rep.visual && <GroupsVisual visual={rep.visual} />}
             </div>
           ))}
@@ -421,7 +421,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
                     <span className={`text-[10px] text-white rounded-full w-5 h-5 flex items-center justify-center shrink-0 ${placed ? 'bg-emerald-600' : 'bg-slate-300'}`} aria-hidden="true">
                       {toPersianDigits(i + 1)}
                     </span>
-                    {placedStep ? placedStep.label : 'اینجا جای گام بعدی است…'}
+                    {placedStep ? bidiText(placedStep.label) : 'اینجا جای گام بعدی است…'}
                   </div>
                 );
               })}
@@ -454,7 +454,7 @@ export const LessonFlowPlayer: React.FC<LessonFlowPlayerProps> = ({ flow, questi
                     }`}
                     data-testid={`seq-card-${s.id}`}
                   >
-                    {s.label}
+                    {bidiText(s.label)}
                   </button>
                 );
               })}

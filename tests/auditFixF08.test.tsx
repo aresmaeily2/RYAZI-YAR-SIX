@@ -8,6 +8,7 @@ import { rebuildSkillStates, buildQuestionIndex } from '../src/learning/builder'
 import type { SkillState } from '../src/learning/types';
 import type { Question } from '../src/types/curriculum';
 import type { SubmitResult } from '../src/hooks/useLearnerState';
+import { radioName } from './radioName';
 
 /**
  * بررسی F08 — آیا یک پاسخ برای تأیید پیش‌نیاز کفایت می‌کند؟
@@ -161,7 +162,7 @@ function answerAll(mode: 'correct' | 'wrong') {
     if (!question) continue;
     if (question.type === 'mcq') {
       const optionText = mode === 'wrong' ? question.options.find((o) => o !== question.correctAnswer)! : question.correctAnswer;
-      fireEvent.click(within(card).getByRole('radio', { name: optionText }));
+      fireEvent.click(within(card).getByRole('radio', { name: radioName(optionText, question) }));
     } else {
       const value = mode === 'wrong' ? '999999' : question.acceptedAnswers[0];
       fireEvent.change(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), { target: { value } });
@@ -178,7 +179,7 @@ function answerOnlyMcq() {
     const question = findQuestion(qid)!;
     const isMcq = question.type === 'mcq';
     if (isMcq) {
-      fireEvent.click(within(card).getByRole('radio', { name: question.correctAnswer }));
+      fireEvent.click(within(card).getByRole('radio', { name: radioName(question.correctAnswer, question) }));
     } else {
       fireEvent.change(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), { target: { value: '999999' } });
     }
@@ -242,7 +243,7 @@ describe('F08 — یکپارچگی Player با وضعیت مهارت‌ها', ()
       const hintBtn = within(card).getByRole('button', { name: /دریافت راهنمایی/ });
       fireEvent.click(hintBtn);
       if (question.type === 'mcq') {
-        fireEvent.click(within(card).getByRole('radio', { name: question.correctAnswer }));
+        fireEvent.click(within(card).getByRole('radio', { name: radioName(question.correctAnswer, question) }));
       } else {
         fireEvent.change(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), { target: { value: question.acceptedAnswers[0] } });
       }
