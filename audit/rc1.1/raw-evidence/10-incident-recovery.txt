@@ -1,0 +1,96 @@
+############################################################
+# RC1.1 — EVIDENCE 10: SANDBOX INCIDENT RECOVERY + PRE-PUSH CONTROL
+# recorded: 2026-11-11 14:14:32 UTC
+############################################################
+
+== [A] INCIDENT TIMELINE (from forensic inspection, 2026-11-11) ==
+1. RC1.1 sessions (≈08:31-11:41 UTC) built candidate mission/release-rc1:
+   febaf4f → d4eab7d → 3758f9f → 7f3120c → aa601b3 → 37852ce → 304e6be
+   and ran the full pre-push verification (evidence of that run: report §9,
+   raw-evidence 10-12 at SHA 304e6be).
+2. Between sessions the sandbox was recycled; /tmp (bundles, fresh clones,
+   node_modules) was wiped and the persistent volume kept a snapshot taken
+   ≈08:31 UTC: branch mission/release-rc1 back at ee0d0db, objects for
+   37852ce/304e6be absent, audit/rc1.1/ absent, reflog without RC1.1 entries.
+3. Recovery sources found in the surviving session mirror /tmp/my-project:
+   - download/mission-rc1.1/candidate-bundle-37852ce.bundle (git bundle,
+     complete history, created 10:17 UTC)
+   - download/mission-rc1.1/audit-pack/ (byte-copy of audit/rc1.1)
+   - scripts/ (all RC1.1 evidence scripts) and .tools/gh + gh-config (auth)
+4. Restoration: bundle fetched into the repo; branch fast-forwarded
+   ee0d0db → 37852ce (no force); working tree verified below.
+5. NOT recoverable: commit 304e6be (final pre-push verification docs commit,
+   created ≈11:41 UTC, after the bundle). Its exact commit timestamp was not
+   recorded anywhere that survived, so an identical SHA cannot be reproduced.
+   The authorized push SHA 304e6be5172952ff63a88a981813b5d6a953f10e is thus
+   unavailable; a rebuilt documentation commit will carry a NEW SHA and the
+   owner must re-authorize before push (directive §4: SHA mismatch → STOP).
+
+== [B] RESTORATION PROOF ==
+$ git bundle verify <bundle>
+/home/z/my-project/download/mission-rc1.1/candidate-bundle-37852ce.bundle is okay
+The bundle contains this ref:
+37852cea4b23920899461f08460bba35f98c4a6d refs/heads/mission/release-rc1
+The bundle records a complete history.
+The bundle uses this hash algorithm: sha1
+
+known values from the lost session (recorded in prior evidence):
+  expected HEAD : 37852cea4b23920899461f08460bba35f98c4a6d
+  expected tree : 8d63f2c13be022037fad8ab30057e9c98fea9cbc
+restored:
+  actual HEAD   : 37852cea4b23920899461f08460bba35f98c4a6d
+  actual tree   : 8d63f2c13be022037fad8ab30057e9c98fea9cbc
+RESTORATION: EXACT MATCH (cryptographic, tree-identical)
+
+$ git log --oneline -8
+37852ce docs(rc1.1): Agent 5 independent report (PASS WITH LIMITATIONS) + final release readiness + checksums
+aa601b3 docs(rc1.1): audit evidence pack — forensics, baseline, render-path matrix, RTL/accessibility/browser/SW reports, bug register
+7f3120c fix(a11y): next-step-card emerald gradient + assistant note — final contrast fixes, 0 fails across 327 gradient-aware DOM samples
+3758f9f fix(a11y)+contrast: WCAG AA fixes, focus-ring verification, reduced-motion regression — RC1.1 بخش ۱
+d4eab7d feat(rtl)+a11y: paren-aware math isolation, full render-path coverage, clean copy — RC1.1 بخش ۳
+febaf4f fix(a11y): MCQ option accessible name is now «گزینه N: مقدار» — badge number no longer merges with option value
+ee0d0db Merge pull request #1 from aresmaeily2/mission-2r/rtl-core
+a7e1302 audit(mission-2r): record final fix-commit SHAs in GIT_BASELINE (placeholder resolved with real commits)
+
+$ sha256sum -c audit/rc1.1/checksums.sha256   (27 audit-pack files)
+audit/rc1.1/screenshots/rtl-paren-before-after-1366.png: OK
+audit/rc1.1/screenshots/sw-offline-desktop.png: OK
+audit/rc1.1/service-worker-report.md: OK
+manifest exit: 0
+
+mirror audit-pack diff vs repo audit/rc1.1:
+Only in audit/rc1.1/raw-evidence: 10-incident-recovery.txt
+
+== [C] 304e6be UNRECOVERABILITY PROOF ==
+$ git cat-file -t 304e6be5172952ff63a88a981813b5d6a953f10e
+fatal: git cat-file: could not get object info
+(object absent locally; never pushed; bundle predates it; exact commit
+ timestamp unknown → byte-identical reproduction impossible)
+
+== [D] PRE-PUSH CONTROL (directive §4) on the restored candidate ==
+$ git fetch origin
+$ git rev-parse HEAD
+37852cea4b23920899461f08460bba35f98c4a6d
+$ git rev-parse origin/main
+ee0d0db798c6a767f8fcbf2c9c636468a3d6a8c0
+$ git status --short   (empty = clean)
+?? audit/rc1.1/raw-evidence/10-incident-recovery.txt
+(end)
+$ git merge-base --is-ancestor origin/main HEAD
+OK: origin/main ee0d0db is ancestor of candidate HEAD
+
+--- remote refs (no candidate branch on remote yet; tag is pre-existing) ---
+ee0d0db798c6a767f8fcbf2c9c636468a3d6a8c0	HEAD
+ee0d0db798c6a767f8fcbf2c9c636468a3d6a8c0	refs/heads/main
+a7e1302fab5e127fec7dd7d37f0fa4cc732723d2	refs/heads/mission-2r/rtl-core
+a7e1302fab5e127fec7dd7d37f0fa4cc732723d2	refs/pull/1/head
+903d0a9a18a02e0466d090cdac8e6cef3815c888	refs/tags/audit-accepted-final
+2993c704637ca78594eca6bad9d45bde7f9dee40	refs/tags/audit-accepted-final^{}
+
+== [E] AUTH STATE (recovered gh config; token masked, never printed) ==
+github.com
+  ✓ Logged in to github.com account aresmaeily2 (/home/z/my-project/tools/gh-config/hosts.yml)
+  - Active account: true
+  - Git operations protocol: https
+  - Token: gho_************************************
+  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'

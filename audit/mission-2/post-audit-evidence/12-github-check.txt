@@ -1,0 +1,18 @@
+### GitHub-side check for 355a1de — 2026-11-08 20:57:18 UTC
+
+## git ls-remote origin (refs only)
+77a5a383e9785be9ce8ad02cdee403cb339e33e3	HEAD
+77a5a383e9785be9ce8ad02cdee403cb339e33e3	refs/heads/main
+903d0a9a18a02e0466d090cdac8e6cef3815c888	refs/tags/audit-accepted-final
+2993c704637ca78594eca6bad9d45bde7f9dee40	refs/tags/audit-accepted-final^{}
+[exit=0]
+
+## GitHub REST API: GET /repos/aresmaeily2/RYAZI-YAR-SIX/commits/355a1de
+{"message":"API rate limit exceeded for 8.212.10.159. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)","documentation_url":"https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"}
+
+[http_status=403]
+
+## GitHub REST API: GET /repos/aresmaeily2/RYAZI-YAR-SIX/commits/93680a30634d2c3ee4d85e9d2b1e403709063ec1 (control — expect 404 since branch not pushed)
+{"message":"API rate limit exceeded for 8.212.10.159. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)","documentation_url":"https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"}
+
+[http_status=403]

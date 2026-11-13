@@ -1,0 +1,60 @@
+=== MISSION-2R AUDIT — SECTION 1: GIT STATE ===
+date: 2026-11-09 17:32:19 UTC
+
+=== git status ===
+On branch prototypes/interactive-learning
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	audit/mission-2/
+	audit/mission-2r/
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+=== git branch --show-current ===
+prototypes/interactive-learning
+
+=== git rev-parse HEAD ===
+93680a30634d2c3ee4d85e9d2b1e403709063ec1
+
+=== git log --oneline --decorate -20 ===
+93680a3 (HEAD -> prototypes/interactive-learning) docs(rtl-math): record fix commit SHA 15e954a in final report — owner delivery package mirrored to download/rtl-math-fix; no remote operations
+15e954a fix(rtl-math): isolate math expressions in Persian RTL text — root-cause display-layer fix (P0 owner mission)
+1b00eb2 docs(proto-v2): add stage 3.1 owner-evaluation reports (7 md) to repo evidence — SHA of evidence commit 28baf53 recorded in git-state report; download package kept in sync
+28baf53 docs(proto-v2): stage 3.1 owner-evaluation evidence pack — real interactive runs of A/B/C at fc9063b (Playwright): 42 real-run screenshots (34 desktop full-state + 8 mobile-390), 3 real-run videos (A 15s / B 31s / C 16s), console 0 errors across 5 runs, reduced-motion runtime proof (0 active animations), gates rerun green: tsc/lint 0, tests 346/346, F06-F10 49/49, build bundle byte-identical to stage 0-3 gates (index-Cq29-64h.js 68ffc472...); git state re-verified (HEAD fc9063b, main=origin/main=77a5a38 untouched, inherited untracked files resolved in 3dfdb3f, backup bundle verified); owner evaluation package assembled at download/owner-eval-stage31 (7 reports incl. educational-quality 7-question answers, usability test NOT VERIFIED, diff table, honest limitations + suggestions) — no push/merge/deploy, no scope expansion, stop-point respected
+fc9063b docs(proto-v2): delivery report for stages 0-3 — git state, deliverables map, gates summary, honest limitations, owner stop-point request
+3dfdb3f feat(proto-v2): interactive learning prototypes A/B/C for lesson ch7l3 — Prototype A (concept discovery: dot-machine two interpretations of ۱۰−۳×۲, live a+b×c manipulator with implicit-parenthesis arc, priority-stairs notation), Prototype B (4 distinct interaction types: first-op tap, model↔expression matching, expression builder from story, number-line placement), Prototype C (error clinic: misconception diagnosis + visual replay + hint ladder + retry + guided mini-steps + transfer check); pure logic layer protoLogic.ts (contract evaluator, op order, steps, misconception map); new tab «آزمایشگاه تعاملی» (no existing surface changed); docs: BENCHMARK_REPORT (8 products), INTERACTIVE_AUDIT (8 findings + before-shots), EXPERIENCE_MAP, MOTION_DESIGN, DESIGN_SYSTEM v1.1 §10; evidence: 9 before-shots + 12 after-shots + 3 bench-shots, console clean, reduced-motion proof (0 new keyframes), gates 346/346 tests + F06-F10 49/49 + tsc/lint/build; bundle 488.73kB (gzip 130.92, +12.5kB); owner stop-point respected — no remote operations
+0dcbdb7 chore(proto-v2): mission start — git state record + protection notes (backup bundle created, work branch prototypes/interactive-learning off main@77a5a38; no remote operations)
+77a5a38 (origin/main, main) audit(redesign): Math Slate evidence pack — visual/UX audit (6 structural + 10 component findings, 8 before-shots), DESIGN_SYSTEM.md (tokens/typography/backgrounds/motion/guardrails), gates evidence (306/306 + F06-F10 46/46 + tsc/lint/build), reduced-motion CSS proof, live-bundle byte-identity proof (index-JR2jRQub.js SHA-256 0a16a4e7…), CI/Deploy run evidence per SHA, 30 after-shots of live design, 4 before/after comparisons, 11-deliverable delivery report with honest limitations
+3640b04 test(reliability): raise App-level exit/re-entry test timeout to 20s — two full App renders + eight clicks exceed the 5s default on shared CI runners (flake proven in run 41177444573: 305/306 timed out, local 306/306 green); product code untouched
+6aa1483 refactor(ui): apply Math Slate across all nine surfaces — App shell (gradient logo badge, active nav glow, float-shaped hero, top-bar chapter cards, animated progress bars), QuestionCard (numbered options, spring select, correct=tick pop / wrong=shake + error-doctor chip), LessonFlowPlayer (gradient stage bar, animated stage transitions via key, celebratory finish card), DiagnosticDashboard (icon bubbles, soft stat cards), AssistantPanel (brand bubble chips), InteractiveLabs (accent side-bars), StepSolverAnimation (brand controls, gradient step bar), ErrorBoundary, exam result pop-in stats, analytics hover metrics; zero logic/props/data-testid changes, all user-facing strings preserved (regression lesson honored); gates: 306/306 tests, tsc, eslint, build clean, F06-F10 regression 46/46
+a8102fa feat(design): Math Slate design system — semantic tokens (brand indigo-violet + sun amber), 6-weight self-hosted Vazirmatn (400-900), dual-layer ink shadows (soft/lift/glow), motion tokens (fast/base/slow + spring/glide easings, 7 semantic keyframes), paper-grid backgrounds (4 scenes, one language), component classes (card/btn-brand/btn-soft/btn-ghost/chip/skeleton), full prefers-reduced-motion coverage; SW cache v4-design
+0a8983d docs(delivery): lesson-1 mission report (11 deliverables) — discrepancy record, fraction coverage, stage persistence, per-SHA CI/deploy evidence, live screenshots index, limitations
+8eb6a36 feat(flow)+audit: flow stage persistence — resume exactly where the student left (exit/re-entry requirement); optional flowProgress in LearnerState (backward-compatible like reviewPlan), stage-index validated & clamped, cleared on finish; app-level exit/re-entry test proves stage B resume; storage corruption tests; gates: 306/306 tests, tsc, eslint, build clean
+fb60b5e feat(content)+audit: ch7l3 fraction coverage per official textbook (exercises 3 & 5, p.141) — questions q735/q736 + worked example ex74; stage F pass rule 4/7; golden table 96→98; mission-path-correction evidence (audit/lesson1/GIT_STATE.md: riazi_yar discrepancy documented, ee359e2 NOT on remote, no v1.0.0 tag, no audit-fixes branch; zero changes to that repo); F06/F07/F08/F10 regression 41/41 green
+adcc902 docs(evidence): 18 screenshots of ch7l3 lesson — all 8 stages (A prereq, B intuitive, C representations+groups visual, D animation + mistake panel, E completion, X sequencing, F practice, G transfer, finished) on desktop 1280px and mobile 390px, plus dashboard evidence after full happy-path run in real browser
+49fd285 docs+release: lesson ch7l3 design & alignment document (official 1405 print, ch7 pp.137-141), methods+sources, question inventory; architecture doc updated with flow layer; PWA cache bumped to v2
+088f6fd feat(flow): interactive lesson path for ch7l3 — step-sequencing stage, solver animation, groups visual + full 8-stage flow
+32a1056 feat(content): lesson ch7l3 «عملیات ترکیبی» — operation-order convention per official textbook (1405 print, ch7 pp.137-141)
+bd28d3e docs(release): append mission evidence — per-SHA runs for F06/F07/F08/F10 fixes (CI 41087638612 + Deploy 41087638477 both success on 58a29cd, live bundle index-DCwa4iP0.js verified); intermediate commits honestly noted as having no dedicated runs
+58a29cd fix(flow)+audit: F08 — prereq confirmation is now evidence-based (independence + learner history + question type), not a bare one-answer rule
+
+=== git diff (unstaged, full) ===
+(end of unstaged diff)
+
+=== git diff --cached (full) ===
+(end of staged diff)
+
+=== git stash list ===
+(end of stash)
+
+=== git branch -a ===
+  adaptive-learning
+  main
+* prototypes/interactive-learning
+  remotes/origin/main
+
+=== git rev-parse main origin/main ===
+77a5a383e9785be9ce8ad02cdee403cb339e33e3
+77a5a383e9785be9ce8ad02cdee403cb339e33e3
+
+=== expected main: 77a5a383e9785be9ce8ad02cdee403cb339e33e3 ===

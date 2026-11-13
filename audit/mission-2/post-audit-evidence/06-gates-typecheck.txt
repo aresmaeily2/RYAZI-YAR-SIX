@@ -1,0 +1,5 @@
+# fresh typecheck run — 2026-11-08 20:48:09 UTC — HEAD 93680a3
+
+> ryazi-yar-six@1.0.0 typecheck
+> tsc -b
+

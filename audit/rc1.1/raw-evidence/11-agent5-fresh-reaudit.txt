@@ -1,0 +1,122 @@
+############################################################
+# RC1.1 — Agent 5 FRESH RE-AUDIT of latest candidate (stage B)
+# started: 2026-11-11 14:15:50 UTC
+# reason: post-incident re-verification (sandbox recycle lost the session
+#         state; candidate restored from bundle — see evidence 10)
+# node v24.22.2 · npm 11.19.1
+############################################################
+
+=== [1] fresh clone from scratch ===
+$ git clone --branch mission/release-rc1 /home/z/my-project/ryazi-yar-six /tmp/agent5-clone-final
+Cloning into '/tmp/agent5-clone-final'...
+done.
+
+$ git rev-parse HEAD
+37852cea4b23920899461f08460bba35f98c4a6d
+
+$ git rev-parse HEAD^{tree}
+8d63f2c13be022037fad8ab30057e9c98fea9cbc
+
+$ git log --oneline -3
+37852ce docs(rc1.1): Agent 5 independent report (PASS WITH LIMITATIONS) + final release readiness + checksums
+aa601b3 docs(rc1.1): audit evidence pack — forensics, baseline, render-path matrix, RTL/accessibility/browser/SW reports, bug register
+7f3120c fix(a11y): next-step-card emerald gradient + assistant note — final contrast fixes, 0 fails across 327 gradient-aware DOM samples
+
+$ git status --short --branch
+## mission/release-rc1...origin/mission/release-rc1
+
+$ git rev-parse origin/main   # cached from source repo (must be ee0d0db)
+77a5a383e9785be9ce8ad02cdee403cb339e33e3
+
+=== [2] npm ci (deterministic install from lockfile) ===
+$ npm ci --no-audit --no-fund
+npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+npm ci exit: 0
+
+=== [3] gate 1/4: typecheck ===
+$ npx tsc -b
+typecheck exit: 0
+
+=== [4] gate 2/4: lint ===
+$ npx eslint .
+lint exit: 0
+
+=== [5] gate 3/4: tests ===
+$ npx vitest run
+ ✓ tests/auditDashboardConsistency.test.tsx (6 tests) 129ms
+ ✓ tests/mathEngine.test.ts (20 tests) 10ms
+ ✓ tests/answerChecking.test.ts (14 tests) 8ms
+ ✓ tests/auditStorageSecurity.test.ts (9 tests) 8ms
+ ✓ tests/reducedMotionAndPaths.test.tsx (6 tests) 245ms
+ ✓ tests/mathBidiParen.test.ts (21 tests) 8ms
+ ✓ tests/optionAccessibleName.test.tsx (88 tests) 897ms
+ ✓ tests/copySanitizer.test.tsx (6 tests) 28ms
+ ✓ tests/examEngine.test.ts (8 tests) 8ms
+ ✓ tests/contrastTokens.test.ts (31 tests) 9ms
+
+ Test Files  28 passed (28)
+      Tests  497 passed (497)
+   Start at  14:16:04
+   Duration  24.42s (environment 39%, tests 38%, setup 10%, import 7%, transform 6%)
+
+Environment  jsdom was created 28 times · 8.42s total, 39% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+
+test exit: 0
+
+=== [6] gate 4/4: build ===
+$ npm run build
+> ryazi-yar-six@1.0.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 1603 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.38 kB │ gzip:   0.67 kB
+dist/assets/index-HPYyQBai.css   46.11 kB │ gzip:   8.00 kB
+dist/assets/index-CrETePCt.js   439.55 kB │ gzip: 119.29 kB
+✓ built in 2.37s
+build exit: 0
+
+=== [7] bundle SHA-256 (fresh build at 37852ce) ===
+$ sha256sum dist/assets/*.js dist/assets/*.css dist/index.html
+c48797041e43cf55b07b483c1081c374e9ffbd962de10ecb3e49187b75c2f2f2  dist/assets/index-CrETePCt.js
+e8e374dc68492e7a27298fe2ab9c9f57f5c8edcec661d19d0374404a8b620f56  dist/assets/index-HPYyQBai.css
+baefee6b3546fe5ff9fb24006c2a14d769541c1262109f16263cce1693bfeca1  dist/index.html
+
+$ ls -l dist/assets/  (bytes · filename)
+439549  index-CrETePCt.js
+46105  index-HPYyQBai.css
+
+=== [8] parity vs recorded bundle SHA-256 (prior session evidence; /tmp copy lost with sandbox) ===
+--- recorded values (report §3 / gates evidence of the lost run) ---
+js  : c48797041e43cf55b07b483c1081c374e9ffbd962de10ecb3e49187b75c2f2f2
+css : e8e374dc68492e7a27298fe2ab9c9f57f5c8edcec661d19d0374404a8b620f56
+html: baefee6b3546fe5ff9fb24006c2a14d769541c1262109f16263cce1693bfeca1
+--- comparison ---
+JS   bundle: BYTE-IDENTICAL (c48797041e43cf55b07b483c1081c374e9ffbd962de10ecb3e49187b75c2f2f2)
+CSS  bundle: BYTE-IDENTICAL (e8e374dc68492e7a27298fe2ab9c9f57f5c8edcec661d19d0374404a8b620f56)
+HTML bundle: BYTE-IDENTICAL (baefee6b3546fe5ff9fb24006c2a14d769541c1262109f16263cce1693bfeca1)
+
+=== [9] audit pack integrity at audited SHA (37852ce) ===
+$ sha256sum -c audit/rc1.1/checksums.sha256
+audit/rc1.1/screenshots/after-q623-feedback-correct.png: OK
+audit/rc1.1/screenshots/after-q623-mobile-390.png: OK
+audit/rc1.1/screenshots/gradient-pixel-truth.png: OK
+audit/rc1.1/screenshots/rtl-paren-before-after-1366.png: OK
+audit/rc1.1/screenshots/sw-offline-desktop.png: OK
+audit/rc1.1/service-worker-report.md: OK
+manifest exit: 0
+
+=== [10] local tag audit-accepted-final — where does it point? ===
+$ git rev-parse audit-accepted-final && git log --oneline -1 audit-accepted-final
+903d0a9a18a02e0466d090cdac8e6cef3815c888
+2993c70 audit(publish): final evidence — CI+deploy green on delivery commit dd24bc4 (runs 41023187995/41023187987), live bundle re-verified byte-identical (index-8Q5aoPxI.js / 111b9c62), fresh live screenshots (home + parent report)
+
+finished: 2026-11-11 14:16:36 UTC

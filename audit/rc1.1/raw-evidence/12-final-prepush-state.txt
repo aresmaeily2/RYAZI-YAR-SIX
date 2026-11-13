@@ -1,0 +1,63 @@
+############################################################
+# RC1.1 — FINAL PRE-PUSH STATE after incident recovery (evidence 12)
+# recorded: 2026-11-11 (post-recovery session)
+# READ FIRST: the originally-authorized push SHA 304e6be517… is NOT
+# reproducible (see evidence 10 §A5 and §C). The documentation commit
+# that carries this evidence will have a NEW SHA. Per directive §4
+# (SHA mismatch → STOP), NO push/PR is performed until the owner
+# re-authorizes the new SHA.
+############################################################
+
+[1] RESTORATION STATUS
+  candidate mission/release-rc1 restored from
+  download/mission-rc1.1/candidate-bundle-37852ce.bundle (git bundle,
+  verified, complete history) → HEAD 37852cea4b23920899461f08460bba35f98c4a6d,
+  tree 8d63f2c13be022037fad8ab30057e9c98fea9cbc — EXACT match with the
+  values recorded before the incident (cryptographic tree identity).
+  Audit pack integrity: sha256sum -c exit 0 (27 files).
+  Mirror copy of the audit pack: byte-identical (diff empty).
+
+[2] GATES RE-RUN FROM A FRESH CLONE (full log: evidence 11)
+  npm ci 0 · tsc -b 0 · eslint . 0 · vitest run 497/497 (28 files) 0
+  · build 0 — same numbers as the lost session's re-audit.
+
+[3] THREE-WAY BUNDLE PARITY — SHA-256 recomputed (directive item 6)
+  A: fresh clone build at 37852ce (evidence 11 §7)
+  B: main repo rebuild (this session)
+  C: values recorded in the lost session (report §3 / gates evidence)
+  js   index-CrETePCt.js  c48797041e43cf55b07b483c1081c374e9ffbd962de10ecb3e49187b75c2f2f2
+  css  index-HPYyQBai.css e8e374dc68492e7a27298fe2ab9c9f57f5c8edcec661d19d0374404a8b620f56
+  html index.html         baefee6b3546fe5ff9fb24006c2a14d769541c1262109f16263cce1693bfeca1
+  VERDICT: A == B == C — production bundle byte-identical across all three.
+  The regenerated manifest (checksums.sha256) includes these dist entries.
+
+[4] SHA SITUATION (directive §4)
+  authorized by owner : 304e6be5172952ff63a88a981813b5d6a953f10e (lost — object
+                        absent, never pushed, bundle predates it, exact commit
+                        timestamp unknown → not reproducible)
+  current branch HEAD : 37852cea4b23920899461f08460bba35f98c4a6d (restored)
+  final HEAD          : will be the NEW documentation commit carrying this
+                        evidence (SHA reported to the owner after commit)
+  ACTION              : STOP — push/PR only after the owner authorizes the
+                        new final SHA in writing.
+
+[5] LINEAGE / RESTRICTIONS
+  main local  : 77a5a383e9785be9ce8ad02cdee403cb339e33e3 — untouched
+  origin/main : ee0d0db798c6a767f8fcbf2c9c636468a3d6a8c0 — untouched
+  remote      : no mission/release-rc1 branch on GitHub; tag audit-accepted-final
+                (→2993c70, publish-era ancestor) pre-existing, untouched
+  auth        : recovered gh config (gh 2.103.3), account aresmaeily2, scopes
+                gist/read:org/repo/workflow; token never printed or stored in
+                code/reports/commits
+  performed   : NO push, NO merge, NO tag, NO deploy.
+
+[6] SELF-REFERENCE RULE
+  The audit documentation commit is itself part of candidate; the delta between
+  the audited snapshot (37852ce) and the final documentation HEAD touches only
+  audit/rc1.1 files (0 source files), so the bundle built from the final HEAD
+  remains byte-identical to [3]. Proven post-commit via
+  `git diff --name-status 37852ce..HEAD`.
+
+[7] ENVIRONMENT
+  node v24.22.2 · npm 11.19.1 · git 2.47.3 · Debian 13 · Linux 5.10.134 x86_64
+  npm warning: esbuild@0.28.2 postinstall not in allowScripts (warning only).

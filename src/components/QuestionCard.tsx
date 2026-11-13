@@ -110,7 +110,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
           type="button"
           onClick={() => setHintStep((prev) => Math.min(3, prev + 1))}
           disabled={hintStep >= 3}
-          className="flex items-center gap-1 text-xs font-bold text-sun-600 hover:text-sun-700 bg-sun-50 rounded-lg px-2.5 py-1.5 transition-all duration-fast hover:bg-sun-100 disabled:opacity-40 disabled:cursor-not-allowed"
+          className="flex items-center gap-1 text-xs font-bold text-sun-700 hover:text-sun-700 bg-sun-50 rounded-lg px-2.5 py-1.5 transition-all duration-fast hover:bg-sun-100 disabled:opacity-40 disabled:cursor-not-allowed"
           aria-label={`دریافت راهنمایی ${toPersianDigits(hintStep)} از ۳`}
         >
           <HelpCircle className="w-4 h-4" />
@@ -139,7 +139,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               type="button"
               role="radio"
               aria-checked={selected === opt}
-              aria-label={opt}
+              aria-label={`گزینه ${toPersianDigits(optIdx + 1)}: ${opt}`}
               onClick={() => {
                 setSelected(opt);
                 setFeedback(null);
@@ -153,7 +153,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             >
               <span
                 className={`w-6 h-6 rounded-lg flex items-center justify-center text-[11px] font-black shrink-0 transition-colors ${
-                  selected === opt ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-500 group-hover:bg-brand-100 group-hover:text-brand-700'
+                  selected === opt ? 'bg-white/25 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-brand-100 group-hover:text-brand-700'
                 }`}
                 aria-hidden="true"
               >
@@ -187,7 +187,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             placeholder={question.answerKind === 'fraction' ? 'مثال: 2/3' : question.answerKind === 'decimal' ? 'مثال: 78.5' : 'مثال: 21'}
             aria-describedby={`num-hint-${question.id}`}
           />
-          <p id={`num-hint-${question.id}`} className="text-[11px] text-slate-400 font-medium">
+          <p id={`num-hint-${question.id}`} className="text-[11px] text-slate-500 font-medium">
             {question.answerKind === 'fraction'
               ? 'کسر را به شکل صورت/مخرج بنویس؛ عدد مخلوط هم پذیرفته می‌شود (مثال: 2 و 1/3)'
               : question.answerKind === 'decimal'

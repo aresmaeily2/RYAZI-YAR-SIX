@@ -11,14 +11,18 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 22]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: npm
 
       - name: Install dependencies (lockfile-based clean install)
@@ -36,9 +40,29 @@ jobs:
       - name: Production build
         run: npm run build
 
+      - name: Dependency audit (runtime dependencies)
+        # Gate on known high/critical advisories in production deps only;
+        # dev-only advisories are surfaced by Dependabot, not a hard gate.
+        run: npm audit --omit=dev --audit-level=high
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: dist-node${{ matrix.node-version }}
           path: dist/
           retention-days: 7
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout (full history)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Secret scanning (gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
