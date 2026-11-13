@@ -1,0 +1,54 @@
+name: Bug report
+description: Something in the app behaves incorrectly (not a math/content error)
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For **wrong answers, bad hints or confusing educational content**, please
+        use the *Content issue* template instead. Bugs here are about app behavior.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open Dashboard\n2. Go to lesson …\n3. Click …"
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Dashboard / report
+        - Lesson / adaptive practice
+        - Lesson flow (A–G stages)
+        - Exam
+        - Interactive lab
+        - Offline / PWA install
+        - Accessibility (keyboard / screen reader / contrast)
+        - RTL / text rendering
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Browser & device
+      placeholder: "Firefox 130, Android 14, phone"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I ran a hard refresh / cleared the PWA cache and it still happens
+        - label: I searched existing issues for a duplicate
+          required: true
