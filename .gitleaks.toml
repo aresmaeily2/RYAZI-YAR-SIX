@@ -14,6 +14,7 @@ useDefault = true
   paths = [
     '''audit/rc1\.3/apksigner_print_certs\.txt''',
     '''audit/rc1\.3/release-apk-verify\.txt''',
+    '''audit/v1\.1\.0/apksigner_print_certs\.txt''',
   ]
   regexes = [
     '''Signer #1 (certificate|public key) (SHA-256|SHA-1|MD5) digest''',
