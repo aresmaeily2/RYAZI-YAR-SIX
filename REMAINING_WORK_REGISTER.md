@@ -55,3 +55,11 @@ Basis: full TODO/FIXME scan of `src/`, `tests/`, `docs/` (none found), open GitH
 - Live web demo re-executed on final state: dashboard → lesson open → typed answer 21 (correct, +15 امتیاز) → wrong answer 33 (graceful feedback, no crash). Phone 390×844 and desktop 1280×900: interactive, 0 page errors, 0 console errors, no horizontal overflow.
 - Static gates re-verified on final state: 532/532 tests, npm audit --omit=dev: 0 vulnerabilities, secret scan clean.
 - Android functional verification: still NOT RUN (no KVM/device) — remains P0 owner action with APK at audit/rc1.3/RYAZI-YAR-SIX-v1.0.0-RC1.3-debug.apk.
+
+## FINAL EVIDENCE DELIVERY UPDATE (2026-11-21, directive: final evidence + product-wide live QA)
+Statuses reconciled:
+- RESOLVED: RC1.2 root cause (proven, evidence committed); Capacitor packaging; RC1.3 APK build + versioning (13 / 1.0.0-RC1.3); web product QA (4 tabs live-tested, answer flows, persistence across reload, 0 console/page errors, no overflow at 390/1280).
+- OPEN (owner action): sideload RC1.3 APK + functional checklist (audit/comprehensive-final/android-install-package.md); release keystore + assembleRelease.
+- OPEN (release): publish draft release v1.0.0 with signed assets.
+- BLOCKED (environment): emulator/ADB functional tests (no KVM/device here).
+- Branch state: fix/android-rc13-capacitor, 5 commits ahead of main (b2473c9). No push/tag/release/deploy (§9).
