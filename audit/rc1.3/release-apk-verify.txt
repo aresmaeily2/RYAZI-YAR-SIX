@@ -1,0 +1,9 @@
+Signer #1 certificate DN: CN=Riazi Yar Six, OU=Learning, O=RYAZI-YAR, L=Tehran, C=IR
+Signer #1 certificate SHA-256 digest: c69dd8c238ff124e86670bf2e1a9d8df21ac978bc64160d8259270ec2f7a0754
+Signer #1 certificate SHA-1 digest: f930e184e63a2b28da186814a64a8559918e3832
+Signer #1 certificate MD5 digest: 658d7b1b13ffe90b99d407658955fb26
+package: name='com.mathmvp.riaziyarsix' versionCode='13' versionName='1.0.0-RC1.3' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'24'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.INTERNET'
+9eff6ca023a708f9ee746b1e7f272865f0eca9b04ed7dd036db629ec4a6f7d00  app/build/outputs/apk/release/app-release.apk

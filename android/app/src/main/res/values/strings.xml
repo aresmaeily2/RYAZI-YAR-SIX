@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ریاضی‌یار ششم</string>
+    <string name="title_activity_main">ریاضی‌یار ششم</string>
+    <string name="package_name">com.mathmvp.riaziyarsix</string>
+    <string name="custom_url_scheme">com.mathmvp.riaziyarsix</string>
+</resources>

@@ -10,6 +10,7 @@ import { DiagnosticDashboard, ParentSkillReport } from './components/DiagnosticD
 import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
 import { bidiText } from './utils/mathBidi';
+import { PatternExplorer } from './components/PatternExplorer';
 import { useCleanMathCopy } from './hooks/useCleanMathCopy';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -365,6 +366,7 @@ const App: React.FC = () => {
                   {currentLesson.interactiveLab === 'fraction' && <FractionLab />}
                   {currentLesson.interactiveLab === 'cylinder' && <CylinderLab />}
                   {currentLesson.interactiveLab === 'percentage' && <PercentageLab />}
+                  {currentLesson.interactiveLab === 'pattern' && <PatternExplorer firstTerm={5} commonDifference={4} termCount={10} />}
 
                   {/* دستیار آموزشی قاعده‌مند — متناسب با وضعیت مهارت این درس */}
                   <AssistantPanel
