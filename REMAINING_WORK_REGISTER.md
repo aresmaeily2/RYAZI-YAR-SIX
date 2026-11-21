@@ -50,3 +50,8 @@ Basis: full TODO/FIXME scan of `src/`, `tests/`, `docs/` (none found), open GitH
 - §D: Capacitor loads via its default https scheme at localhost (Bridge.java: appUrl + "Defaulting to https"), so ES modules execute — unlike the RC1.2 file:// wrapper. Runtime confirmation still requires a device.
 - §E: APK is debug-signed — not for distribution. Release keystore process documented in ANDROID_RC1.3_VERIFICATION_REPORT.md; release build only on owner authorization.
 - §F: all work committed locally on fix/android-rc13-capacitor (f12d11d, bf4b2bc). No push, tag, release, deploy; main untouched.
+
+## COMPREHENSIVE AUDIT PASS (2026-11-21, directive: improvement audit + live demo)
+- Live web demo re-executed on final state: dashboard → lesson open → typed answer 21 (correct, +15 امتیاز) → wrong answer 33 (graceful feedback, no crash). Phone 390×844 and desktop 1280×900: interactive, 0 page errors, 0 console errors, no horizontal overflow.
+- Static gates re-verified on final state: 532/532 tests, npm audit --omit=dev: 0 vulnerabilities, secret scan clean.
+- Android functional verification: still NOT RUN (no KVM/device) — remains P0 owner action with APK at audit/rc1.3/RYAZI-YAR-SIX-v1.0.0-RC1.3-debug.apk.
