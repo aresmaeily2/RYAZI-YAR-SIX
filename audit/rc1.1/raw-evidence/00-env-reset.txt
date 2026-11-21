@@ -1,0 +1,37 @@
+=== RC1.1 — ENVIRONMENT RESET RECORD (00) ===
+Recorded: 2026-11-11T09:17:10Z
+
+The previous working session (RC1.1 progress report) operated with:
+  - candidate branch mission/release-rc1 at ee0d0db (created, zero commits)
+  - origin/main = ee0d0db798c6a767f8fcbf2c9c636468a3d6a8c0 (after git fetch)
+  - untracked evidence audit/mission-rc1.1/ + QA scripts
+
+CURRENT environment (re-verified now, directive commands):
+$ git status --short --branch
+## prototypes/interactive-learning
+?? audit/mission-2/
+?? audit/mission-2r/
+?? audit/rc1.1/
+
+$ git rev-parse HEAD
+93680a30634d2c3ee4d85e9d2b1e403709063ec1
+
+$ git rev-parse origin/main (BEFORE fetch — stale ref)
+77a5a383e9785be9ce8ad02cdee403cb339e33e3
+
+$ git branch -avv (truncated)
+  adaptive-learning               5c179cb docs: update README with adaptive learning capabilities, honest limitations (pilot-only flow, rule-based assistant, adjustable thresholds)
+  main                            77a5a38 [origin/main] audit(redesign): Math Slate evidence pack — visual/UX audit (6 structural + 10 component findings, 8 before-shots), DESIGN_SYSTEM.md (tokens/typography/backgrounds/motion/guardrails), gates evidence (306/306 + F06-F10 46/46 + tsc/lint/build), reduced-motion CSS proof, live-bundle byte-identity proof (index-JR2jRQub.js SHA-256 0a16a4e7…), CI/Deploy run evidence per SHA, 30 after-shots of live design, 4 before/after comparisons, 11-deliverable delivery report with honest limitations
+* prototypes/interactive-learning 93680a3 docs(rtl-math): record fix commit SHA 15e954a in final report — owner delivery package mirrored to download/rtl-math-fix; no remote operations
+  remotes/origin/main             77a5a38 audit(redesign): Math Slate evidence pack — visual/UX audit (6 structural + 10 component findings, 8 before-shots), DESIGN_SYSTEM.md (tokens/typography/backgrounds/motion/guardrails), gates evidence (306/306 + F06-F10 46/46 + tsc/lint/build), reduced-motion CSS proof, live-bundle byte-identity proof (index-JR2jRQub.js SHA-256 0a16a4e7…), CI/Deploy run evidence per SHA, 30 after-shots of live design, 4 before/after comparisons, 11-deliverable delivery report with honest limitations
+
+VERDICT: sandbox was reset to a snapshot from BEFORE the RC1.1 session.
+  * branch mission/release-rc1: ABSENT
+  * audit/mission-rc1.1/: ABSENT
+  * RC1.1 QA scripts under scripts/: ABSENT
+  * HEAD back on prototypes/interactive-learning @ 93680a3
+
+ACTION per directive: differences recorded here; no user changes touched;
+work resumes from the real state — candidate branch rebuilt from fresh fetch,
+all evidence regenerated with real runs. Nothing from the lost session is
+claimed as verified; only this session's re-runs count.

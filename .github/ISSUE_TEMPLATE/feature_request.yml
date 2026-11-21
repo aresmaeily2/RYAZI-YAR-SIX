@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest an improvement (accessibility, UX, new labs, more flows…)
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: Which student situation does this improve? (For children — keep it concrete.)
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Accessibility
+        - UX / interface
+        - Adaptive engine behavior
+        - New lesson content / flow
+        - New interactive lab
+        - Documentation
+        - Other
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Architecture constraints (please confirm)
+      description: These are core guarantees of the project and cannot be traded away.
+      options:
+        - label: My proposal keeps the app static & offline-first (no backend/account)
+        - label: My proposal adds no tracking, analytics, ads or external requests
+          required: true

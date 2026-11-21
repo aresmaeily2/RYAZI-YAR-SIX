@@ -9,6 +9,8 @@ import type { Question } from '../src/types/curriculum';
 import type { SubmitResult } from '../src/hooks/useLearnerState';
 import { LessonFlowPlayer } from '../src/components/LessonFlowPlayer';
 import { StepSolverAnimation } from '../src/components/StepSolverAnimation';
+import { radioName, radioNameEndsWith } from './radioName';
+import { LRI, PDI } from '../src/utils/mathBidi';
 
 /**
  * آزمون‌های درس «عملیات ترکیبی» (ch7l3):
@@ -45,7 +47,9 @@ function submitAnswer(testId: string, answer: string | { option: string }) {
   if (typeof answer === 'string') {
     fireEvent.change(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), { target: { value: answer } });
   } else {
-    fireEvent.click(within(card).getByRole('radio', { name: answer.option }));
+    // RC1.1 بخش ۲: نام قابل‌دسترسی گزینه اکنون «گزینه N: مقدار» است
+    const q = qById.get(testId);
+    fireEvent.click(within(card).getByRole('radio', { name: q ? radioName(answer.option, q) : radioNameEndsWith(answer.option) }));
   }
   fireEvent.click(within(card).getByRole('button', { name: /بررسی و تصحیح پاسخ/ }));
 }
@@ -246,7 +250,8 @@ describe('گونهٔ چیدمان گام‌ها — منطق و رابط', () =>
 
     const panel = screen.getByTestId('sequencing-panel');
     fireEvent.click(within(panel).getByTestId('seq-card-flow-ch7l3-x-s1'));
-    expect(within(panel).getByTestId('seq-slot-1')).toHaveTextContent('۱۲÷۲ را حساب می‌کنم: ۶');
+    // RC1.1 بخش ۳: برچسب گام sequencing حالا bidi-isolated است (۱۲÷۲ جزیرهٔ LTR)
+    expect(within(panel).getByTestId('seq-slot-1')).toHaveTextContent(`${LRI}۱۲÷۲${PDI} را حساب می‌کنم: ۶`);
     expect(within(panel).getByTestId('seq-message')).toHaveTextContent('درست بود');
 
     // کارت نادرست برای جایگاه دوم (باید گام ضرب ۳×۴ باشد)

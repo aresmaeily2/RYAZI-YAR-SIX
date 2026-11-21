@@ -1,0 +1,124 @@
+################################################################
+# MISSION-2-POST-AUDIT — Section 2 git verification
+# Date (UTC): 2026-11-08 20:43:38 UTC
+# Repo: /home/z/my-project/ryazi-yar-six
+# Directive: owner MISSION-2-POST-AUDIT (independent post-audit)
+################################################################
+
+### [1] git status --short --branch
+## prototypes/interactive-learning
+?? audit/mission-2/
+[exit=0]
+
+### [2] git rev-parse HEAD
+93680a30634d2c3ee4d85e9d2b1e403709063ec1
+[exit=0]
+
+### [3] git rev-parse 93680a3
+93680a30634d2c3ee4d85e9d2b1e403709063ec1
+[exit=0]
+
+### [4] git rev-parse 355a1de
+fatal: ambiguous argument '355a1de': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+355a1de
+[exit=128]
+
+### [5] git branch -avv
+  adaptive-learning               5c179cb docs: update README with adaptive learning capabilities, honest limitations (pilot-only flow, rule-based assistant, adjustable thresholds)
+  main                            77a5a38 [origin/main] audit(redesign): Math Slate evidence pack — visual/UX audit (6 structural + 10 component findings, 8 before-shots), DESIGN_SYSTEM.md (tokens/typography/backgrounds/motion/guardrails), gates evidence (306/306 + F06-F10 46/46 + tsc/lint/build), reduced-motion CSS proof, live-bundle byte-identity proof (index-JR2jRQub.js SHA-256 0a16a4e7…), CI/Deploy run evidence per SHA, 30 after-shots of live design, 4 before/after comparisons, 11-deliverable delivery report with honest limitations
+* prototypes/interactive-learning 93680a3 docs(rtl-math): record fix commit SHA 15e954a in final report — owner delivery package mirrored to download/rtl-math-fix; no remote operations
+  remotes/origin/main             77a5a38 audit(redesign): Math Slate evidence pack — visual/UX audit (6 structural + 10 component findings, 8 before-shots), DESIGN_SYSTEM.md (tokens/typography/backgrounds/motion/guardrails), gates evidence (306/306 + F06-F10 46/46 + tsc/lint/build), reduced-motion CSS proof, live-bundle byte-identity proof (index-JR2jRQub.js SHA-256 0a16a4e7…), CI/Deploy run evidence per SHA, 30 after-shots of live design, 4 before/after comparisons, 11-deliverable delivery report with honest limitations
+[exit=0]
+
+### [6] git remote -v
+origin	https://github.com/aresmaeily2/RYAZI-YAR-SIX.git (fetch)
+origin	https://github.com/aresmaeily2/RYAZI-YAR-SIX.git (push)
+[exit=0]
+
+### [7] git show --stat --oneline 355a1de
+fatal: ambiguous argument '355a1de': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+[exit=128]
+
+### [8] git show --format=fuller --find-renames 355a1de
+fatal: ambiguous argument '355a1de': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+[exit=128]
+
+### [9] git diff 93680a3..355a1de --stat
+fatal: ambiguous argument '93680a3..355a1de': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+[exit=128]
+
+### [10] git diff 93680a3..355a1de --name-status
+fatal: ambiguous argument '93680a3..355a1de': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+[exit=128]
+
+### [11] SUPPLEMENTARY: git cat-file -t 355a1de
+fatal: Not a valid object name 355a1de
+[exit=128]
+
+### [12] SUPPLEMENTARY: git rev-parse --verify 355a1de^{commit}
+fatal: Needed a single revision
+[exit=128]
+
+### [13] SUPPLEMENTARY: total commits across all refs
+61
+[exit=0]
+
+### [14] SUPPLEMENTARY: git log --oneline -10 prototypes/interactive-learning
+93680a3 docs(rtl-math): record fix commit SHA 15e954a in final report — owner delivery package mirrored to download/rtl-math-fix; no remote operations
+15e954a fix(rtl-math): isolate math expressions in Persian RTL text — root-cause display-layer fix (P0 owner mission)
+1b00eb2 docs(proto-v2): add stage 3.1 owner-evaluation reports (7 md) to repo evidence — SHA of evidence commit 28baf53 recorded in git-state report; download package kept in sync
+28baf53 docs(proto-v2): stage 3.1 owner-evaluation evidence pack — real interactive runs of A/B/C at fc9063b (Playwright): 42 real-run screenshots (34 desktop full-state + 8 mobile-390), 3 real-run videos (A 15s / B 31s / C 16s), console 0 errors across 5 runs, reduced-motion runtime proof (0 active animations), gates rerun green: tsc/lint 0, tests 346/346, F06-F10 49/49, build bundle byte-identical to stage 0-3 gates (index-Cq29-64h.js 68ffc472...); git state re-verified (HEAD fc9063b, main=origin/main=77a5a38 untouched, inherited untracked files resolved in 3dfdb3f, backup bundle verified); owner evaluation package assembled at download/owner-eval-stage31 (7 reports incl. educational-quality 7-question answers, usability test NOT VERIFIED, diff table, honest limitations + suggestions) — no push/merge/deploy, no scope expansion, stop-point respected
+fc9063b docs(proto-v2): delivery report for stages 0-3 — git state, deliverables map, gates summary, honest limitations, owner stop-point request
+3dfdb3f feat(proto-v2): interactive learning prototypes A/B/C for lesson ch7l3 — Prototype A (concept discovery: dot-machine two interpretations of ۱۰−۳×۲, live a+b×c manipulator with implicit-parenthesis arc, priority-stairs notation), Prototype B (4 distinct interaction types: first-op tap, model↔expression matching, expression builder from story, number-line placement), Prototype C (error clinic: misconception diagnosis + visual replay + hint ladder + retry + guided mini-steps + transfer check); pure logic layer protoLogic.ts (contract evaluator, op order, steps, misconception map); new tab «آزمایشگاه تعاملی» (no existing surface changed); docs: BENCHMARK_REPORT (8 products), INTERACTIVE_AUDIT (8 findings + before-shots), EXPERIENCE_MAP, MOTION_DESIGN, DESIGN_SYSTEM v1.1 §10; evidence: 9 before-shots + 12 after-shots + 3 bench-shots, console clean, reduced-motion proof (0 new keyframes), gates 346/346 tests + F06-F10 49/49 + tsc/lint/build; bundle 488.73kB (gzip 130.92, +12.5kB); owner stop-point respected — no remote operations
+0dcbdb7 chore(proto-v2): mission start — git state record + protection notes (backup bundle created, work branch prototypes/interactive-learning off main@77a5a38; no remote operations)
+77a5a38 audit(redesign): Math Slate evidence pack — visual/UX audit (6 structural + 10 component findings, 8 before-shots), DESIGN_SYSTEM.md (tokens/typography/backgrounds/motion/guardrails), gates evidence (306/306 + F06-F10 46/46 + tsc/lint/build), reduced-motion CSS proof, live-bundle byte-identity proof (index-JR2jRQub.js SHA-256 0a16a4e7…), CI/Deploy run evidence per SHA, 30 after-shots of live design, 4 before/after comparisons, 11-deliverable delivery report with honest limitations
+3640b04 test(reliability): raise App-level exit/re-entry test timeout to 20s — two full App renders + eight clicks exceed the 5s default on shared CI runners (flake proven in run 41177444573: 305/306 timed out, local 306/306 green); product code untouched
+6aa1483 refactor(ui): apply Math Slate across all nine surfaces — App shell (gradient logo badge, active nav glow, float-shaped hero, top-bar chapter cards, animated progress bars), QuestionCard (numbered options, spring select, correct=tick pop / wrong=shake + error-doctor chip), LessonFlowPlayer (gradient stage bar, animated stage transitions via key, celebratory finish card), DiagnosticDashboard (icon bubbles, soft stat cards), AssistantPanel (brand bubble chips), InteractiveLabs (accent side-bars), StepSolverAnimation (brand controls, gradient step bar), ErrorBoundary, exam result pop-in stats, analytics hover metrics; zero logic/props/data-testid changes, all user-facing strings preserved (regression lesson honored); gates: 306/306 tests, tsc, eslint, build clean, F06-F10 regression 46/46
+[exit=0]
+
+### [15] SUPPLEMENTARY: git stash list
+[exit=0]
+
+### [16] SUPPLEMENTARY: git worktree list
+/home/z/my-project/ryazi-yar-six  93680a3 [prototypes/interactive-learning]
+[exit=0]
+
+### [17] SUPPLEMENTARY: git fsck --full --no-progress
+[exit=0]
+
+### [18] SUPPLEMENTARY: main vs origin/main vs 77a5a38
+77a5a383e9785be9ce8ad02cdee403cb339e33e3
+77a5a383e9785be9ce8ad02cdee403cb339e33e3
+77a5a383e9785be9ce8ad02cdee403cb339e33e3
+[exit=0]
+
+### [19] SUPPLEMENTARY: merge-base main..prototypes/interactive-learning (branch ahead/behind)
+0	7
+[exit=0]
+
+### [20] SUPPLEMENTARY: search commit messages for 'mission' / '355a1de' across all refs
+[exit=0 grep=355a1de]
+15e954a fix(rtl-math): isolate math expressions in Persian RTL text — root-cause display-layer fix (P0 owner mission)
+0dcbdb7 chore(proto-v2): mission start — git state record + protection notes (backup bundle created, work branch prototypes/interactive-learning off main@77a5a38; no remote operations)
+0a8983d docs(delivery): lesson-1 mission report (11 deliverables) — discrepancy record, fraction coverage, stage persistence, per-SHA CI/deploy evidence, live screenshots index, limitations
+fb60b5e feat(content)+audit: ch7l3 fraction coverage per official textbook (exercises 3 & 5, p.141) — questions q735/q736 + worked example ex74; stage F pass rule 4/7; golden table 96→98; mission-path-correction evidence (audit/lesson1/GIT_STATE.md: riazi_yar discrepancy documented, ee359e2 NOT on remote, no v1.0.0 tag, no audit-fixes branch; zero changes to that repo); F06/F07/F08/F10 regression 41/41 green
+bd28d3e docs(release): append mission evidence — per-SHA runs for F06/F07/F08/F10 fixes (CI 41087638612 + Deploy 41087638477 both success on 58a29cd, live bundle index-DCwa4iP0.js verified); intermediate commits honestly noted as having no dedicated runs
+1a90e4f docs: final delivery report (14 items per mission §17) with verified evidence
+2a204eb feat(dashboard): diagnostic dashboard (next-step engine card, skill status groups, due reviews, error patterns with remediation, effectiveness metrics per mission §13), parent skill report, rule-based assistant panel wired to skill states; full-path UI integration tests (A→G success path + prereq remedial loop); fixed stale-closure race on concurrent submits
+[exit=0 grep=mission]
+
+### [21] SUPPLEMENTARY: untracked/modified files (porcelain v1)
+?? audit/mission-2/
+[exit=0]
+
+### END SECTION 2

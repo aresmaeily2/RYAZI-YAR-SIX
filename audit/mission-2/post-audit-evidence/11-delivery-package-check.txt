@@ -1,0 +1,127 @@
+############################################################
+# MISSION-2-POST-AUDIT — delivery-package verification
+# Date (UTC): 2026-11-08 20:56:45 UTC
+############################################################
+
+### [A] Claimed Mission-2 delivery package existence check
+--- test -d /home/z/my-project/download/mission-2-rtl-math-audit/
+DOES NOT EXIST
+--- test -d /home/z/my-project/ryazi-yar-six/audit/mission-2 (before post-audit)
+did not exist at audit start (created by THIS post-audit for report/evidence only)
+
+### [B] Global filesystem search for any mission-2 artifact (filename match)
+(Glob **/*ission* over /home/z/my-project returned 0 matches at audit start)
+
+### [C] What DOES exist in download/ related to rtl-math
+total 82584
+drwxr-xr-x 12 z z     4096 Nov  8 20:02 .
+drwxr-xr-x  1 z z     4096 Nov  8 20:02 ..
+-rwxr-xr-x  1 z z     6709 Oct 31 08:41 P0-6R-credential-register-redacted.json
+-rwxr-xr-x  1 z z     3934 Oct 31 08:41 P0-6R-environment-state.md
+-rwxr-xr-x  1 z z     2340 Oct 27 21:37 PUSH-INSTRUCTIONS.md
+-rwxr-xr-x  1 z z       34 Oct 27 20:32 README.md
+-rwxr-xr-x  1 z z  1392591 Oct 27 21:36 RYAZI-YAR-SIX-ready-to-push.zip
+-rwxr-xr-x  1 z z      247 Oct 30 08:03 ci-run-final-2993c70.json
+-rwxr-xr-x  1 z z      247 Oct 30 08:03 deploy-run-final-2993c70.json
+drwxr-xr-x  2 z z     4096 Nov  8 20:02 lesson1-ci-final
+drwxr-xr-x  3 z z     4096 Nov  8 20:02 lesson1-evidence
+drwxr-xr-x  6 z z     4096 Nov  8 20:02 owner-eval-stage31
+drwxr-xr-x  5 z z     4096 Nov  8 20:02 owner-review-rtl
+drwxr-xr-x  2 z z     4096 Nov  8 20:02 owner-review-stage32
+drwxr-xr-x  4 z z     4096 Nov  8 20:02 proto-v2-evidence
+-rwxr-xr-x  1 z z  4658435 Oct 31 11:36 proto-v2-evidence.zip
+drwxr-xr-x  7 z z     4096 Nov  8 20:02 redesign-evidence
+-rwxr-xr-x  1 z z  5872107 Oct 31 06:45 redesign-evidence.zip
+drwxr-xr-x  5 z z     4096 Nov  8 20:02 rtl-math-fix
+-rwxr-xr-x  1 z z  5449258 Oct 31 05:27 ryazi-yar-six-pre-lesson1-push.bundle
+-rwxr-xr-x  1 z z  7757247 Oct 31 05:40 ryazi-yar-six-pre-lesson1-push2.bundle
+-rwxr-xr-x  1 z z  2746564 Oct 30 07:40 ryazi-yar-six-pre-push-20261030-0740.bundle
+-rwxr-xr-x  1 z z 42052292 Nov  1 13:14 ryazi-yar-six-pre-rtl-math-fix-20261101.bundle
+-rwxr-xr-x  1 z z 13366954 Oct 31 11:04 ryazi-yar-six-pre-visual-transform-20261031.bundle
+drwxr-xr-x  2 z z     4096 Nov  8 20:02 screenshots
+drwxr-xr-x  2 z z     4096 Nov  8 20:02 screenshots-audit
+-rwxr-xr-x  1 z z    26374 Oct 31 08:45 گزارش-P0-6R-چرخش-و-ابطال-اعتبارنامه‌ها.docx
+-rwxr-xr-x  1 z z   326919 Oct 31 08:45 گزارش-P0-6R-چرخش-و-ابطال-اعتبارنامه‌ها.pdf
+-rwxr-xr-x  1 z z    22363 Oct 30 16:21 گزارش-اصلاحات-آموزشی-ریاضی‌یار-ششم.docx
+-rwxr-xr-x  1 z z   248809 Oct 30 16:21 گزارش-اصلاحات-آموزشی-ریاضی‌یار-ششم.pdf
+-rwxr-xr-x  1 z z    20357 Oct 30 07:06 گزارش-ممیزی-مستقل-ریاضی‌یار-ششم.docx
+-rwxr-xr-x  1 z z   226711 Oct 30 07:06 گزارش-ممیزی-مستقل-ریاضی‌یار-ششم.pdf
+-rwxr-xr-x  1 z z    21371 Oct 30 07:54 گزارش-نهایی-انتشار-ریاضی‌یار-ششم.docx
+-rwxr-xr-x  1 z z   273851 Oct 30 07:54 گزارش-نهایی-انتشار-ریاضی‌یار-ششم.pdf
+
+### [D] download/rtl-math-fix/ — the REAL existing owner package (for 15e954a)
+/home/z/my-project/download/rtl-math-fix/:
+total 48
+drwxr-xr-x  5 z z  4096 Nov  8 20:02 .
+drwxr-xr-x 12 z z  4096 Nov  8 20:02 ..
+-rwxr-xr-x  1 z z 11228 Nov  1 14:06 AUDIT.md
+-rwxr-xr-x  1 z z 13706 Nov  1 14:06 REPORT.md
+drwxr-xr-x  2 z z  4096 Nov  8 20:02 after
+drwxr-xr-x  2 z z  4096 Nov  8 20:02 before
+drwxr-xr-x  2 z z  4096 Nov  8 20:02 gates
+
+/home/z/my-project/download/rtl-math-fix/after:
+total 4888
+drwxr-xr-x 2 z z   4096 Nov  8 20:02 .
+drwxr-xr-x 5 z z   4096 Nov  8 20:02 ..
+-rwxr-xr-x 1 z z 447755 Nov  1 14:06 d1-ch7l3-lesson-top.png
+-rwxr-xr-x 1 z z 364692 Nov  1 14:06 d2-flow-stageA-question.png
+-rwxr-xr-x 1 z z 391255 Nov  1 14:06 d3-flow-feedback-explanation.png
+-rwxr-xr-x 1 z z 327966 Nov  1 14:06 d4-ch1-lesson1-formulabox.png
+-rwxr-xr-x 1 z z 335202 Nov  1 14:06 d5-cylinder-lab.png
+-rwxr-xr-x 1 z z 207798 Nov  1 14:06 d6-protoC-start.png
+-rwxr-xr-x 1 z z 247110 Nov  1 14:06 d7-protoC-hint2.png
+-rwxr-xr-x 1 z z 307703 Nov  1 14:06 d8-protoB4-chips.png
+-rwxr-xr-x 1 z z 318727 Nov  1 14:06 d9-protoB4-correct-feedback.png
+-rwxr-xr-x 1 z z 860204 Nov  1 14:06 m1-flow-question-390.png
+-rwxr-xr-x 1 z z 375895 Nov  1 14:06 m2-protoC-start-390.png
+-rwxr-xr-x 1 z z 781454 Nov  1 14:06 m3-cylinder-390.png
+-rwxr-xr-x 1 z z   1344 Nov  1 14:06 visual-order-after.json
+
+/home/z/my-project/download/rtl-math-fix/before:
+total 4892
+drwxr-xr-x 2 z z   4096 Nov  8 20:02 .
+drwxr-xr-x 5 z z   4096 Nov  8 20:02 ..
+-rwxr-xr-x 1 z z 447713 Nov  1 14:06 d1-ch7l3-lesson-top.png
+-rwxr-xr-x 1 z z 364680 Nov  1 14:06 d2-flow-stageA-question.png
+-rwxr-xr-x 1 z z 391164 Nov  1 14:06 d3-flow-feedback-explanation.png
+-rwxr-xr-x 1 z z 327971 Nov  1 14:06 d4-ch1-lesson1-formulabox.png
+-rwxr-xr-x 1 z z 335337 Nov  1 14:06 d5-cylinder-lab.png
+-rwxr-xr-x 1 z z 207808 Nov  1 14:06 d6-protoC-start.png
+-rwxr-xr-x 1 z z 247101 Nov  1 14:06 d7-protoC-hint2.png
+-rwxr-xr-x 1 z z 307721 Nov  1 14:06 d8-protoB4-chips.png
+-rwxr-xr-x 1 z z 318763 Nov  1 14:06 d9-protoB4-correct-feedback.png
+-rwxr-xr-x 1 z z 862448 Nov  1 14:06 m1-flow-question-390.png
+-rwxr-xr-x 1 z z 375894 Nov  1 14:06 m2-protoC-start-390.png
+-rwxr-xr-x 1 z z 783551 Nov  1 14:06 m3-cylinder-390.png
+-rwxr-xr-x 1 z z   1652 Nov  1 14:06 visual-order-before.json
+
+/home/z/my-project/download/rtl-math-fix/gates:
+total 24
+drwxr-xr-x 2 z z 4096 Nov  8 20:02 .
+drwxr-xr-x 5 z z 4096 Nov  8 20:02 ..
+-rwxr-xr-x 1 z z  352 Nov  1 14:06 build.txt
+-rwxr-xr-x 1 z z  552 Nov  1 14:06 controls.txt
+-rwxr-xr-x 1 z z  892 Nov  1 14:06 f06-f10-regression.txt
+-rwxr-xr-x 1 z z    0 Nov  1 14:06 lint.txt
+-rwxr-xr-x 1 z z 3357 Nov  1 14:06 tests.txt
+-rwxr-xr-x 1 z z    0 Nov  1 14:06 typecheck.txt
+
+### [E] SHA-256 of backup bundles (integrity anchors)
+69d9ceef305cc12b3437d09bcba8b2591729c79f848566f0817098db79cba095  /home/z/my-project/download/ryazi-yar-six-pre-lesson1-push.bundle
+9105f3ac655cb400013bad46b51d2775344f18b54a41adda83ecdd563c54e51e  /home/z/my-project/download/ryazi-yar-six-pre-lesson1-push2.bundle
+7b30ad6cc452ee67d27257458352fbd9d8ff7fdc854fa7eb5fb790091458feba  /home/z/my-project/download/ryazi-yar-six-pre-push-20261030-0740.bundle
+029e9a83675acd1a4b1b8d8229744422dec38efc6ee10097de4f4dbdd7c9d83a  /home/z/my-project/download/ryazi-yar-six-pre-rtl-math-fix-20261101.bundle
+5607f55dd68830deec9c701e444c273420a4ed54811cf046ed8963fa406ea836  /home/z/my-project/download/ryazi-yar-six-pre-visual-transform-20261031.bundle
+
+### [F] SHA-256 of download/rtl-math-fix key files
+fd4fb5eae374e5000c93c8826f42da663a9cccf3c8e5603db7340ac42da77bae  /home/z/my-project/download/rtl-math-fix/REPORT.md
+36cc5a2167ec59c52715d36cceaaf5cb2d5694f1139d244b29e7c352b11de1a3  /home/z/my-project/download/rtl-math-fix/AUDIT.md
+bad92aab8acbd6fe3db637a7c6d62c73694cbc9f60c16abce0f6311ef974b875  /home/z/my-project/download/rtl-math-fix/gates/build.txt
+3f7c48a023a703ce78ae3f82fb6f78ade53774a26084236b1438b561e86948cb  /home/z/my-project/download/rtl-math-fix/gates/controls.txt
+f19d7353e64a18d15ae2cce449d9f664e28e0c836ec0d0a8487276c1aaf14ba4  /home/z/my-project/download/rtl-math-fix/gates/f06-f10-regression.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /home/z/my-project/download/rtl-math-fix/gates/lint.txt
+12557bc29c5c7017e0b9fd2083ba226bcb9c3fd2f36760e5677b6c0b204e1073  /home/z/my-project/download/rtl-math-fix/gates/tests.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /home/z/my-project/download/rtl-math-fix/gates/typecheck.txt
+a9daaeff3f549130040520da34f78ca1a1a05e6bb33b7e28aa7c3c8cb43bcff8  /home/z/my-project/download/rtl-math-fix/before/visual-order-before.json
+a23c8bd1f1dccba3d8a087739fe96c171f52c7865bac05f300401d0a036893af  /home/z/my-project/download/rtl-math-fix/after/visual-order-after.json

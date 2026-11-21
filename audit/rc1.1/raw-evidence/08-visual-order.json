@@ -1,0 +1,66 @@
+{
+ "#s1": {
+  "island": "۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰",
+  "visual": "۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰",
+  "match": true
+ },
+ "#s2": {
+  "island": "۱۰٬۰۰۰ + ۲۵۰",
+  "visual": "۱۰٬۰۰۰ + ۲۵۰",
+  "match": true
+ },
+ "#s3": {
+  "island": "۱۰+۴×(۶−۲)÷۸",
+  "visual": "۱۰+۴×(۶−۲)÷۸",
+  "match": true
+ },
+ "#s4": {
+  "island": "(۳ × ۲۰) + ۱ = ۶۱",
+  "visual": "(۳ × ۲۰) + ۱ = ۶۱",
+  "match": true
+ },
+ "#s5": {
+  "island": "۵/۰۶ < ۵/۶ < ۵/۶۶",
+  "visual": "۵/۰۶ < ۵/۶ < ۵/۶۶",
+  "match": true
+ },
+ "segment-layout-s1": {
+  "logical": "مبلغ پرداختی = ۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰ تومان",
+  "dir": "rtl",
+  "segments_x": [
+   {
+    "seg": "prefix «مبلغ پرداختی =»",
+    "x": [
+     1191,
+     1346
+    ],
+    "note": "rightmost — RTL start"
+   },
+   {
+    "seg": "ISLAND",
+    "x": [
+     925,
+     1191
+    ],
+    "note": "middle"
+   },
+   {
+    "seg": "suffix « تومان»",
+    "x": [
+     862,
+     925
+    ],
+    "note": "leftmost"
+   }
+  ],
+  "island_internal": {
+   "first_char": "۸",
+   "first_x": 925,
+   "last_char": "۰",
+   "last_x": 1178,
+   "note": "island renders internally LTR: ۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰"
+  },
+  "method": "Range.getBoundingClientRect per segment/char, Chromium, device_scale 1",
+  "verdict": "PASS — exact logical visual order, machine-verified"
+ }
+}

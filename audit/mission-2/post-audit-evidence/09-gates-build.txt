@@ -1,0 +1,14 @@
+# fresh build run — 2026-11-08 20:48:56 UTC — HEAD 93680a3
+
+> ryazi-yar-six@1.0.0 build
+> tsc -b && vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 1609 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.38 kB │ gzip:   0.68 kB
+dist/assets/index-BY2g4EAN.css   51.27 kB │ gzip:   8.69 kB
+dist/assets/index-CksJxeIp.js   491.09 kB │ gzip: 131.67 kB
+✓ built in 2.52s

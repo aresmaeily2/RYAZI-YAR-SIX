@@ -1,0 +1,50 @@
+name: Content issue
+description: Wrong answer, incorrect explanation, bad hint or confusing math content
+labels: ["content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for checking our math! All 98 answer keys are locked by a
+        golden-master test, but mistakes can still slip through. Please give
+        the **question id** (e.g. `q623`) if you can see it, or describe the
+        lesson and question text.
+  - type: input
+    id: question-id
+    attributes:
+      label: Question / item id
+      placeholder: "q623 or flow-ch7l3-g-t1 (or 'unknown')"
+  - type: input
+    id: location
+    attributes:
+      label: Chapter & lesson
+      placeholder: "فصل ۶ — درصد و کاربردهای آن"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: The incorrect answer/explanation/hint and what it should say. If it is a math error, show your computation.
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Wrong correct-answer (teaches something false)
+        - Wrong or misleading explanation/hint
+        - Confusing wording (content is correct)
+        - Suggestion for improvement
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-flight checks
+      options:
+        - label: I re-checked my computation before reporting
+          required: true
+        - label: I searched existing issues for a duplicate
+          required: true

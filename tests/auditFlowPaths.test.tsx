@@ -5,6 +5,7 @@ import { flowForLesson } from '../src/data/flows';
 import { CURRICULUM_CHAPTERS } from '../src/data/curriculumData';
 import type { Question } from '../src/types/curriculum';
 import type { SubmitResult } from '../src/hooks/useLearnerState';
+import { radioName } from './radioName';
 
 /**
  * ممیزی فاز ۴ — مسیرهای دانش‌آموزی افزوده روی جریان پایلوت ch2l2:
@@ -62,7 +63,7 @@ function answerAll(mode: 'correct' | 'wrong' | 'with-hints', hintClicks = 0) {
         mode === 'wrong'
           ? question.options.find((o) => o !== question.correctAnswer)!
           : question.correctAnswer;
-      fireEvent.click(within(card).getByRole('radio', { name: optionText }));
+      fireEvent.click(within(card).getByRole('radio', { name: radioName(optionText, question) }));
     } else {
       const input = within(card).getByLabelText(/پاسخ عددی خود را بنویس/);
       const value = mode === 'wrong' ? '999999' : question.acceptedAnswers[0];
@@ -104,13 +105,13 @@ describe('ممیزی فاز ۴ — مسیر ۳: دانش‌آموز درگیرِ
     const firstC = cCards[0];
     const qid1 = firstC.getAttribute('data-testid')!.replace('question-', '');
     const q1 = findQuestion(qid1)!;
-    if (q1.type === 'mcq') fireEvent.click(within(firstC).getByRole('radio', { name: q1.correctAnswer }));
+    if (q1.type === 'mcq') fireEvent.click(within(firstC).getByRole('radio', { name: radioName(q1.correctAnswer, q1) }));
     else fireEvent.change(within(firstC).getByLabelText(/پاسخ عددی خود را بنویس/), { target: { value: q1.acceptedAnswers[0] } });
     fireEvent.click(within(firstC).getByRole('button', { name: /بررسی و تصحیح پاسخ/ }));
     for (const card of cCards.slice(1)) {
       const qid = card.getAttribute('data-testid')!.replace('question-', '');
       const q = findQuestion(qid)!;
-      if (q.type === 'mcq') fireEvent.click(within(card).getByRole('radio', { name: q.options.find((o) => o !== q.correctAnswer)! }));
+      if (q.type === 'mcq') fireEvent.click(within(card).getByRole('radio', { name: radioName(q.options.find((o) => o !== q.correctAnswer)!, q) }));
       else fireEvent.change(within(card).getByLabelText(/پاسخ عددی خود را بنویس/), { target: { value: '999999' } });
       fireEvent.click(within(card).getByRole('button', { name: /بررسی و تصحیح پاسخ/ }));
     }

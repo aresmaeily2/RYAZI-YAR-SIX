@@ -138,7 +138,7 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
     <div className="space-y-5" data-testid="diagnostic-dashboard">
       {/* ===== کارت گام پیشنهادی بعدی ===== */}
       {prioritySkill && priorityDecision && priorityDecision.action !== 'maintain-mastery' && (
-        <div className="relative overflow-hidden bg-gradient-to-l from-emerald-700 to-emerald-600 text-white rounded-3xl p-5 shadow-lift" data-testid="next-step-card">
+        <div className="relative overflow-hidden bg-gradient-to-l from-emerald-800 to-emerald-700 text-white rounded-3xl p-5 shadow-lift" data-testid="next-step-card">
           <span className="absolute -top-8 left-10 w-28 h-28 rounded-full bg-white/10 blur-xl" aria-hidden="true" />
           <div className="relative flex flex-wrap items-center justify-between gap-3">
             <div className="flex-1 min-w-60">
@@ -182,7 +182,7 @@ export const DiagnosticDashboard: React.FC<DiagnosticDashboardProps> = ({
             </div>
             <div className="bg-sun-50 border border-sun-200 rounded-xl p-3 shadow-soft">
               <div className="font-black text-sun-700">{toPersianDigits(statusGroups.needspractice.length)} نیازمند تمرین</div>
-              <div className="text-sun-600 mt-0.5">پایه‌ها را محکم کنیم</div>
+              <div className="text-sun-700 mt-0.5">پایه‌ها را محکم کنیم</div>
             </div>
           </div>
           <div className="text-[11px] text-slate-500 border-t border-slate-100 pt-2.5">

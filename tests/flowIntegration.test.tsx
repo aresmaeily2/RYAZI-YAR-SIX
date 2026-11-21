@@ -5,6 +5,7 @@ import { flowForLesson } from '../src/data/flows';
 import { CURRICULUM_CHAPTERS } from '../src/data/curriculumData';
 import type { Question } from '../src/types/curriculum';
 import type { SubmitResult } from '../src/hooks/useLearnerState';
+import { radioName } from './radioName';
 
 /** همه پرسش‌های کتاب با شناسه */
 const qById = new Map<string, Question>(
@@ -45,7 +46,7 @@ function answerCurrentQuestions(_recorder: ReturnType<typeof makeRecorder>, with
     if (!question) continue;
     if (question.type === 'mcq') {
       const optionText = withCorrect ? question.correctAnswer : question.options.find((o) => o !== question.correctAnswer)!;
-      const option = within(card).getByRole('radio', { name: optionText });
+      const option = within(card).getByRole('radio', { name: radioName(optionText, question) });
       fireEvent.click(option);
     } else {
       const input = within(card).getByLabelText(/پاسخ عددی خود را بنویس/);

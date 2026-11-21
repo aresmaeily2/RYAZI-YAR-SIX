@@ -30,6 +30,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # A red typecheck/lint can never be published either —
+      # previously only the CI workflow ran these.
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
       - name: Test
         run: npm test
 
@@ -54,3 +62,19 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Post-deploy verification: the live site must answer 200 and contain the
+  # app shell. A failed verification marks the deployment job red.
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify live deployment
+        run: |
+          URL="https://aresmaeily2.github.io/RYAZI-YAR-SIX/"
+          echo "Checking $URL"
+          HTTP_CODE=$(curl -sS -o /tmp/page.html -w "%{http_code}" -L "$URL")
+          echo "HTTP status: $HTTP_CODE"
+          test "$HTTP_CODE" = "200"
+          grep -q "ریاضی‌یار" /tmp/page.html
+          echo "Deployment verified: app shell is live."

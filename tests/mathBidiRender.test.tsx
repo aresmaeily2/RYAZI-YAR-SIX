@@ -175,7 +175,9 @@ describe('LessonFlowPlayer — مثال حل‌شده (مرحله D جریان c
     const body = document.body.textContent ?? '';
     expect(body).toContain(`${LRI}۲/۶ + ۱/۶ = ۳/۶${PDI}`);
     expect(body).toContain(`${LRI}۳/۶ = ۱/۲${PDI}`);
-    // اشتباه رایج: «(۳ + ۶ = ۹)» — قطعهٔ ریاضی داخل پرانتز محصور می‌شود
-    expect(body).toContain(`(${LRI}۳ + ۶ = ۹${PDI})`);
+    // اشتباه رایج: «(۳ + ۶ = ۹)» — RC1.1: پرانتزِ متعلق به عبارت ریاضی باید
+    // «با عبارت» در همان جزیره محصور شود (الزام بخش ۳ directive؛ رفتار قبلی —
+    // پرانتز بیرون جزیره — عمداً جایگزین شد، تست رگرسیون به‌روزرسانی می‌شود)
+    expect(body).toContain(`${LRI}(۳ + ۶ = ۹)${PDI}`);
   });
 });

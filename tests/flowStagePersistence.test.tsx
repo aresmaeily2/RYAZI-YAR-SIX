@@ -9,6 +9,7 @@ import { loadLearnerState, saveLearnerState, STORAGE_KEY, importStateJson } from
 import type { Question } from '../src/types/curriculum';
 import type { SubmitResult } from '../src/hooks/useLearnerState';
 import App from '../src/App';
+import { radioName } from './radioName';
 
 /**
  * آزمون «حفظ وضعیت مرحلهٔ جریان پس از خروج و ورود مجدد» (الزام موتور تطبیقی).
@@ -70,7 +71,7 @@ describe('پایدارسازی مرحله در پخش‌کنندهٔ جریان'
 
     const pick = (qid: string, option: string) => {
       const card = screen.getByTestId(`question-${qid}`);
-      fireEvent.click(within(card).getByRole('radio', { name: option }));
+      fireEvent.click(within(card).getByRole('radio', { name: radioName(option, qById.get(qid)!) }));
       fireEvent.click(within(card).getByRole('button', { name: /بررسی و تصحیح پاسخ/ }));
     };
     pick('q721', '۱۲۰۰');
@@ -158,7 +159,7 @@ describe('سناریوی واقعی خروج و ورود مجدد در سطح Ap
 
     const pick = async (qid: string, option: string) => {
       const card = screen.getByTestId(`question-${qid}`);
-      await user.click(within(card).getByRole('radio', { name: option }));
+      await user.click(within(card).getByRole('radio', { name: radioName(option, qById.get(qid)!) }));
       await user.click(within(card).getByRole('button', { name: /بررسی و تصحیح پاسخ/ }));
     };
     await pick('q721', '۱۲۰۰');

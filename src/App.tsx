@@ -10,6 +10,7 @@ import { DiagnosticDashboard, ParentSkillReport } from './components/DiagnosticD
 import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
 import { bidiText } from './utils/mathBidi';
+import { useCleanMathCopy } from './hooks/useCleanMathCopy';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import {
@@ -43,6 +44,9 @@ const colorMap: Record<string, { bg: string; text: string; bar: string }> = {
 const App: React.FC = () => {
   const learner = useLearnerState();
   const { state } = learner;
+
+  // کپی تمیز: نویسه‌های کنترلی bidi فقط در «نمایش» لازم‌اند، نه در متن کپی‌شده
+  useCleanMathCopy();
 
   const [activeTab, setActiveTab] = useState<Tab>('dashboard');
   const [selectedChapterId, setSelectedChapterId] = useState<string>(state.lastVisitedChapterId);
@@ -264,7 +268,7 @@ const App: React.FC = () => {
                         <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden mt-4 shadow-inner" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100} aria-label={`درصد تسلط فصل ${toPersianDigits(ch.number)}`}>
                           <div className={`h-full ${colors.bar} transition-all duration-slow ease-glide`} style={{ width: `${pct}%` }} />
                         </div>
-                        <p className="text-[11px] text-slate-400 mt-2 font-medium">
+                        <p className="text-[11px] text-slate-500 mt-2 font-medium">
                           {toPersianDigits(ch.lessons.length)} درس — {toPersianDigits(ch.lessons.reduce((a, l) => a + l.questions.length, 0))} پرسش
                         </p>
                       </div>
@@ -348,7 +352,7 @@ const App: React.FC = () => {
                     <ul className="space-y-2.5 text-sm text-slate-700">
                       {currentLesson.conceptSteps.map((step, i) => (
                         <li key={i} className="flex items-start gap-2.5 bg-slate-50/60 rounded-xl p-2.5">
-                          <span className="w-6 h-6 rounded-lg bg-gradient-to-br from-brand-500 to-violet-600 text-white text-xs font-black flex items-center justify-center shrink-0 shadow-sm" aria-hidden="true">
+                          <span className="w-6 h-6 rounded-lg bg-gradient-to-br from-brand-600 to-violet-600 text-white text-xs font-black flex items-center justify-center shrink-0 shadow-sm" aria-hidden="true">
                             {toPersianDigits(i + 1)}
                           </span>
                           <span className="leading-relaxed">{step}</span>
@@ -551,7 +555,7 @@ const App: React.FC = () => {
                       </div>
                       <div className="p-4 rounded-2xl bg-sun-50 border border-sun-200 text-center shadow-soft animate-pop" style={{ animationDelay: '240ms' }}>
                         <div className="text-2xl font-black text-sun-700">{toPersianDigits(examScore.unanswered)}</div>
-                        <div className="text-[11px] text-sun-600 font-bold mt-1">بی‌پاسخ</div>
+                        <div className="text-[11px] text-sun-700 font-bold mt-1">بی‌پاسخ</div>
                       </div>
                     </div>
                     <div className="flex items-start gap-2 bg-slate-50 border border-slate-200 rounded-xl p-4">
@@ -725,7 +729,7 @@ const App: React.FC = () => {
         </main>
 
         <footer className="mt-4 border-t border-brand-100 bg-white/70 backdrop-blur-sm py-5">
-          <div className="max-w-6xl mx-auto px-4 text-center text-[11px] text-slate-400 font-medium flex items-center justify-center gap-2">
+          <div className="max-w-6xl mx-auto px-4 text-center text-[11px] text-slate-500 font-medium flex items-center justify-center gap-2">
             <span className="w-2 h-2 rounded-full bg-gradient-to-l from-brand-500 to-violet-500" aria-hidden="true" />
             ریاضی‌یار ششم — پروژه آموزشی متن‌باز برای دانش‌آموزان پایه ششم ابتدایی ایران
           </div>

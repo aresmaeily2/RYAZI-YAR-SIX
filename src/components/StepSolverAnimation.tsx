@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { SolverAnimationSpec } from '../learning/flowTypes';
 import { Pause, Play, RotateCcw, SkipForward, AlertTriangle } from 'lucide-react';
 import { toPersianDigits } from '../utils/mathEngine';
+import { bidiText } from '../utils/mathBidi';
 
 /**
  * انیمیشن آموزشی حل مرحله‌به‌مرحلهٔ یک عبارت ریاضی (موشن‌گرافیک هدفمند).
@@ -161,7 +162,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
             <span className="text-[10px] text-white bg-emerald-600 rounded-full w-5 h-5 flex items-center justify-center shrink-0" aria-hidden="true">
               {toPersianDigits(i + 1)}
             </span>
-            <span>{st.caption}</span>
+            <span>{bidiText(st.caption)}</span>
           </li>
         ))}
       </ol>
@@ -169,7 +170,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
       {finished && (
         <div className="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl px-3.5 py-2.5 flex items-center gap-1.5 animate-pop">
           <span aria-hidden="true">✓</span>
-          عبارت کامل حل شد: {spec.steps[totalSteps - 1].expressionAfter} — حالا خودت قبل از هر محاسبه عمل اول را پیدا کن.
+          عبارت کامل حل شد: {bidiText(spec.steps[totalSteps - 1].expressionAfter)} — حالا خودت قبل از هر محاسبه عمل اول را پیدا کن.
         </div>
       )}
 
@@ -188,7 +189,7 @@ export const StepSolverAnimation: React.FC<{ spec: SolverAnimationSpec }> = ({ s
           </button>
           {showMistake && (
             <div className="solver-pop mt-2 rounded-xl border border-rose-200 bg-rose-50/80 p-3 space-y-2" data-testid="anim-mistake">
-              <div className="text-xs font-bold text-rose-900 leading-relaxed">{spec.mistake.caption}</div>
+              <div className="text-xs font-bold text-rose-900 leading-relaxed">{bidiText(spec.mistake.caption)}</div>
               <div className="bg-white rounded-lg border border-rose-200 py-2.5 text-center text-lg font-extrabold text-rose-700" dir="ltr">
                 {renderExpression(spec.mistake.expression, spec.mistake.highlight, false)}
               </div>

@@ -1,0 +1,32 @@
+{
+ "sw": {
+  "controlled": true,
+  "state": "activated",
+  "offline_ok": true
+ },
+ "q623": {
+  "present": true,
+  "accname_opt1": true,
+  "islands": [
+   "۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰"
+  ],
+  "copied_has_bidi_controls": false
+ },
+ "keyboard": {
+  "fv": true,
+  "w": "3px",
+  "c": "rgb(79, 70, 229)"
+ },
+ "contrast": {
+  "samples": 204,
+  "fails": 0
+ },
+ "rtl_visual_order": {
+  "#x1": true,
+  "#x2": true,
+  "#x3": true,
+  "#x4": true,
+  "#x5": true
+ },
+ "console_errors": []
+}

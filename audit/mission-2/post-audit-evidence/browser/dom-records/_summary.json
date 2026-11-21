@@ -1,0 +1,62 @@
+[
+  {
+    "tag": "w320h720",
+    "part": "app",
+    "ok": true,
+    "islands": 2
+  },
+  {
+    "tag": "w320h720",
+    "part": "harness",
+    "ok": true,
+    "samples": 5
+  },
+  {
+    "tag": "w390h844",
+    "part": "app",
+    "ok": true,
+    "islands": 2
+  },
+  {
+    "tag": "w390h844",
+    "part": "harness",
+    "ok": true,
+    "samples": 5
+  },
+  {
+    "tag": "w430h932",
+    "part": "app",
+    "ok": true,
+    "islands": 2
+  },
+  {
+    "tag": "w430h932",
+    "part": "harness",
+    "ok": true,
+    "samples": 5
+  },
+  {
+    "tag": "w768h1024",
+    "part": "app",
+    "ok": true,
+    "islands": 2
+  },
+  {
+    "tag": "w768h1024",
+    "part": "harness",
+    "ok": true,
+    "samples": 5
+  },
+  {
+    "tag": "w1366h768",
+    "part": "app",
+    "ok": true,
+    "islands": 2
+  },
+  {
+    "tag": "w1366h768",
+    "part": "harness",
+    "ok": true,
+    "samples": 5
+  }
+]

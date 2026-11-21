@@ -1,0 +1,115 @@
+{
+  "url": "file:///tmp/postaudit/harness/index.html",
+  "islands": [
+    {
+      "text": "۲ + ۷ + ۴ = ۱۳",
+      "dir": "ltr",
+      "unicodeBidi": "isolate",
+      "rect": {
+        "x": 252,
+        "y": 142,
+        "w": 107,
+        "h": 28
+      }
+    },
+    {
+      "text": "(۳ × ۱) + ۱ = ۴",
+      "dir": "ltr",
+      "unicodeBidi": "isolate",
+      "rect": {
+        "x": 256,
+        "y": 230,
+        "w": 103,
+        "h": 28
+      }
+    },
+    {
+      "text": "۰۰۰ + ۲۵۰",
+      "dir": "ltr",
+      "unicodeBidi": "isolate",
+      "rect": {
+        "x": 269,
+        "y": 406,
+        "w": 72,
+        "h": 28
+      }
+    },
+    {
+      "text": "۰۰۰ = ۳۴۰",
+      "dir": "ltr",
+      "unicodeBidi": "isolate",
+      "rect": {
+        "x": 91,
+        "y": 494,
+        "w": 74,
+        "h": 28
+      }
+    }
+  ],
+  "samples": [
+    {
+      "sample": "0",
+      "rowText": "۲ + ۷ + ۴ = ۱۳",
+      "isolated": true,
+      "islandText": "۲ + ۷ + ۴ = ۱۳",
+      "overflowX": false,
+      "rect": {
+        "w": 358,
+        "h": 78
+      }
+    },
+    {
+      "sample": "1",
+      "rowText": "(۳ × ۱) + ۱ = ۴",
+      "isolated": true,
+      "islandText": "(۳ × ۱) + ۱ = ۴",
+      "overflowX": false,
+      "rect": {
+        "w": 358,
+        "h": 78
+      }
+    },
+    {
+      "sample": "2",
+      "rowText": "۲۵٪ × ۸۰",
+      "isolated": false,
+      "islandText": null,
+      "overflowX": false,
+      "rect": {
+        "w": 358,
+        "h": 78
+      }
+    },
+    {
+      "sample": "3",
+      "rowText": "۱۰٬۰۰۰ + ۲۵۰",
+      "isolated": true,
+      "islandText": "۰۰۰ + ۲۵۰",
+      "overflowX": false,
+      "rect": {
+        "w": 358,
+        "h": 78
+      }
+    },
+    {
+      "sample": "4",
+      "rowText": "مبلغ پرداختی = ۸۵٪ × ۴۰۰٬۰۰۰ = ۳۴۰٬۰۰۰",
+      "isolated": true,
+      "islandText": "۰۰۰ = ۳۴۰",
+      "overflowX": false,
+      "rect": {
+        "w": 358,
+        "h": 78
+      }
+    }
+  ],
+  "textOverflow": [],
+  "documentScrollWidth": 390,
+  "documentClientWidth": 390,
+  "horizontalOverflow": false,
+  "case": "harness MathText 5 owner samples",
+  "viewport": {
+    "w": 390,
+    "h": 844
+  }
+}
