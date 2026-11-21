@@ -42,3 +42,11 @@ Basis: full TODO/FIXME scan of `src/`, `tests/`, `docs/` (none found), open GitH
 
 ### ARTIFACT (local only, per §G no push/tag)
 - `android/app/build/outputs/apk/debug/app-debug.apk` — SHA-256 `bbb4faa076c12e605aa4cbd40c79a047fbfba08f748c64167fe81866d729114a`, 4 629 241 B, versionCode 1 (1.0), minSdk 24, targetSdk 36, same web bundle (`index-Dgi25V81.js`) as `main`.
+
+## RC1.3 FINAL VALIDATION (2026-11-21, commit bf4b2bc)
+- §A: APK rebuilt with RC1.3 identity. New artifact `audit/rc1.3/RYAZI-YAR-SIX-v1.0.0-RC1.3-debug.apk`, SHA-256 `0e6bc99a6a399bb139560a30387ef2c7ee100c70953cd7c166be5bbda5ca7be8` (hash stable across copy), badging: package com.mathmvp.riaziyarsix, versionCode 13, versionName 1.0.0-RC1.3, minSdk 24, targetSdk 36. Evidence: aapt2_badging.txt, apksigner_print_certs.txt, apk_inventory.txt.
+- §B: versionCode 13 > RC1.2's 12. Package-ID change io.ryaziyar.six → com.mathmvp.riaziyarsix installs side-by-side (not an update); old app's local data does not migrate.
+- §C: FUNCTIONAL TESTS NOT RUN — no KVM/device in this environment. Android remediation stays OPEN per completion criterion; owner must sideload the APK.
+- §D: Capacitor loads via its default https scheme at localhost (Bridge.java: appUrl + "Defaulting to https"), so ES modules execute — unlike the RC1.2 file:// wrapper. Runtime confirmation still requires a device.
+- §E: APK is debug-signed — not for distribution. Release keystore process documented in ANDROID_RC1.3_VERIFICATION_REPORT.md; release build only on owner authorization.
+- §F: all work committed locally on fix/android-rc13-capacitor (f12d11d, bf4b2bc). No push, tag, release, deploy; main untouched.
