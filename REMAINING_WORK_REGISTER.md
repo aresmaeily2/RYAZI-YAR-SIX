@@ -63,3 +63,9 @@ Statuses reconciled:
 - OPEN (release): publish draft release v1.0.0 with signed assets.
 - BLOCKED (environment): emulator/ADB functional tests (no KVM/device here).
 - Branch state: fix/android-rc13-capacitor, 5 commits ahead of main (b2473c9). No push/tag/release/deploy (§9).
+
+## RC1.3 SHIPPED (2026-11-21)
+- PR #14 merged into main: merge commit 14cc4416f120ff110600184f45e7fafbf30f51c0.
+- CI on main: SUCCESS (run 44934032241). Deploy to GitHub Pages: SUCCESS; live bundle index-kxp87qXn.js confirmed (Pattern Explorer build).
+- Release v1.1.0 published with release-signed APK asset (9eff6ca0…, CN=Riazi Yar Six, versionCode 13).
+- STILL OPEN (owner action): functional sideload test of the APK on a device (checklist in audit/comprehensive-final/android-install-package.md).
