@@ -22,3 +22,9 @@
 - Logcat capture: `adb logcat -d > rc13-launch.log` if anything fails.
 
 ## Status: NOT RUN here (no KVM/device). Per the completion criterion the Android remediation remains OPEN until this checklist passes.
+
+## Update 2026-11-21 — v1.1.0 release artifacts (versionName aligned)
+- Release v1.1.0 now ships `app-release.apk` (versionCode **14**, versionName **1.1.0**) and `app-release.aab`, same signing key (CN=Riazi Yar Six).
+- APK SHA-256: `1008789cbd4aab28fa0ef140a19acdef1ab800d7279cf7f382da000a7ef1c57f`; AAB SHA-256: `48bec7eaadcd7a7b2db37d05483eac270cd7090d16c579e464f4231c5b43505c`.
+- Hashes above were computed **from the artifacts re-downloaded from the GitHub Release** (evidence: `audit/v1.1.0/`).
+- Web-equivalent functional checks passed in browser at 390 px and 1280 px (cold load, 7 chapters, lesson RTL content, correct answer accepted «درست», 0 console/page errors). Device checklist above still requires a physical device (no KVM/emulator in this environment).
