@@ -1,0 +1,20 @@
+# gitleaks config — allowlist for non-secret artifacts
+#
+# The audit evidence files under audit/rc1.3/ contain APK SIGNING CERTIFICATE
+# PUBLIC digests (SHA-256/SHA-1/MD5 of the public key printed by
+# `apksigner print-certs`). These are one-way fingerprints published on every
+# signed APK and are not secrets. Private keys and passwords never enter the
+# repository (keystore lives outside the repo; passwords in env/secret store).
+
+[extend]
+useDefault = true
+
+[allowlist]
+  description = "Public certificate fingerprints in audit evidence (not secrets)"
+  paths = [
+    '''audit/rc1\.3/apksigner_print_certs\.txt''',
+    '''audit/rc1\.3/release-apk-verify\.txt''',
+  ]
+  regexes = [
+    '''Signer #1 (certificate|public key) (SHA-256|SHA-1|MD5) digest''',
+  ]
