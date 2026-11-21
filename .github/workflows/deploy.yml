@@ -61,7 +61,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   # Post-deploy verification: the live site must answer 200 and contain the
   # app shell. A failed verification marks the deployment job red.
