@@ -113,17 +113,45 @@ export interface ClassifyInput {
   hintsUsed: number;
   /** آیا پاسخ خالی یا بسیار کوتاه بوده است */
   blankLike: boolean;
+  /** پاسخ عددی واردشده دانش‌آموز (برای قواعد ساختاری الگوی عددی) */
+  numericAnswer?: number;
+}
+
+/**
+ * قواعد ساختاری الگوی عددی: فاصله پاسخ غلط از پاسخ درست نوع سوءبرداشت را لو می‌دهد.
+ * فقط برای پرسش‌های الگویی با اختلاف ثابت معنادار است (در این نسخه: اختلاف ثابت ۴ الگوی ch1l1؛
+ * تعمیم به الگوهای دیگر با پارامتر commonDifference).
+ */
+export function classifyPatternMisconception(
+  studentAnswer: number,
+  correctAnswer: number,
+  commonDifference: number,
+): MisconceptionCode | null {
+  const delta = Math.abs(studentAnswer - correctAnswer);
+  if (delta === 0) return null;
+  if (delta === commonDifference) return 'conceptual'; // یک گام جابه‌جایی: شمردن گام نادرست
+  if (delta === commonDifference * 2) return 'problem-reading'; // دو گام: شماره جمله یک‌واحد جابه‌جا
+  if (delta === Math.abs(correctAnswer - 2 * commonDifference) || studentAnswer === correctAnswer - commonDifference + commonDifference * 0) return 'conceptual';
+  return null;
 }
 
 /**
  * تشخیص مقوله خطا برای یک پاسخ غلط.
- * اولویت: (۱) پاسخ حدسی/خالی، (۲) تشخیص مشخص کتاب برای گزینه انتخابی، (۳) پیش‌فرض مفهومی.
+ * اولویت: (۱) پاسخ حدسی/خالی، (۲) تشخیص مشخص کتاب برای گزینه انتخابی، (۳) قاعده ساختاری الگوی عددی، (۴) پیش‌فرض مفهومی.
  * خروجی «فرضیه» است؛ در صورت تکرار باید با سؤال تشخیصی تأیید شود.
  */
 export function classifyWrongAnswer(input: ClassifyInput): MisconceptionCode {
   if (input.blankLike) return 'guessing';
   if (input.hintsUsed >= 3) return 'guessing';
   if (input.diagnosisText) return mapDiagnosisTextToCode(input.diagnosisText);
+  // قاعده ساختاری الگوی عددی: اگر پرسش عددی الگویی (ch1l1) باشد و پاسخ با فاصله معنادار آمده باشد
+  if (input.numericAnswer !== undefined && input.question && input.question.type === 'numeric' && input.question.id.startsWith('ch1l1')) {
+    const faDigits = '۰۱۲۳۴۵۶۷۸۹';
+    const normalized = input.question.acceptedAnswers[0].replace(/[۰-۹]/g, (d: string) => String(faDigits.indexOf(d)));
+    const correct = parseInt(normalized, 10);
+    const pattern = classifyPatternMisconception(input.numericAnswer, correct, 4);
+    if (pattern) return pattern;
+  }
   // برای پرسش عددی بدون تشخیص مشخص: اگر راهنما زیاد مصرف شده احتمال حدس بالا
   if (input.hintsUsed >= 2) return 'guessing';
   return 'conceptual';

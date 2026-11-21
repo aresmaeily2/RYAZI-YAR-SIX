@@ -18,6 +18,7 @@ export const chapter1: Chapter = {
         'مقدار حاصل را با جمله اول مقایسه کرده و عدد ثابت را به آن اضافه یا از آن کم کنید.',
       ],
       formulaBox: 'جمله nام = (اختلاف ثابت × شماره شکل) + مقدار تنظیم‌کننده',
+      interactiveLab: 'pattern',
       workedExamples: [
         {
           id: 'ex11',

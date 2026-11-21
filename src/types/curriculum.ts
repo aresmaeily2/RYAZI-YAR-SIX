@@ -59,7 +59,7 @@ export interface Lesson {
   conceptSteps: string[];
   formulaBox?: string;
   workedExamples: WorkedExample[];
-  interactiveLab?: 'coordinate' | 'fraction' | 'percentage' | 'cylinder';
+  interactiveLab?: 'coordinate' | 'fraction' | 'percentage' | 'cylinder' | 'pattern';
   questions: Question[];
 }
 
