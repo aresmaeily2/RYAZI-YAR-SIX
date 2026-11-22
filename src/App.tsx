@@ -11,6 +11,8 @@ import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
 import { bidiText } from './utils/mathBidi';
 import { PatternExplorer } from './components/PatternExplorer';
+import { MatchSorter } from './components/MatchSorter';
+import { ErrorClinic } from './components/ErrorClinic';
 import { useCleanMathCopy } from './hooks/useCleanMathCopy';
 import { CoordinateLab, CylinderLab, FractionLab, PercentageLab } from './components/InteractiveLabs';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -367,6 +369,37 @@ const App: React.FC = () => {
                   {currentLesson.interactiveLab === 'cylinder' && <CylinderLab />}
                   {currentLesson.interactiveLab === 'percentage' && <PercentageLab />}
                   {currentLesson.interactiveLab === 'pattern' && <PatternExplorer firstTerm={5} commonDifference={4} termCount={10} />}
+                  {currentLesson.interactiveLab === 'sorter' && (
+                    <MatchSorter
+                      title="حاصل عبارت‌ها را از کوچک به بزرگ بچین"
+                      items={[
+                        { id: 'a', label: '۲+۳×۴', order: 2 },
+                        { id: 'b', label: '(۲+۳)×۴', order: 4 },
+                        { id: 'c', label: '۱۰−۲×۳', order: 1 },
+                        { id: 'd', label: '(۱۰−۲)×۳', order: 3 },
+                      ]}
+                    />
+                  )}
+                  {currentLesson.interactiveLab === 'clinic' && (
+                    <ErrorClinic
+                      cases={[
+                        {
+                          problem: '۸−۲×۳',
+                          correctAnswer: '۲',
+                          wrongAnswer: '۱۸',
+                          expectedCode: 'operation-order',
+                          options: ['operation-order', 'calculation', 'conceptual', 'guessing'],
+                        },
+                        {
+                          problem: '۵/۰ + ۲/۵',
+                          correctAnswer: '۳',
+                          wrongAnswer: '۳/۰',
+                          expectedCode: 'place-value',
+                          options: ['place-value', 'calculation', 'operation-order', 'problem-reading'],
+                        },
+                      ]}
+                    />
+                  )}
 
                   {/* دستیار آموزشی قاعده‌مند — متناسب با وضعیت مهارت این درس */}
                   <AssistantPanel
