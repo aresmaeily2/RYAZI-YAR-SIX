@@ -11,6 +11,14 @@ import { AssistantPanel } from './components/AssistantPanel';
 import { flowForLesson } from './data/flows';
 import { bidiText } from './utils/mathBidi';
 import { PatternExplorer } from './components/PatternExplorer';
+import { FractionLabV2 } from './components/FractionLabV2';
+import { DecimalLabV2 } from './components/DecimalLabV2';
+import { RatioLabV2 } from './components/RatioLabV2';
+import { PercentLabV2 } from './components/PercentLabV2';
+import { GeometryLabV2 } from './components/GeometryLabV2';
+import { MeasurementLabV2 } from './components/MeasurementLabV2';
+import { DataLabV2 } from './components/DataLabV2';
+import { LessonSummaryCard } from './components/LessonSummaryCard';
 import { MatchSorter } from './components/MatchSorter';
 import { ErrorClinic } from './components/ErrorClinic';
 import { useCleanMathCopy } from './hooks/useCleanMathCopy';
@@ -369,6 +377,13 @@ const App: React.FC = () => {
                   {currentLesson.interactiveLab === 'cylinder' && <CylinderLab />}
                   {currentLesson.interactiveLab === 'percentage' && <PercentageLab />}
                   {currentLesson.interactiveLab === 'pattern' && <PatternExplorer firstTerm={5} commonDifference={4} termCount={10} />}
+                  {currentLesson.interactiveLab === 'fraction-v2' && <FractionLabV2 />}
+                  {currentLesson.interactiveLab === 'decimal-v2' && <DecimalLabV2 />}
+                  {currentLesson.interactiveLab === 'ratio-v2' && <RatioLabV2 />}
+                  {currentLesson.interactiveLab === 'percent-v2' && <PercentLabV2 />}
+                  {currentLesson.interactiveLab === 'geometry-v2' && <GeometryLabV2 />}
+                  {currentLesson.interactiveLab === 'measurement-v2' && <MeasurementLabV2 />}
+                  {currentLesson.interactiveLab === 'data-v2' && <DataLabV2 />}
                   {currentLesson.interactiveLab === 'sorter' && (
                     <MatchSorter
                       title="حاصل عبارت‌ها را از کوچک به بزرگ بچین"
@@ -409,6 +424,17 @@ const App: React.FC = () => {
                         ? learner.skillStates[learner.skillIdForLesson(currentLesson.id)!]
                         : undefined
                     }
+                  />
+
+                  <LessonSummaryCard
+                    data={{
+                      concept: currentLesson.summary,
+                      skill: `تسلط بر مهارت «${currentLesson.title}» با تمرین‌های تدریجی همین درس`,
+                      explain: 'روش حل را با کلمات خودت برای یکی از اعضای خانواده توضیح بده؛ اگر توانستی توضیح دهی، یعنی واقعاً فهمیده‌ای.',
+                      transfer: 'از تمرین‌های انتقال مرحلهٔ G و آزمون‌های فصل برای سنجش در مسئلهٔ جدید استفاده کن.',
+                      nextPath: 'پس از تسلط، درس بعدی فصل در انتظار توست.',
+                    }}
+                    masteryPct={learner.masteryList.find((m) => m.chapterId === selectedChapterId)?.masteryPercent ?? 0}
                   />
 
                   <div className="space-y-3 pt-2">
